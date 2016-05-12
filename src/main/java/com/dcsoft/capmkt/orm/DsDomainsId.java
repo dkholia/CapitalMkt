@@ -11,6 +11,10 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class DsDomainsId implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 375537279909825206L;
 	private String dmndomain;
 	private String dmndomainval;
 	private String dmndomaindesc;

@@ -18,6 +18,10 @@ import javax.persistence.Table;
 @Table(name = "ch_dap_user_mapping", schema = "public")
 public class ChDapUserMapping implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5561792327775596000L;
 	private ChDapUserMappingId id;
 	private ChDap chDap;
 	private ChUser chUser;

@@ -3,8 +3,6 @@ package com.dcsoft.capmkt.session;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
-import com.sun.istack.internal.logging.Logger;
-
 public class CapitalMktSessionListener implements HttpSessionListener {
 
 	private static int activeSessions;

@@ -10,6 +10,10 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class BccStateRefId implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4597758721494800993L;
 	private String stateCode;
 	private String countryCodeEn;
 

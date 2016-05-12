@@ -15,6 +15,10 @@ import javax.persistence.Table;
 @Table(name = "ds_bulkimp_filestatus", schema = "public")
 public class DsBulkimpFilestatus implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2450393833169920819L;
 	private DsBulkimpFilestatusId id;
 
 	public DsBulkimpFilestatus() {

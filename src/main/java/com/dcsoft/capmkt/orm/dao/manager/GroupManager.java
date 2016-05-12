@@ -51,7 +51,7 @@ public class GroupManager extends HibernateDaoSupport implements Serializable {
 		
 		Iterator<ChChannelCustGrpMapping> mappingIterator = connectedCustomers.iterator();
 		while (mappingIterator.hasNext()) {
-			ChChannelCustGrpMapping type = (ChChannelCustGrpMapping) mappingIterator.next();
+			ChChannelCustGrpMapping type =  mappingIterator.next();
 			ChChannelCustomer customer = type.getChChannelCustomer();
 			customerMap.put(customer.getChannelCustId().toString(),customer);
 		}

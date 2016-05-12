@@ -12,6 +12,10 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class DsCustodyTiStagingId implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6956573539457876515L;
 	private String ctitransrefnum;
 	private String ctistatusmesg;
 	private String ctigroupid;

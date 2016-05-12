@@ -14,6 +14,10 @@ import javax.persistence.Table;
 @Table(name = "person", schema = "public")
 public class Person implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3749461752408816268L;
 	private BigDecimal id;
 	private String name;
 	private String country;

@@ -11,6 +11,10 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class DsBulkimpFilestatusId implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3919693006329599864L;
 	private String bfsfilereferenceno;
 	private String bfsgroupid;
 	private String bfsfiletype;

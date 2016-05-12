@@ -11,6 +11,10 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class ChFapUserMappingId implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8040931370122709763L;
 	private String userid;
 	private BigDecimal fapId;
 

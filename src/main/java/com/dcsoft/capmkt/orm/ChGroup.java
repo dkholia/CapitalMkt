@@ -19,6 +19,10 @@ import javax.persistence.Table;
 @Table(name = "ch_group", schema = "public")
 public class ChGroup implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2698611662717545561L;
 	private BigDecimal groupId;
 	private String groupName;
 	private String groupdesc;

@@ -10,6 +10,10 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class ReorderId implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7389196189577370195L;
 	private String reordercols;
 	private String userid;
 	private String tablename;

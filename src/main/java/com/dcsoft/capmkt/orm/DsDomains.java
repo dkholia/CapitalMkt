@@ -15,6 +15,10 @@ import javax.persistence.Table;
 @Table(name = "ds_domains", schema = "public")
 public class DsDomains implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 740591457120954341L;
 	private DsDomainsId id;
 
 	public DsDomains() {

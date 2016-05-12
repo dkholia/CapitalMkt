@@ -18,6 +18,10 @@ import javax.persistence.Table;
 @Table(name = "ch_channel_customer", schema = "public")
 public class ChChannelCustomer implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5993748139350819169L;
 	private BigDecimal channelCustId;
 	private String channelCustName;
 	private String channelCustDesc;

@@ -13,6 +13,10 @@ import javax.persistence.Table;
 @Table(name = "user_preferences", schema = "public")
 public class UserPreferences implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2600604771557288354L;
 	private String userid;
 	private String preferences;
 

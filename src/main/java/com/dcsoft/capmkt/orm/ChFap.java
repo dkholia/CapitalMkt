@@ -21,6 +21,10 @@ import javax.persistence.TemporalType;
 @Table(name = "ch_fap", schema = "public")
 public class ChFap implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8309865098817555479L;
 	private BigDecimal fapId;
 	private String fapName;
 	private String fapDescription;

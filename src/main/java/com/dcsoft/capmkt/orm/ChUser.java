@@ -26,6 +26,10 @@ import org.hibernate.annotations.GenerationTime;
 @Table(name = "ch_user", schema = "public")
 public class ChUser implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -9177771279311281459L;
 	private BigDecimal userid;
 	private String uname;
 	private String upwd;

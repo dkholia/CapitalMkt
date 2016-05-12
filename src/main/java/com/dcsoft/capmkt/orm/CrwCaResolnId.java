@@ -11,6 +11,10 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class CrwCaResolnId implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8357096972208632810L;
 	private Byte resolNo;
 	private String resolTtl;
 	private String resolTyp;

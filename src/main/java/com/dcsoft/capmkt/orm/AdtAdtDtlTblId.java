@@ -11,6 +11,7 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class AdtAdtDtlTblId implements java.io.Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private String adtBaseTblIdent;
 	private String adtAdtTblIdent;
 	private String adtOnlAdtInd;

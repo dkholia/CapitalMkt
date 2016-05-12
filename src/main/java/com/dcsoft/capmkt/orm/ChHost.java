@@ -19,6 +19,10 @@ import javax.persistence.Table;
 @Table(name = "ch_host", schema = "public")
 public class ChHost implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5498416472756876317L;
 	private BigDecimal hostId;
 	private String hostName;
 	private String hostDescription;

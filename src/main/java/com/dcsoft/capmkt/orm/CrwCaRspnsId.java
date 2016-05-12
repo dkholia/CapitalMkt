@@ -12,6 +12,10 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class CrwCaRspnsId implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6081680335699807075L;
 	private String crwCaId;
 	private String crwClientRef;
 	private String crwNcsRefNum;

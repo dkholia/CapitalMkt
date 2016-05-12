@@ -17,6 +17,10 @@ import javax.persistence.TemporalType;
 @Table(name = "ch_address_info", schema = "public")
 public class ChAddressInfo implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7131674024666062335L;
 	private BigDecimal addressId;
 	private BigDecimal addressShortCode;
 	private String addressLine1;

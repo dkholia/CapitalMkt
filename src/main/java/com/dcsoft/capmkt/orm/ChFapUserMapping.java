@@ -18,6 +18,10 @@ import javax.persistence.Table;
 @Table(name = "ch_fap_user_mapping", schema = "public")
 public class ChFapUserMapping implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8611487426269467251L;
 	private ChFapUserMappingId id;
 	private ChFap chFap;
 	private ChUser chUser;

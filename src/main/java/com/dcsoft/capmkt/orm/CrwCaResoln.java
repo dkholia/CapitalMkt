@@ -15,6 +15,10 @@ import javax.persistence.Table;
 @Table(name = "crw_ca_resoln", schema = "public")
 public class CrwCaResoln implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6800434107154878795L;
 	private CrwCaResolnId id;
 
 	public CrwCaResoln() {

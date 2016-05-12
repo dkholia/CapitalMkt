@@ -18,6 +18,10 @@ import javax.persistence.Table;
 @Table(name = "ch_user_group_mapping", schema = "public")
 public class ChUserGroupMapping implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7546245081865423260L;
 	private ChUserGroupMappingId id;
 	private ChGroup chGroup;
 	private ChUser chUser;

@@ -11,6 +11,10 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class ChChannelCustGrpMappingId implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6578388111460720142L;
 	private BigDecimal groupId;
 	private BigDecimal channelCustId;
 

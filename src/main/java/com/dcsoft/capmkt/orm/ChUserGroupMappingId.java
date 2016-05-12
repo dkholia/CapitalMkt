@@ -11,6 +11,10 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class ChUserGroupMappingId implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1748877013878878348L;
 	private BigDecimal groupid;
 	private String userid;
 

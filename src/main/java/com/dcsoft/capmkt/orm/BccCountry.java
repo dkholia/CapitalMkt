@@ -17,6 +17,8 @@ import javax.persistence.TemporalType;
 @Table(name = "bcc_country", schema = "public")
 public class BccCountry implements java.io.Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	private String countryCodeEn;
 	private Short countryCodeNum;
 	private String countryName;

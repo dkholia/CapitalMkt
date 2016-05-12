@@ -10,6 +10,10 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class SearchTemplateId implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7758643453212166580L;
 	private String tptuserid;
 	private String tptgroupid;
 	private String tpttemplatename;

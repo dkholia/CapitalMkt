@@ -15,6 +15,10 @@ import javax.persistence.Table;
 @Table(name = "ds_custody_ti_staging", schema = "public")
 public class DsCustodyTiStaging implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2241958462307095976L;
 	private DsCustodyTiStagingId id;
 
 	public DsCustodyTiStaging() {

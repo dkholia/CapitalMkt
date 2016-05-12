@@ -15,6 +15,10 @@ import javax.persistence.Table;
 @Table(name = "reorder", schema = "public")
 public class Reorder implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 9032239614421236602L;
 	private ReorderId id;
 
 	public Reorder() {

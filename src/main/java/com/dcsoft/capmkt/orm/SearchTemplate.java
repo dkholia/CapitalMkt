@@ -15,6 +15,10 @@ import javax.persistence.Table;
 @Table(name = "search_template", schema = "public")
 public class SearchTemplate implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8801275491368838979L;
 	private SearchTemplateId id;
 
 	public SearchTemplate() {

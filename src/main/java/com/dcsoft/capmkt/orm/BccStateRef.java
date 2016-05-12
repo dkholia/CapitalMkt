@@ -19,6 +19,10 @@ import javax.persistence.TemporalType;
 @Table(name = "bcc_state_ref", schema = "public")
 public class BccStateRef implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2997988859409450293L;
 	private BccStateRefId id;
 	private String countryCodeNum;
 	private String stateName;

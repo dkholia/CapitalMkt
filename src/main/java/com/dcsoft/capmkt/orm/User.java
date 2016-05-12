@@ -13,6 +13,10 @@ import javax.persistence.Table;
 @Table(name = "user", schema = "public")
 public class User implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6503652253464060381L;
 	private String userid;
 	private String uname;
 	private String upwd;
