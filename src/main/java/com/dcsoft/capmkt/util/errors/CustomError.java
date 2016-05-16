@@ -1,5 +1,10 @@
 package com.dcsoft.capmkt.util.errors;
 
+/**
+ * 
+ * @author Deep
+ *
+ */
 public class CustomError {
 
 	private String name;

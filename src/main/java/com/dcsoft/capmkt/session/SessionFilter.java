@@ -23,15 +23,14 @@ public class SessionFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		HttpServletRequest servletRequest = ((HttpServletRequest)request);
-		if(!servletRequest.getSession().isNew()){
-		if (servletRequest.getRequestedSessionId() != null
-		        && !servletRequest.isRequestedSessionIdValid()) {
-		    System.out.println("Session is expired from the filter **********************************, Redirecting to login page");
-		    ((HttpServletResponse)response).sendRedirect("/CapitalMkt");
-		}
-		chain.doFilter(request, response);
-		}
+		
+		HttpSession session = ((HttpServletRequest) request).getSession(true);
+		
+		 if(session.isNew()  &&session.getAttribute("status")==null) {
+			 request.getRequestDispatcher("login.jsp").forward(request, response);
+		    } else {
+		        chain.doFilter(request, response);
+		    }
 	}
 
 	@Override

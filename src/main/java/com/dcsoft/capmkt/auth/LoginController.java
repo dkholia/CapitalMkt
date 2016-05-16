@@ -1,5 +1,7 @@
 package com.dcsoft.capmkt.auth;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -23,9 +25,16 @@ public class LoginController {
 	public void setLoginService(LoginService loginService) {
 		this.loginService = loginService;
 	}
+	
+	@RequestMapping(value= "/", method = RequestMethod.POST)
+	public String gotologin(HttpSession sessionObj){
+	
+		sessionObj.setAttribute("status", "valid");
+		return "";
+	}
 
 	@RequestMapping(value= "/login", method = RequestMethod.POST)
-	public String login(@RequestParam("username") String username , @RequestParam("password") String password/*, HttpServletRequest request*/){
+	public String login(@RequestParam("username") String username , @RequestParam("password") String password,HttpSession sessionObj){
 		/*if(result.hasErrors()){
 			CustomErrorHandler handler = new CustomErrorHandler(result.getAllErrors());
 			model.addAttribute("errors", handler.getCustomErrors());
@@ -34,6 +43,7 @@ public class LoginController {
 		ChUser user = new ChUser(username,password,true);
 		if(loginService.findByExample(user).isEmpty())
 			return "redirect:/";
+		sessionObj.setAttribute("status", user);
 		return "redirect:/home";
 	}
 }

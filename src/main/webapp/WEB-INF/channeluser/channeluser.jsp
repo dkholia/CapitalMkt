@@ -17,7 +17,7 @@
 		<tbody>
 			<c:forEach items="${userList}" var ="user">
 				<tr>
-					<td><a href="<c:url value='/channeluser/${user.userid}/details/' />" >${user.lasname}, ${user.firstname} ${user.middlename}</a></td>
+					<td class="contextMenu"><a href="<c:url value='/channeluser/${user.userid}/details/' />" >${user.lasname}, ${user.firstname} ${user.middlename}</a></td>
 					<td>${user.isactive}</td>
 					<td>${user.datecreated}</td>
 					<td><a href="<c:url value='/channeluser/${user.userid}/editUser' />" >edit</a></td>
@@ -25,4 +25,13 @@
 			</c:forEach>
 		</tbody>	
 	</table>
+	<!-- Context Menu Start-->
+	<ul id="contextMenu" class="dropdown-menu" role="menu" style="display:none" >
+	    <li><a tabindex="-1" href= "<c:url value='/group/55/detail' />">Action</a></li>
+	    <li><a tabindex="-1" href="#">Another action</a></li>
+	    <li><a tabindex="-1" href="#">Something else here</a></li>
+	    <li class="divider"></li>
+	    <li><a tabindex="-1" href="#">Separated link</a></li>
+	</ul>
+	<!-- Context Menu End  -->
 </c:if>

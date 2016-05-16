@@ -3,7 +3,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="/WEB-INF/tld/capmkt.tld" prefix="capmkt"%>
-<%@ page session="false"%>
+<%@ page session="false" errorPage="error.jsp"%>
 
 <link
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
@@ -32,30 +32,49 @@
 		</div>
 	</div>
 </form:form>
-
 <br>
-<h3>Group List</h3> <a id="createGroup" href="<c:url value='/group/createeditgroup' />">Add Group</a>
-<c:if test="${!empty listGroups}">
-	<table class="table table-striped table-bordered" id="table1">
-	<thead>
-		<tr>
-			<!-- <th width="80">Group ID</th> -->
-			<th width="120">Group Name</th>
-			<th width="120">Group Description</th>
-			<th width="60">Edit</th>
-			<th width="60">Delete</th>
-		</tr>
-	</thead>
-	<tbody>
-		<c:forEach items="${listGroups}" var="group">
-			<tr>
-				<%-- <td><a href="<c:url value='/group/${group.groupId}/detail' />" >${group.groupId}</a> </td> --%>
-				<td><a href="<c:url value='/group/${group.groupId}/detail' />" >${group.groupName}</a></td>
-				<td>${group.groupdesc}</td>
-				<td><a href="<c:url value='/group/createeditgroup/${group.groupId}' />" >Edit</a></td>
-				<td><a href="<c:url value='/group/remove/${group.groupId}' />" >Delete</a></td>
-			</tr>
-		</c:forEach>
-	</tbody>
-	</table>
-</c:if>
+<div class="panel panel-default" id="panel_groupTable">
+	<div class="panel-heading">
+		<h4 class="panel-title">
+			<a data-toggle="collapse" data-target="#groups"
+				href="#groups" class="collapsed"><spring:message code="label.group.list"></spring:message> </a>
+		</h4>
+	</div>
+	<div id="groups" class="panel-collapse collapse">
+		<c:if test="${!empty listGroups}">
+			<table class="table table-striped table-bordered" id="groupTable">
+			<thead>
+				<tr>
+					<th width="120">Group Name</th>
+					<th width="120">Group Description</th>
+					<th width="60">Edit</th>
+					<th width="60">Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${listGroups}" var="group">
+					<tr>
+						<td class="contextMenu"><a href="<c:url value='/group/${group.groupId}/detail' />" >${group.groupName}</a></td>
+						<td>${group.groupdesc}</td>
+						<td><a href="<c:url value='/group/createeditgroup/${group.groupId}' />" >Edit</a></td>
+						<td><a href="<c:url value='/group/remove/${group.groupId}' />" >Delete</a></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+			</table>
+		</c:if>
+		<c:if test="${empty listGroups}">
+			<capmkt:nodatafound/>
+		</c:if>
+	</div>
+</div>
+
+<!-- Context Menu Start-->
+	<ul id="contextMenu" class="dropdown-menu" role="menu" style="display:none" >
+	    <li><a tabindex="-1" href= "<c:url value='/group/55/detail' />">Action</a></li>
+	    <li><a tabindex="-1" href="#">Another action</a></li>
+	    <li><a tabindex="-1" href="#">Something else here</a></li>
+	    <li class="divider"></li>
+	    <li><a tabindex="-1" href="#">Separated link</a></li>
+	</ul>
+<!-- Context Menu End  -->

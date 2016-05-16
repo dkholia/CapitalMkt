@@ -40,8 +40,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="https://cdn.datatables.net/1.10.11/css/dataTables.bootstrap.min.css">
-<!-- <link rel="stylesheet"
-	href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css"> -->
+
 
 <!-- SmartMenus jQuery init -->
 <script type="text/javascript">
@@ -51,6 +50,7 @@
 			subMenusSubOffsetY : -80
 		});
 		$('.table').css("width","100%");
+		$('.table-striped').addClass("table-hover");
 		$('.table-striped').DataTable( {
 			  "lengthMenu": [ [5,10, 25, 50, -1], [5,10, 25, 50, "All"] ]
 		});
@@ -77,7 +77,7 @@
 				<div class="error">
 					<ul >
 						<c:forEach items="${errors}" var="error">
-							<li>${error.name}  ${error.message}</li>
+							<li>${error.name}&nbsp;${error.message} </li>
 						</c:forEach>
 					</ul>
 				</div>

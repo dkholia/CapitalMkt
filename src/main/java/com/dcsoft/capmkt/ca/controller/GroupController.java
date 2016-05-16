@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +25,7 @@ import com.dcsoft.capmkt.bo.transferobj.ChannelCustomerTO;
 import com.dcsoft.capmkt.orm.ChChannelCustomer;
 import com.dcsoft.capmkt.orm.ChGroup;
 import com.dcsoft.capmkt.orm.dao.manager.GroupManager;
+import com.dcsoft.capmkt.util.errors.CustomError;
 import com.dcsoft.capmkt.util.errors.CustomErrorHandler;
 
 @Controller
@@ -131,10 +133,28 @@ public class GroupController {
 	public String createGroup(@Valid ChGroupTO chGroupTO,BindingResult result,Model model) {
 		model.addAttribute("mode", "create");
 		model.addAttribute("group", chGroupTO);
+		
+		
 		if (result.hasErrors()) {
 			CustomErrorHandler handler = new CustomErrorHandler(result.getAllErrors());
 			model.addAttribute("errors", handler.getCustomErrors());
 			return "createeditgroup";
+		}
+		/* 
+		 Find out if a duplicate group exists
+		 */
+		
+		ChGroup tempGroup = new ChGroup();
+		tempGroup.setGroupName(chGroupTO.getGroupName());
+		if(this.groupService.findByExample(ChGroup.class, tempGroup).size()>0){
+			FieldError fieldError = new FieldError("grpname", "", "Group " + chGroupTO.getGroupName() + " already Exists");
+			result.addError(fieldError);
+	
+			if (result.hasErrors()) {
+				CustomErrorHandler handler = new CustomErrorHandler(result.getAllErrors());
+				model.addAttribute("errors", handler.getCustomErrors());
+				return "createeditgroup";
+			}
 		}
 		if(chGroupTO.getGroupId()== null){
 			this.groupService.addGroup(chGroupTO);

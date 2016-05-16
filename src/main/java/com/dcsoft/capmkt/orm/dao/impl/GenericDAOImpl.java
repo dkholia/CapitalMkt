@@ -14,7 +14,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
 import com.dcsoft.capmkt.orm.dao.intf.IGenericDao;
-import com.fasterxml.jackson.databind.deser.Deserializers.Base;
 
 public class GenericDAOImpl extends HibernateDaoSupport  implements IGenericDao {
 

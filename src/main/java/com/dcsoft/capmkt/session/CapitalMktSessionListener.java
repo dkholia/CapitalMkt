@@ -17,11 +17,16 @@ public class CapitalMktSessionListener implements HttpSessionListener {
 	}
 
 	@Override
-	public void sessionDestroyed(HttpSessionEvent arg0) {
+	public void sessionDestroyed(HttpSessionEvent httpSessionEvent) {
 		activeSessions--;
+		
 		System.out.println("Session is expired *****************************************");
+		httpSessionEvent.getSession().removeAttribute("status");
+		httpSessionEvent.getSession().invalidate();
 		log.info("Session destroyed");
+		
 		System.out.println("Number of active sessions " + getActiveSessions());
+		
 	}
 
 	public static int getActiveSessions() {

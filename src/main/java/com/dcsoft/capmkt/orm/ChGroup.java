@@ -4,6 +4,8 @@ package com.dcsoft.capmkt.orm;
 import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -75,7 +77,7 @@ public class ChGroup implements java.io.Serializable {
 		this.groupdesc = groupdesc;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "chGroup", targetEntity= com.dcsoft.capmkt.orm.ChChannelCustGrpMapping.class)
+	@OneToMany(fetch = FetchType.LAZY,cascade=CascadeType.REMOVE , mappedBy = "chGroup", targetEntity= com.dcsoft.capmkt.orm.ChChannelCustGrpMapping.class)
 	public Set getChChannelCustGrpMappings() {
 		return this.chChannelCustGrpMappings;
 	}
@@ -84,7 +86,7 @@ public class ChGroup implements java.io.Serializable {
 		this.chChannelCustGrpMappings = chChannelCustGrpMappings;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "chGroup",targetEntity= com.dcsoft.capmkt.orm.ChUserGroupMapping.class)
+	@OneToMany(fetch = FetchType.LAZY,cascade=CascadeType.REMOVE , mappedBy = "chGroup",targetEntity= com.dcsoft.capmkt.orm.ChUserGroupMapping.class)
 	public Set getChUserGroupMappings() {
 		return this.chUserGroupMappings;
 	}
