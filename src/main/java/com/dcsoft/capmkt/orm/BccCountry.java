@@ -161,7 +161,7 @@ public class BccCountry implements java.io.Serializable {
 
 	@Id
 
-	@Column(name = "COUNTRY_CODE_EN", nullable = false, length = 2)
+	@Column(name = "country_code_en", nullable = false, length = 2)
 	public String getCountryCodeEn() {
 		return this.countryCodeEn;
 	}
@@ -170,7 +170,7 @@ public class BccCountry implements java.io.Serializable {
 		this.countryCodeEn = countryCodeEn;
 	}
 
-	@Column(name = "COUNTRY_CODE_NUM", precision = 3, scale = 0)
+	@Column(name = "country_code_num", precision = 3, scale = 0)
 	public Short getCountryCodeNum() {
 		return this.countryCodeNum;
 	}
@@ -179,7 +179,7 @@ public class BccCountry implements java.io.Serializable {
 		this.countryCodeNum = countryCodeNum;
 	}
 
-	@Column(name = "COUNTRY_NAME", length = 50)
+	@Column(name = "country_name", length = 50)
 	public String getCountryName() {
 		return this.countryName;
 	}
@@ -188,7 +188,7 @@ public class BccCountry implements java.io.Serializable {
 		this.countryName = countryName;
 	}
 
-	@Column(name = "CURR_CODE", length = 3)
+	@Column(name = "curr_code", length = 3)
 	public String getCurrCode() {
 		return this.currCode;
 	}
@@ -197,7 +197,7 @@ public class BccCountry implements java.io.Serializable {
 		this.currCode = currCode;
 	}
 
-	@Column(name = "TIME_OFFSET", length = 5)
+	@Column(name = "time_offset", length = 5)
 	public String getTimeOffset() {
 		return this.timeOffset;
 	}
@@ -206,7 +206,7 @@ public class BccCountry implements java.io.Serializable {
 		this.timeOffset = timeOffset;
 	}
 
-	@Column(name = "EOD_TIME", length = 5)
+	@Column(name = "eod_time", length = 5)
 	public String getEodTime() {
 		return this.eodTime;
 	}
@@ -215,7 +215,7 @@ public class BccCountry implements java.io.Serializable {
 		this.eodTime = eodTime;
 	}
 
-	@Column(name = "BOD_TIME", length = 5)
+	@Column(name = "bod_time", length = 5)
 	public String getBodTime() {
 		return this.bodTime;
 	}
@@ -224,7 +224,7 @@ public class BccCountry implements java.io.Serializable {
 		this.bodTime = bodTime;
 	}
 
-	@Column(name = "INTRADAY_EXE_TIME", length = 5)
+	@Column(name = "intraday_exe_time", length = 5)
 	public String getIntradayExeTime() {
 		return this.intradayExeTime;
 	}
@@ -233,7 +233,7 @@ public class BccCountry implements java.io.Serializable {
 		this.intradayExeTime = intradayExeTime;
 	}
 
-	@Column(name = "PROCESS_NAME", length = 18)
+	@Column(name = "process_name", length = 18)
 	public String getProcessName() {
 		return this.processName;
 	}
@@ -243,7 +243,7 @@ public class BccCountry implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "PROCESS_TIME1", length = 29)
+	@Column(name = "process_time1", length = 29)
 	public Date getProcessTime1() {
 		return this.processTime1;
 	}
@@ -253,7 +253,7 @@ public class BccCountry implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "PROCESS_TIME2", length = 29)
+	@Column(name = "process_time2", length = 29)
 	public Date getProcessTime2() {
 		return this.processTime2;
 	}
@@ -263,7 +263,7 @@ public class BccCountry implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "PROCESS_TIME3", length = 29)
+	@Column(name = "process_time3", length = 29)
 	public Date getProcessTime3() {
 		return this.processTime3;
 	}
@@ -272,7 +272,7 @@ public class BccCountry implements java.io.Serializable {
 		this.processTime3 = processTime3;
 	}
 
-	@Column(name = "CREATED_BY", length = 310)
+	@Column(name = "created_by", length = 310)
 	public String getCreatedBy() {
 		return this.createdBy;
 	}
@@ -282,7 +282,7 @@ public class BccCountry implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "CREATION_DATE", length = 29)
+	@Column(name = "creation_date", length = 29)
 	public Date getCreationDate() {
 		return this.creationDate;
 	}
@@ -291,7 +291,7 @@ public class BccCountry implements java.io.Serializable {
 		this.creationDate = creationDate;
 	}
 
-	@Column(name = "VERIFIED_BY", length = 310)
+	@Column(name = "verified_by", length = 310)
 	public String getVerifiedBy() {
 		return this.verifiedBy;
 	}
@@ -301,7 +301,7 @@ public class BccCountry implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "VERIFIED_DATE", length = 29)
+	@Column(name = "verified_date", length = 29)
 	public Date getVerifiedDate() {
 		return this.verifiedDate;
 	}
@@ -310,7 +310,7 @@ public class BccCountry implements java.io.Serializable {
 		this.verifiedDate = verifiedDate;
 	}
 
-	@Column(name = "DELETE_FLAG", length = 1)
+	@Column(name = "delete_flag", length = 1)
 	public Character getDeleteFlag() {
 		return this.deleteFlag;
 	}
@@ -319,7 +319,7 @@ public class BccCountry implements java.io.Serializable {
 		this.deleteFlag = deleteFlag;
 	}
 
-	@Column(name = "VERSION_NO", precision = 4, scale = 0)
+	@Column(name = "version_no", precision = 4, scale = 0)
 	public Short getVersionNo() {
 		return this.versionNo;
 	}
@@ -328,7 +328,7 @@ public class BccCountry implements java.io.Serializable {
 		this.versionNo = versionNo;
 	}
 
-	@Column(name = "OFFSET_SIGN", length = 1)
+	@Column(name = "offset_sign", length = 1)
 	public String getOffsetSign() {
 		return this.offsetSign;
 	}
@@ -337,7 +337,7 @@ public class BccCountry implements java.io.Serializable {
 		this.offsetSign = offsetSign;
 	}
 
-	@Column(name = "ACCRUAL_FREQUENCY", length = 1)
+	@Column(name = "accural_frequency", length = 1)
 	public String getAccrualFrequency() {
 		return this.accrualFrequency;
 	}
@@ -346,7 +346,7 @@ public class BccCountry implements java.io.Serializable {
 		this.accrualFrequency = accrualFrequency;
 	}
 
-	@Column(name = "CLEARING_WINDOW", precision = 3, scale = 0)
+	@Column(name = "clearing_window", precision = 3, scale = 0)
 	public Short getClearingWindow() {
 		return this.clearingWindow;
 	}
@@ -355,7 +355,7 @@ public class BccCountry implements java.io.Serializable {
 		this.clearingWindow = clearingWindow;
 	}
 
-	@Column(name = "MAX_PDC_PERIOD_MONTH", precision = 8, scale = 0)
+	@Column(name = "max_pdc_period_month", precision = 8, scale = 0)
 	public Integer getMaxPdcPeriodMonth() {
 		return this.maxPdcPeriodMonth;
 	}
@@ -364,7 +364,7 @@ public class BccCountry implements java.io.Serializable {
 		this.maxPdcPeriodMonth = maxPdcPeriodMonth;
 	}
 
-	@Column(name = "DIRECT_CREDIT_CODE", precision = 5, scale = 0)
+	@Column(name = "direct_credit_code", precision = 5, scale = 0)
 	public Integer getDirectCreditCode() {
 		return this.directCreditCode;
 	}
@@ -373,7 +373,7 @@ public class BccCountry implements java.io.Serializable {
 		this.directCreditCode = directCreditCode;
 	}
 
-	@Column(name = "DIRECT_CREDIT_REVERSAL_CODE", precision = 5, scale = 0)
+	@Column(name = "direct_credit_reversal_code", precision = 5, scale = 0)
 	public Integer getDirectCreditReversalCode() {
 		return this.directCreditReversalCode;
 	}
@@ -382,7 +382,7 @@ public class BccCountry implements java.io.Serializable {
 		this.directCreditReversalCode = directCreditReversalCode;
 	}
 
-	@Column(name = "DIRECT_DEBIT_CODE", precision = 5, scale = 0)
+	@Column(name = "direct_debit_code", precision = 5, scale = 0)
 	public Integer getDirectDebitCode() {
 		return this.directDebitCode;
 	}
@@ -391,7 +391,7 @@ public class BccCountry implements java.io.Serializable {
 		this.directDebitCode = directDebitCode;
 	}
 
-	@Column(name = "DIRECT_DEBIT_REVERSAL_CODE", precision = 5, scale = 0)
+	@Column(name = "direct_debit_reversal_code", precision = 5, scale = 0)
 	public Integer getDirectDebitReversalCode() {
 		return this.directDebitReversalCode;
 	}
@@ -401,7 +401,7 @@ public class BccCountry implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "RCMS_BUSINESS_DATE", length = 13)
+	@Column(name = "rcms_business_date", length = 13)
 	public Date getRcmsBusinessDate() {
 		return this.rcmsBusinessDate;
 	}
@@ -410,7 +410,7 @@ public class BccCountry implements java.io.Serializable {
 		this.rcmsBusinessDate = rcmsBusinessDate;
 	}
 
-	@Column(name = "USE_DESTINATION_HOLIDAYS", length = 1)
+	@Column(name = "use_destination_holidays", length = 1)
 	public String getUseDestinationHolidays() {
 		return this.useDestinationHolidays;
 	}
@@ -419,7 +419,7 @@ public class BccCountry implements java.io.Serializable {
 		this.useDestinationHolidays = useDestinationHolidays;
 	}
 
-	@Column(name = "USE_SOURCE_HOLIDAYS", length = 1)
+	@Column(name = "use_source_holidays", length = 1)
 	public String getUseSourceHolidays() {
 		return this.useSourceHolidays;
 	}
@@ -428,7 +428,7 @@ public class BccCountry implements java.io.Serializable {
 		this.useSourceHolidays = useSourceHolidays;
 	}
 
-	@Column(name = "DAYLIGHT_SAVING_CODE", length = 8)
+	@Column(name = "Daylight_saving_code", length = 8)
 	public String getDaylightSavingCode() {
 		return this.daylightSavingCode;
 	}
@@ -437,7 +437,7 @@ public class BccCountry implements java.io.Serializable {
 		this.daylightSavingCode = daylightSavingCode;
 	}
 
-	@Column(name = "CUTOFF_TIME", precision = 6, scale = 0)
+	@Column(name = "cutoff_time", precision = 6, scale = 0)
 	public Integer getCutoffTime() {
 		return this.cutoffTime;
 	}
@@ -446,7 +446,7 @@ public class BccCountry implements java.io.Serializable {
 		this.cutoffTime = cutoffTime;
 	}
 
-	@Column(name = "AUTHORISED_BY", length = 310)
+	@Column(name = "authorised_by", length = 310)
 	public String getAuthorisedBy() {
 		return this.authorisedBy;
 	}
@@ -456,7 +456,7 @@ public class BccCountry implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "AUTHORISED_DATE", length = 29)
+	@Column(name = "authorised_date", length = 29)
 	public Date getAuthorisedDate() {
 		return this.authorisedDate;
 	}
@@ -465,7 +465,7 @@ public class BccCountry implements java.io.Serializable {
 		this.authorisedDate = authorisedDate;
 	}
 
-	@Column(name = "FIRST_AUTHORISED_BY", length = 310)
+	@Column(name = "first_authorised_by", length = 310)
 	public String getFirstAuthorisedBy() {
 		return this.firstAuthorisedBy;
 	}
@@ -475,7 +475,7 @@ public class BccCountry implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "FIRST_AUTHORISED_DATE", length = 29)
+	@Column(name = "first_authorised_date", length = 29)
 	public Date getFirstAuthorisedDate() {
 		return this.firstAuthorisedDate;
 	}
@@ -484,7 +484,7 @@ public class BccCountry implements java.io.Serializable {
 		this.firstAuthorisedDate = firstAuthorisedDate;
 	}
 
-	@Column(name = "VALID_NTN_LTY_FLAG", precision = 1, scale = 0)
+	@Column(name = "valid_ntn_lty_flag", precision = 1, scale = 0)
 	public Boolean getValidNtnLtyFlag() {
 		return this.validNtnLtyFlag;
 	}
@@ -493,7 +493,7 @@ public class BccCountry implements java.io.Serializable {
 		this.validNtnLtyFlag = validNtnLtyFlag;
 	}
 
-	@Column(name = "VALID_RES_FLAG", precision = 1, scale = 0)
+	@Column(name = "valid_res_flag", precision = 1, scale = 0)
 	public Boolean getValidResFlag() {
 		return this.validResFlag;
 	}
@@ -502,7 +502,7 @@ public class BccCountry implements java.io.Serializable {
 		this.validResFlag = validResFlag;
 	}
 
-	@Column(name = "NOTARY_FLAG", precision = 1, scale = 0)
+	@Column(name = "notary_flag", precision = 1, scale = 0)
 	public Boolean getNotaryFlag() {
 		return this.notaryFlag;
 	}
@@ -511,7 +511,7 @@ public class BccCountry implements java.io.Serializable {
 		this.notaryFlag = notaryFlag;
 	}
 
-	@Column(name = "POSTAL_FLAG", precision = 1, scale = 0)
+	@Column(name = "postal_flag", precision = 1, scale = 0)
 	public Boolean getPostalFlag() {
 		return this.postalFlag;
 	}
@@ -520,7 +520,7 @@ public class BccCountry implements java.io.Serializable {
 		this.postalFlag = postalFlag;
 	}
 
-	@Column(name = "NON_COOP_FLAG", precision = 1, scale = 0)
+	@Column(name = "non_coop_flag", precision = 1, scale = 0)
 	public Boolean getNonCoopFlag() {
 		return this.nonCoopFlag;
 	}
@@ -529,7 +529,7 @@ public class BccCountry implements java.io.Serializable {
 		this.nonCoopFlag = nonCoopFlag;
 	}
 
-	@Column(name = "CTRY_EXSTNG_FLAG", precision = 1, scale = 0)
+	@Column(name = "ctry_exstng_flag", precision = 1, scale = 0)
 	public Boolean getCtryExstngFlag() {
 		return this.ctryExstngFlag;
 	}
@@ -538,7 +538,7 @@ public class BccCountry implements java.io.Serializable {
 		this.ctryExstngFlag = ctryExstngFlag;
 	}
 
-	@Column(name = "CONTINENT_CODE", precision = 12, scale = 0)
+	@Column(name = "continent_code", precision = 12, scale = 0)
 	public Long getContinentCode() {
 		return this.continentCode;
 	}
@@ -547,7 +547,7 @@ public class BccCountry implements java.io.Serializable {
 		this.continentCode = continentCode;
 	}
 
-	@Column(name = "REGION_CODE", precision = 12, scale = 0)
+	@Column(name = "region_code", precision = 12, scale = 0)
 	public Long getRegionCode() {
 		return this.regionCode;
 	}
@@ -556,7 +556,7 @@ public class BccCountry implements java.io.Serializable {
 		this.regionCode = regionCode;
 	}
 
-	@Column(name = "ALT_CTRY_CODE_NUM", precision = 3, scale = 0)
+	@Column(name = "alt_ctry_code_num", precision = 3, scale = 0)
 	public Short getAltCtryCodeNum() {
 		return this.altCtryCodeNum;
 	}
@@ -565,7 +565,7 @@ public class BccCountry implements java.io.Serializable {
 		this.altCtryCodeNum = altCtryCodeNum;
 	}
 
-	@Column(name = "CONTINENT", precision = 2, scale = 0)
+	@Column(name = "continent", precision = 2, scale = 0)
 	public Byte getContinent() {
 		return this.continent;
 	}
@@ -574,7 +574,7 @@ public class BccCountry implements java.io.Serializable {
 		this.continent = continent;
 	}
 
-	@Column(name = "COUNTRY_NAME_L01", length = 50)
+	@Column(name = "country_name_l01", length = 50)
 	public String getCountryNameL01() {
 		return this.countryNameL01;
 	}
@@ -583,7 +583,7 @@ public class BccCountry implements java.io.Serializable {
 		this.countryNameL01 = countryNameL01;
 	}
 
-	@Column(name = "COUNTRY_NAME_L02", length = 50)
+	@Column(name = "country_name_l02", length = 50)
 	public String getCountryNameL02() {
 		return this.countryNameL02;
 	}
@@ -592,7 +592,7 @@ public class BccCountry implements java.io.Serializable {
 		this.countryNameL02 = countryNameL02;
 	}
 
-	@Column(name = "COUNTRY_NAME_L03", length = 50)
+	@Column(name = "country_name_l03", length = 50)
 	public String getCountryNameL03() {
 		return this.countryNameL03;
 	}
@@ -601,7 +601,7 @@ public class BccCountry implements java.io.Serializable {
 		this.countryNameL03 = countryNameL03;
 	}
 
-	@Column(name = "COUNTRY_NAME_L04", length = 50)
+	@Column(name = "country_name_l04", length = 50)
 	public String getCountryNameL04() {
 		return this.countryNameL04;
 	}
@@ -610,7 +610,7 @@ public class BccCountry implements java.io.Serializable {
 		this.countryNameL04 = countryNameL04;
 	}
 
-	@Column(name = "COUNTRY_NAME_L05", length = 50)
+	@Column(name = "country_name_l05", length = 50)
 	public String getCountryNameL05() {
 		return this.countryNameL05;
 	}
@@ -619,7 +619,7 @@ public class BccCountry implements java.io.Serializable {
 		this.countryNameL05 = countryNameL05;
 	}
 
-	@Column(name = "REGION", precision = 3, scale = 0)
+	@Column(name = "region", precision = 3, scale = 0)
 	public Short getRegion() {
 		return this.region;
 	}
@@ -628,7 +628,7 @@ public class BccCountry implements java.io.Serializable {
 		this.region = region;
 	}
 
-	@Column(name = "IS_EU", length = 1)
+	@Column(name = "is_eu", length = 1)
 	public String getIsEu() {
 		return this.isEu;
 	}
@@ -637,7 +637,7 @@ public class BccCountry implements java.io.Serializable {
 		this.isEu = isEu;
 	}
 
-	@Column(name = "CREATED_BY_USER_ID", scale = 0)
+	@Column(name = "created_by_user_id", scale = 0)
 	public BigDecimal getCreatedByUserId() {
 		return this.createdByUserId;
 	}
@@ -646,7 +646,7 @@ public class BccCountry implements java.io.Serializable {
 		this.createdByUserId = createdByUserId;
 	}
 
-	@Column(name = "VERIFIED_BY_USER_ID", scale = 0)
+	@Column(name = "verified_by_user_id", scale = 0)
 	public BigDecimal getVerifiedByUserId() {
 		return this.verifiedByUserId;
 	}
@@ -655,7 +655,7 @@ public class BccCountry implements java.io.Serializable {
 		this.verifiedByUserId = verifiedByUserId;
 	}
 
-	@Column(name = "MODIFIED_BY_USER_ID", scale = 0)
+	@Column(name = "modified_by_user_id", scale = 0)
 	public BigDecimal getModifiedByUserId() {
 		return this.modifiedByUserId;
 	}
@@ -664,7 +664,7 @@ public class BccCountry implements java.io.Serializable {
 		this.modifiedByUserId = modifiedByUserId;
 	}
 
-	@Column(name = "MODIFIED_BY", length = 310)
+	@Column(name = "modified_by", length = 310)
 	public String getModifiedBy() {
 		return this.modifiedBy;
 	}
@@ -674,7 +674,7 @@ public class BccCountry implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "MODIFIED_DATE", length = 29)
+	@Column(name = "modified_date", length = 29)
 	public Date getModifiedDate() {
 		return this.modifiedDate;
 	}
@@ -683,7 +683,7 @@ public class BccCountry implements java.io.Serializable {
 		this.modifiedDate = modifiedDate;
 	}
 
-	@Column(name = "COUNTRY_CUTOFF_FLAG", length = 1)
+	@Column(name = "country_cutoff_flag", length = 1)
 	public String getCountryCutoffFlag() {
 		return this.countryCutoffFlag;
 	}

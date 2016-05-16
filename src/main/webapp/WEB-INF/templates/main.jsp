@@ -56,6 +56,17 @@
 		});
 		
 	});
+	
+	$(function() {
+	    $( ".datepicker" ).datepicker({
+	    	  changeMonth: true,
+	    	  changeYear: true,
+	    	  yearRange: "c-100:c",
+	    	  altFormat: "MM/dd/yyyy",
+	    	  gotoCurrent: true,
+	    	  showButtonPanel: true
+	    });
+	  });
 </script>
 </head>
 <body>

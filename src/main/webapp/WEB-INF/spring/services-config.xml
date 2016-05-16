@@ -41,5 +41,11 @@
 	   <beans:bean id="chnlFapService" class=" com.dcsoft.capmkt.bo.impl.fap.FAPServiceImpl">
         <beans:property  name="genericDao" ref="genericDao"></beans:property>
 	  </beans:bean>
+	  
+	  <beans:bean id="commonService" class=" com.dcsoft.capmkt.bo.impl.CommonServiceImpl">
+        <beans:property  name="genericDao" ref="genericDao"></beans:property>
+         <beans:property  name="commonDAO" ref="commonDAO"></beans:property>
+	  </beans:bean>
+	  
 	  <!-- Service END -->
 </beans:beans>

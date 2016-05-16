@@ -94,7 +94,7 @@ public class GenericDAOImpl extends HibernateDaoSupport  implements IGenericDao 
 		return null;
 	}
 	
-	private Session getSession() {
+	public Session getSession() {
 		return getHibernateTemplate().getSessionFactory().getCurrentSession();
 		
 	}

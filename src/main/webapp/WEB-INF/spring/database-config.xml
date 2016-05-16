@@ -92,6 +92,12 @@
 		<beans:property name="sessionFactory"
 			ref="hibernate4AnnotatedSessionFactory"></beans:property>
 	</beans:bean>
+	
+	<beans:bean id="commonDAO"
+		class="com.dcsoft.capmkt.orm.dao.impl.CommonDAO">
+		<beans:property name="sessionFactory"
+			ref="hibernate4AnnotatedSessionFactory"></beans:property>
+	</beans:bean>
 	<!-- DAO End -->
 
 </beans:beans>

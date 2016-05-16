@@ -27,7 +27,8 @@ public class SessionFilter implements Filter {
 		HttpSession session = ((HttpServletRequest) request).getSession(true);
 		
 		 if(session.isNew()  &&session.getAttribute("status")==null) {
-			 request.getRequestDispatcher("login.jsp").forward(request, response);
+			// request.getRequestDispatcher("./login.jsp").forward(request, response);
+			 ((HttpServletResponse)response).sendRedirect("/CapitalMkt");
 		    } else {
 		        chain.doFilter(request, response);
 		    }

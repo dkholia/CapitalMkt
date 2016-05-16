@@ -149,7 +149,7 @@ public class BccStateRef implements java.io.Serializable {
 		this.createdByUserId = createdByUserId;
 	}
 
-	@Column(name = "created by", length = 310)
+	@Column(name = "created_by", length = 310)
 	public String getCreatedBy() {
 		return this.createdBy;
 	}

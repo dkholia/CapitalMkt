@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
+import org.hibernate.Session;
 import org.springframework.transaction.annotation.Transactional;
 public interface IGenericDao {
 	 public void add(Serializable obj);

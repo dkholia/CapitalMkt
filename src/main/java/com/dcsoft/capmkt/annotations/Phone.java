@@ -17,7 +17,7 @@ import com.dcsoft.capmkt.bo.transferobj.validators.PhoneValidator;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Phone {
  
-    String message() default "{Phone}";
+    String message() default "Phone Number not well Formatted";
      
     Class<?>[] groups() default {};
      
