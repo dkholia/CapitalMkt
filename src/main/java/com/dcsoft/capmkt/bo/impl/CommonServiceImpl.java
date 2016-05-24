@@ -48,7 +48,7 @@ public class CommonServiceImpl extends GenericService implements ICommonService{
 	@Override
 	@Transactional
 	public List<Serializable> getStates(String countryName) {
-		List<Serializable> states =  getCommonDAO().getStates("US");
+		List<Serializable> states =  getCommonDAO().getStates(countryName);
 		List<Serializable> dropDowns = new ArrayList<Serializable>();
 		DropDown dropDown =null;
 		for(int i=0;i<states.size();i++){

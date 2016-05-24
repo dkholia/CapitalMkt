@@ -2,13 +2,13 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-
-<spring:message code="label.user.list"></spring:message>
 <c:if test="${!empty userList}">
+	<spring:message code="label.user.list"></spring:message>
+	
 	<table  class="table table-striped table-bordered" id="usersTable">
 		<thead>
 			<tr>
-			<th width="120" draggable="true" >User Name</th>
+			<th width="120" draggable="true" >User ID</th>
 			<th width="120" draggable="true">Status</th>
 			<th width="60" draggable="true">Date Created</th>
 			<th width="60"></th>
@@ -16,12 +16,15 @@
 		</thead>
 		<tbody>
 			<c:forEach items="${userList}" var ="user">
+				<c:if test="${user.usertyp eq 'nonadmin'}">
 				<tr>
-					<td class="contextMenu"><a href="<c:url value='/channeluser/${user.userid}/details/' />" >${user.lasname}, ${user.firstname} ${user.middlename}</a></td>
+					<td ><a  class="contextMenu" href="<c:url value='/channeluser/${user.userid}/details/' />" >${user.uname} <%-- ${user.lasname}, ${user.firstname} ${user.middlename} --%></a></td>
 					<td>${user.isactive}</td>
 					<td>${user.datecreated}</td>
-					<td><a href="<c:url value='/channeluser/${user.userid}/editUser' />" >edit</a></td>
+					<td><a  class="editObj" href="<c:url value='/channeluser/${user.userid}/editUser' />" ></a>
+					<a class="deleteObj" href="<c:url value='/channeluser/${user.userid}/deleteUser' />" ></a></td>
 				</tr>
+				</c:if>
 			</c:forEach>
 		</tbody>	
 	</table>

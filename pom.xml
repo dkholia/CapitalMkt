@@ -13,6 +13,8 @@
 		<org.aspectj-version>1.7.4</org.aspectj-version>
 		<org.slf4j-version>1.7.5</org.slf4j-version>
 		<hibernate.version>4.3.5.Final</hibernate.version>
+		 <hibernate.validator.version>5.1.2.Final</hibernate.validator.version>
+        <javax.validation.version>1.1.0.Final</javax.validation.version>
 	</properties>
 	<dependencies>
 		<!-- Spring -->
@@ -105,16 +107,6 @@
 		</dependency>
 
 		<!-- Logging -->
-		<dependency>
-			<groupId>javax.validation</groupId>
-			<artifactId>validation-api</artifactId>
-			<version>1.0.0.GA</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator</artifactId>
-			<version>4.1.0.Final</version>
-		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
@@ -224,6 +216,11 @@
 			<artifactId>spring-security-web</artifactId>
 			<version>4.0.3.RELEASE</version>
 		</dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate.validator.version}</version>
+        </dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -264,4 +261,8 @@
 		</plugins>
 		<finalName>${project.artifactId}</finalName>
 	</build>
+	<ciManagement>
+		<url>http://localhost:8080/</url>
+		<system>Jenkins</system>
+	</ciManagement>
 </project>

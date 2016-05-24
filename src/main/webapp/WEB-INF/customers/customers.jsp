@@ -18,7 +18,10 @@
 					<td><a>${customer.channelCustId}</a></td>
 					<td>${customer.channelCustName}</td>
 					<td>${customer.channelCustDesc}</td>
-					<td><a href="<c:url value='/channeluser/${customer.channelCustId}/editUser' />" >edit</a></td>
+					<td>
+						<a  class="editObj" href="<c:url value='/channeluser/${user.userid}/editUser' />" ></a>
+						<a class="deleteObj" href="<c:url value='/channeluser/${user.userid}/deleteUser' />" ></a>
+					</td>
 				</tr>
 			</c:forEach>
 		</tbody>	

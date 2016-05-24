@@ -8,6 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.dcsoft.capmkt.bo.impl.GenericService;
 import com.dcsoft.capmkt.bo.intf.IChannelCustomerService;
+import com.dcsoft.capmkt.bo.transferobj.ChannelCustomerTO;
+import com.dcsoft.capmkt.orm.ChChannelCustomer;
 import com.dcsoft.capmkt.orm.dao.impl.ChannelCustomerDAO;
 
 @Service
@@ -32,6 +34,31 @@ public class ChannelCustomerServiceImpl extends GenericService implements IChann
 
 	public void setChannelCustomerDao(ChannelCustomerDAO channelCustomerDao) {
 		this.channelCustomerDao = channelCustomerDao;
+	}
+
+	@Override
+	@Transactional
+	public List<Serializable> getCustomerByExample(Serializable obj) {
+		ChannelCustomerTO channelCustomerTO = (ChannelCustomerTO) obj;
+		ChChannelCustomer customer = new ChChannelCustomer();
+		customer.setChannelCustName(channelCustomerTO.getChannelCustName());
+		return getGenericDao().findByExample(ChChannelCustomer.class,customer);
+	}
+
+	@Override
+	@Transactional
+	public boolean addCustomer(Serializable obj) {
+		try {
+			ChannelCustomerTO channelCustomerTO = (ChannelCustomerTO) obj;
+			ChChannelCustomer customer = new ChChannelCustomer();
+			customer.setChannelCustName(channelCustomerTO.getChannelCustName());
+			customer.setChannelCustDesc(channelCustomerTO.getChannelCustDesc());
+			getGenericDao().add(customer);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 
 }

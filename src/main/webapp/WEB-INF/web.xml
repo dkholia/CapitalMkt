@@ -38,7 +38,7 @@
 		</taglib>
 	</jsp-config>
 	<session-config>
-		<session-timeout>1</session-timeout>
+		<session-timeout>30</session-timeout>
 	</session-config>
 	<filter>
 		<filter-name>sessionFilter</filter-name>

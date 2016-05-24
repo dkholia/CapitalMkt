@@ -41,6 +41,10 @@
 <link rel="stylesheet"
 	href="https://cdn.datatables.net/1.10.11/css/dataTables.bootstrap.min.css">
 
+<%-- <script src="//code.jquery.com/jquery-latest.min.js"></script>	
+<link href="<c:url value="/resources/css/jquery.editable-select.css"/>" rel="stylesheet">
+<script type="text/javascript"
+	src="<c:url value="/resources/js/jquery.editable-select.js"/>"></script> --%>
 
 <!-- SmartMenus jQuery init -->
 <script type="text/javascript">
@@ -67,6 +71,29 @@
 	    	  showButtonPanel: true
 	    });
 	  });
+	
+	/* $('.editabledropdown').editableSelect({
+
+		  // enable filter
+		  filter: true,
+
+		  // default, fade or slide
+		  effects: 'default',
+
+		  // fast, slow or [0-9]+
+		  duration: 'fast',
+
+		  // callback events
+		  onCreate: function () {},
+		  onShow: function () {},
+		  onHide: function () {},
+		  onSelect: function (element) {}
+		  
+		}); */
+		
+		/* $('.editabledropdown').editableSelect(); */
+
+
 </script>
 </head>
 <body>
@@ -102,6 +129,7 @@
 			</c:if>
 		</div>
 		<div id="maincontent">
+			<tiles:insertAttribute name="search"/>
 			<tiles:insertAttribute name="body" />
 		</div>
 		<br>

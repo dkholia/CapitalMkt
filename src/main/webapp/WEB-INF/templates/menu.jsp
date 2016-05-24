@@ -1,5 +1,6 @@
-<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <head>
 <link
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
@@ -43,8 +44,23 @@
 				<li><a href="<c:url value="/group/createeditgroup"/>">Attach Customers to Group</a></li>
 			</ul>
 		</li>
-		<li><a href="<c:url value="/customers"/>"><spring:message code="label.menu.customers"/></a></li>
-		<li><a href="<c:url value="/fap"/>"><spring:message code="label.menu.fap"/></a></li>
-		<li><a href="<c:url value="/dap"/>"><spring:message code="label.menu.dap"/></a></li>
+		<li><a><spring:message code="label.menu.customers"/></a>
+				<ul id="sub-menu-group">
+						<li><a href="<c:url value="/customers"/>"><spring:message code="label.channelcust.list"/></a></li>
+						<li><a href="<c:url value="/createcustomer"/>"><spring:message code="label.channelcust.create"/></a></li>
+				</ul>			
+		</li>
+		<li><a><spring:message code="label.menu.fap"/></a>
+			<ul>
+				<li><a href="<c:url value="/fap"/>"><spring:message code="label.fap.list" /> </a></li>
+				<li><a href="<c:url value="/fap"/>"> <spring:message code="label.fap.create"/> </a> </li>
+			</ul>
+		</li>
+		<li><a><spring:message code="label.menu.dap"/></a>
+			<ul>
+				<li><a href="<c:url value="/dap"/>"><spring:message code="label.dap.list" /> </a></li>
+				<li><a href="<c:url value="/createdap"/>"> <spring:message code="label.dap.create"/> </a> </li>
+			</ul>
+		</li>
 	</ul>
 </nav>

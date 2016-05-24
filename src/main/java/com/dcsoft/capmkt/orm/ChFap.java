@@ -1,5 +1,5 @@
 package com.dcsoft.capmkt.orm;
-// Generated Apr 7, 2016 1:42:57 PM by Hibernate Tools 3.4.0.CR1
+// Generated May 21, 2016 1:43:35 PM by Hibernate Tools 4.0.0
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -9,6 +9,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -21,40 +24,43 @@ import javax.persistence.TemporalType;
 @Table(name = "ch_fap", schema = "public")
 public class ChFap implements java.io.Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -8309865098817555479L;
+	private static final long serialVersionUID = 8294895168220369801L;
+
 	private BigDecimal fapId;
-	private String fapName;
-	private String fapDescription;
-	private byte channel;
+	private short channel;
 	private BigDecimal createdBy;
 	private Date createdDate;
-	private Set chFapUserMappings = new HashSet(0);
+	private String fapDescription;
+	private String fapName;
+	private Set<ChServiceDetails> chServiceDetailses = new HashSet<ChServiceDetails>(0);
+	private Set<ChFapUserMapping> chFapUserMappings = new HashSet<ChFapUserMapping>(0);
 
-	public ChFap() {
+	public ChFap() {}
+	
+	public ChFap(short channel) {
+		this.channel=channel;
 	}
 
-	public ChFap(BigDecimal fapId, byte channel) {
+	public ChFap(BigDecimal fapId, short channel) {
 		this.fapId = fapId;
 		this.channel = channel;
 	}
 
-	public ChFap(BigDecimal fapId, String fapName, String fapDescription, byte channel, BigDecimal createdBy,
-			Date createdDate, Set chFapUserMappings) {
+	public ChFap(BigDecimal fapId, short channel, BigDecimal createdBy, Date createdDate, String fapDescription,
+			String fapName, Set<ChServiceDetails> chServiceDetailses, Set<ChFapUserMapping> chFapUserMappings) {
 		this.fapId = fapId;
-		this.fapName = fapName;
-		this.fapDescription = fapDescription;
 		this.channel = channel;
 		this.createdBy = createdBy;
 		this.createdDate = createdDate;
+		this.fapDescription = fapDescription;
+		this.fapName = fapName;
+		this.chServiceDetailses = chServiceDetailses;
 		this.chFapUserMappings = chFapUserMappings;
 	}
 
 	@Id
 
-	@Column(name = "fap_id", nullable = false, scale = 0)
+	@Column(name = "fap_id", unique = true, nullable = false)
 	public BigDecimal getFapId() {
 		return this.fapId;
 	}
@@ -63,34 +69,16 @@ public class ChFap implements java.io.Serializable {
 		this.fapId = fapId;
 	}
 
-	@Column(name = "fap_name", length = 100)
-	public String getFapName() {
-		return this.fapName;
-	}
-
-	public void setFapName(String fapName) {
-		this.fapName = fapName;
-	}
-
-	@Column(name = "fap_description", length = 200)
-	public String getFapDescription() {
-		return this.fapDescription;
-	}
-
-	public void setFapDescription(String fapDescription) {
-		this.fapDescription = fapDescription;
-	}
-
-	@Column(name = "channel", nullable = false, precision = 2, scale = 0)
-	public byte getChannel() {
+	@Column(name = "channel", nullable = false)
+	public short getChannel() {
 		return this.channel;
 	}
 
-	public void setChannel(byte channel) {
+	public void setChannel(short channel) {
 		this.channel = channel;
 	}
 
-	@Column(name = "created_by", scale = 0)
+	@Column(name = "created_by")
 	public BigDecimal getCreatedBy() {
 		return this.createdBy;
 	}
@@ -109,12 +97,42 @@ public class ChFap implements java.io.Serializable {
 		this.createdDate = createdDate;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "chFap" , targetEntity=com.dcsoft.capmkt.orm.ChFapUserMapping.class)
-	public Set getChFapUserMappings() {
+	@Column(name = "fap_description", length = 200)
+	public String getFapDescription() {
+		return this.fapDescription;
+	}
+
+	public void setFapDescription(String fapDescription) {
+		this.fapDescription = fapDescription;
+	}
+
+	@Column(name = "fap_name", length = 100)
+	public String getFapName() {
+		return this.fapName;
+	}
+
+	public void setFapName(String fapName) {
+		this.fapName = fapName;
+	}
+
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "ch_fap_service_mapping", schema = "public", joinColumns = {
+			@JoinColumn(name = "fap_id", nullable = false, updatable = false) }, inverseJoinColumns = {
+					@JoinColumn(name = "service_detail_id", nullable = false, updatable = false) })
+	public Set<ChServiceDetails> getChServiceDetailses() {
+		return this.chServiceDetailses;
+	}
+
+	public void setChServiceDetailses(Set<ChServiceDetails> chServiceDetailses) {
+		this.chServiceDetailses = chServiceDetailses;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "chFap")
+	public Set<ChFapUserMapping> getChFapUserMappings() {
 		return this.chFapUserMappings;
 	}
 
-	public void setChFapUserMappings(Set chFapUserMappings) {
+	public void setChFapUserMappings(Set<ChFapUserMapping> chFapUserMappings) {
 		this.chFapUserMappings = chFapUserMappings;
 	}
 

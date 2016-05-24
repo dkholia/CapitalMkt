@@ -1,5 +1,5 @@
 package com.dcsoft.capmkt.orm;
-// Generated Apr 7, 2016 1:42:57 PM by Hibernate Tools 3.4.0.CR1
+// Generated May 22, 2016 10:33:07 PM by Hibernate Tools 4.0.0
 
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -7,6 +7,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -18,16 +19,15 @@ import javax.persistence.Table;
 @Table(name = "ch_dap", schema = "public")
 public class ChDap implements java.io.Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -723463211790755415L;
+	private static final long serialVersionUID = -7190310581761966917L;
 	private BigDecimal dapId;
-	private String dapName;
-	private String dapDescription;
-	private BigDecimal dapServiceId;
 	private BigDecimal channelCustId;
-	private Set chDapUserMappings = new HashSet(0);
+	private String dapDescription;
+	private String dapName;
+	private BigDecimal dapServiceId;
+	private Set<ChDapUserMapping> chDapUserMappings = new HashSet<ChDapUserMapping>(0);
+	private Set<ChDapCustMapping> chDapCustMappings = new HashSet<ChDapCustMapping>(0);
+	private Set<ChDapValues> chDapValueses = new HashSet<ChDapValues>(0);
 
 	public ChDap() {
 	}
@@ -37,52 +37,28 @@ public class ChDap implements java.io.Serializable {
 		this.channelCustId = channelCustId;
 	}
 
-	public ChDap(BigDecimal dapId, String dapName, String dapDescription, BigDecimal dapServiceId,
-			BigDecimal channelCustId, Set chDapUserMappings) {
+	public ChDap(BigDecimal dapId, BigDecimal channelCustId, String dapDescription, String dapName,
+			BigDecimal dapServiceId, Set<ChDapUserMapping> chDapUserMappings, Set<ChDapCustMapping> chDapCustMappings,
+			Set<ChDapValues> chDapValueses) {
 		this.dapId = dapId;
-		this.dapName = dapName;
-		this.dapDescription = dapDescription;
-		this.dapServiceId = dapServiceId;
 		this.channelCustId = channelCustId;
+		this.dapDescription = dapDescription;
+		this.dapName = dapName;
+		this.dapServiceId = dapServiceId;
 		this.chDapUserMappings = chDapUserMappings;
+		this.chDapCustMappings = chDapCustMappings;
+		this.chDapValueses = chDapValueses;
 	}
 
 	@Id
-
-	@Column(name = "dap_id", nullable = false, scale = 0)
+	@GeneratedValue
+	@Column(name = "dap_id", unique = true, nullable = false, scale = 0)
 	public BigDecimal getDapId() {
 		return this.dapId;
 	}
 
 	public void setDapId(BigDecimal dapId) {
 		this.dapId = dapId;
-	}
-
-	@Column(name = "dap_name", length = 100)
-	public String getDapName() {
-		return this.dapName;
-	}
-
-	public void setDapName(String dapName) {
-		this.dapName = dapName;
-	}
-
-	@Column(name = "dap_description", length = 200)
-	public String getDapDescription() {
-		return this.dapDescription;
-	}
-
-	public void setDapDescription(String dapDescription) {
-		this.dapDescription = dapDescription;
-	}
-
-	@Column(name = "dap_service_id", scale = 0)
-	public BigDecimal getDapServiceId() {
-		return this.dapServiceId;
-	}
-
-	public void setDapServiceId(BigDecimal dapServiceId) {
-		this.dapServiceId = dapServiceId;
 	}
 
 	@Column(name = "channel_cust_id", nullable = false, scale = 0)
@@ -94,13 +70,58 @@ public class ChDap implements java.io.Serializable {
 		this.channelCustId = channelCustId;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "chDap", targetEntity=com.dcsoft.capmkt.orm.ChDapUserMapping.class)
-	public Set getChDapUserMappings() {
+	@Column(name = "dap_description", length = 200)
+	public String getDapDescription() {
+		return this.dapDescription;
+	}
+
+	public void setDapDescription(String dapDescription) {
+		this.dapDescription = dapDescription;
+	}
+
+	@Column(name = "dap_name", length = 100)
+	public String getDapName() {
+		return this.dapName;
+	}
+
+	public void setDapName(String dapName) {
+		this.dapName = dapName;
+	}
+
+	@Column(name = "dap_service_id", scale = 0)
+	public BigDecimal getDapServiceId() {
+		return this.dapServiceId;
+	}
+
+	public void setDapServiceId(BigDecimal dapServiceId) {
+		this.dapServiceId = dapServiceId;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "chDap")
+	public Set<ChDapUserMapping> getChDapUserMappings() {
 		return this.chDapUserMappings;
 	}
 
-	public void setChDapUserMappings(Set chDapUserMappings) {
+	public void setChDapUserMappings(Set<ChDapUserMapping> chDapUserMappings) {
 		this.chDapUserMappings = chDapUserMappings;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "chDap")
+	public Set<ChDapCustMapping> getChDapCustMappings() {
+		return this.chDapCustMappings;
+	}
+
+	public void setChDapCustMappings(Set<ChDapCustMapping> chDapCustMappings) {
+		this.chDapCustMappings = chDapCustMappings;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "chDap")
+	public Set<ChDapValues> getChDapValueses() {
+		return this.chDapValueses;
+	}
+
+	public void setChDapValueses(Set<ChDapValues> chDapValueses) {
+		this.chDapValueses = chDapValueses;
 	}
 
 }

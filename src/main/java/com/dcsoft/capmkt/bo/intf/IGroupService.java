@@ -14,4 +14,5 @@ public interface IGroupService extends IGenericService {
 	public ChGroup getGroupById(BigDecimal id);
 	public void removeGroup(BigDecimal id);
 	public ChGroup getGroupDetails(BigDecimal id);
+	public List<Serializable> getGroupByCriteria(ChGroupTO chGroupTO);
 }

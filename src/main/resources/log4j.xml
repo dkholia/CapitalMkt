@@ -3,42 +3,100 @@
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
 
 	<!-- Appenders -->
-	<appender name="console" class="org.apache.log4j.ConsoleAppender">
-		<param name="Target" value="System.out" />
-		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%-5p: %c - %m%n" />
-		</layout>
+	<appender name="console" class="org.apache.log4j.RollingFileAppender">
+		<param name="append" value="false" />
+	   <param name="maxFileSize" value="10MB" />
+	   <param name="maxBackupIndex" value="5" />
+	   <param name="file" value="C:/personal/CapMkt/GitRepos/CapitalMkt/logs/CapitalMkt.log" />
+	   <layout class="org.apache.log4j.PatternLayout">
+		<param name="ConversionPattern" 
+			value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
+	   </layout>
 	</appender>
 	
+	<appender name="hibernate" class="org.apache.log4j.RollingFileAppender">
+		<param name="append" value="false" />
+	   <param name="maxFileSize" value="10MB" />
+	   <param name="maxBackupIndex" value="5" />
+	   <param name="file" value="C:/personal/CapMkt/GitRepos/CapitalMkt/logs/hibernate.log" />
+	   <layout class="org.apache.log4j.PatternLayout">
+		<param name="ConversionPattern" 
+			value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
+	   </layout>
+	</appender>
+	
+	<appender name="springcore" class="org.apache.log4j.RollingFileAppender">
+		<param name="append" value="false" />
+	   <param name="maxFileSize" value="10MB" />
+	   <param name="maxBackupIndex" value="5" />
+	   <param name="file" value="C:/personal/CapMkt/GitRepos/CapitalMkt/logs/springcore.log" />
+	   <layout class="org.apache.log4j.PatternLayout">
+		<param name="ConversionPattern" 
+			value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
+	   </layout>
+	</appender>
+	
+	<appender name="springbeans" class="org.apache.log4j.RollingFileAppender">
+		<param name="append" value="false" />
+	   <param name="maxFileSize" value="10MB" />
+	   <param name="maxBackupIndex" value="5" />
+	   <param name="file" value="C:/personal/CapMkt/GitRepos/CapitalMkt/logs/springbeans.log" />
+	   <layout class="org.apache.log4j.PatternLayout">
+		<param name="ConversionPattern" 
+			value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
+	   </layout>
+	</appender>
+	<appender name="springcontext" class="org.apache.log4j.RollingFileAppender">
+		<param name="append" value="false" />
+	   <param name="maxFileSize" value="10MB" />
+	   <param name="maxBackupIndex" value="5" />
+	   <param name="file" value="C:/personal/CapMkt/GitRepos/CapitalMkt/logs/springcontext.log" />
+	   <layout class="org.apache.log4j.PatternLayout">
+		<param name="ConversionPattern" 
+			value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
+	   </layout>
+	</appender>
+	<appender name="springweb" class="org.apache.log4j.RollingFileAppender">
+		<param name="append" value="false" />
+	   <param name="maxFileSize" value="10MB" />
+	   <param name="maxBackupIndex" value="5" />
+	   <param name="file" value="C:/personal/CapMkt/GitRepos/CapitalMkt/logs/springweb.log" />
+	   <layout class="org.apache.log4j.PatternLayout">
+		<param name="ConversionPattern" 
+			value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
+	   </layout>
+	</appender>
 	<!-- Application Loggers -->
-	<logger name="com.journaldev.spring">
-		<level value="error" />
-	</logger>
 	
 	<!-- 3rdparty Loggers -->
 	<logger name="org.springframework.core">
-		<level value="error" />
+		<level value="all" />
+		<appender-ref ref="springcore"/>
 	</logger>
 	
 	<logger name="org.hibernate">
-    	<level value="error" />
+    	<level value="all" />
+    	<appender-ref ref="hibernate"/>
 	</logger>
 	
 	<logger name="org.springframework.beans">
-		<level value="error" />
+		<level value="all" />
+		<appender-ref ref="springbeans"/>
 	</logger>
 	
 	<logger name="org.springframework.context">
-		<level value="error" />
+		<level value="all" />
+		<appender-ref ref="springcontext"/>
 	</logger>
 
 	<logger name="org.springframework.web">
-		<level value="error" />
+		<level value="all" />
+		<appender-ref ref="springweb"/>
 	</logger>
 
 	<!-- Root Logger -->
 	<root>
-		<priority value="error" />
+		<priority value="all" />
 		<appender-ref ref="console" />
 	</root>
 	

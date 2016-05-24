@@ -34,18 +34,25 @@
 	  </beans:bean>
 	  
 	   <beans:bean id="chnlUserService" class="com.dcsoft.capmkt.bo.impl.channeluser.ChannelUserServiceImpl">
-        <beans:property name="genericDao" ref="genericDao"></beans:property>
-       	  <beans:property name="channelUserDao" ref="channelUserDao"></beans:property>
+        <beans:property name="genericDao" ref="genericDao"/>
+       	  <beans:property name="channelUserDao" ref="channelUserDao"/>
 	  </beans:bean>
 	 
 	   <beans:bean id="chnlFapService" class=" com.dcsoft.capmkt.bo.impl.fap.FAPServiceImpl">
-        <beans:property  name="genericDao" ref="genericDao"></beans:property>
+        <beans:property  name="genericDao" ref="genericDao"/>
+        <beans:property name="fapDAO" ref="fapDAO" />
 	  </beans:bean>
 	  
 	  <beans:bean id="commonService" class=" com.dcsoft.capmkt.bo.impl.CommonServiceImpl">
-        <beans:property  name="genericDao" ref="genericDao"></beans:property>
-         <beans:property  name="commonDAO" ref="commonDAO"></beans:property>
+        <beans:property  name="genericDao" ref="genericDao"/>
+         <beans:property  name="commonDAO" ref="commonDAO"/>
 	  </beans:bean>
+	  
+	  <beans:bean id="chnlDapService" class=" com.dcsoft.capmkt.bo.impl.dap.DapServiceImpl">
+        <beans:property  name="genericDao" ref="genericDao"/>
+	  </beans:bean>
+	  
+	 <!--  chnlDapService -->
 	  
 	  <!-- Service END -->
 </beans:beans>

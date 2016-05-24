@@ -3,6 +3,7 @@ package com.dcsoft.capmkt.util.errors;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.ui.Model;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 
@@ -34,5 +35,15 @@ public class CustomErrorHandler {
 		CustomError err = new CustomError(null,error);
 		customError.add(err);
 		return customError;
+	}
+	
+	public static void showNoDataFoundMessage(Model model){
+		CustomErrorHandler handler = new CustomErrorHandler("No Data found for the search criteria");
+		model.addAttribute("errors", handler.getErrorFromString() );
+	}
+
+	public static void showNarrowCriteriaError(Model model) {
+		CustomErrorHandler handler = new CustomErrorHandler("Please enter atleast one field to narrow down the search");
+		model.addAttribute("errors", handler.getErrorFromString() );
 	}
 }

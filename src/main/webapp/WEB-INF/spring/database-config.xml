@@ -46,10 +46,11 @@
 				<beans:value>com.dcsoft.capmkt.orm.ChUser</beans:value>
 				<beans:value>com.dcsoft.capmkt.orm.ChUserGroupMapping</beans:value>
 				<beans:value> com.dcsoft.capmkt.orm.ChGroup</beans:value>
-				<beans:value>com.dcsoft.capmkt.orm.ChChannelCustGrpMapping
-				</beans:value>
+				<beans:value>com.dcsoft.capmkt.orm.ChChannelCustGrpMapping</beans:value>
 				<beans:value>com.dcsoft.capmkt.orm.ChUserGroupMapping</beans:value>
 				<beans:value>com.dcsoft.capmkt.orm.ChChannelCustomer</beans:value>
+				<beans:value>com.dcsoft.capmkt.orm.ChDapCustMapping</beans:value>
+				<beans:value>com.dcsoft.capmkt.orm.ChDapValues</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">
@@ -57,6 +58,7 @@
 				<beans:prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect
 				</beans:prop>
 				<beans:prop key="hibernate.show_sql">false</beans:prop>
+				 <!-- <beans:prop key="hibernate.hbm2ddl.auto" >create</beans:prop> -->
 			</beans:props>
 		</beans:property>
 	</beans:bean>
@@ -98,6 +100,19 @@
 		<beans:property name="sessionFactory"
 			ref="hibernate4AnnotatedSessionFactory"></beans:property>
 	</beans:bean>
+	
+	<beans:bean id="fapDAO"
+		class="com.dcsoft.capmkt.orm.dao.impl.ServiceAccessDAO">
+		<beans:property name="sessionFactory"
+			ref="hibernate4AnnotatedSessionFactory"></beans:property>
+	</beans:bean>
+	
+	<beans:bean id="dapDAO"
+		class="com.dcsoft.capmkt.orm.dao.impl.DataAccessDAO">
+		<beans:property name="sessionFactory"
+			ref="hibernate4AnnotatedSessionFactory"></beans:property>
+	</beans:bean>
+	
 	<!-- DAO End -->
 
 </beans:beans>

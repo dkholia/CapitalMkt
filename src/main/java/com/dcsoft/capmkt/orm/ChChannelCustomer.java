@@ -1,5 +1,5 @@
 package com.dcsoft.capmkt.orm;
-// Generated Apr 7, 2016 1:42:57 PM by Hibernate Tools 3.4.0.CR1
+// Generated May 22, 2016 10:33:07 PM by Hibernate Tools 4.0.0
 
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -7,7 +7,11 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -18,14 +22,12 @@ import javax.persistence.Table;
 @Table(name = "ch_channel_customer", schema = "public")
 public class ChChannelCustomer implements java.io.Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 5993748139350819169L;
+	private static final long serialVersionUID = -8283368169614544211L;
 	private BigDecimal channelCustId;
-	private String channelCustName;
 	private String channelCustDesc;
-	private Set chChannelCustGrpMappings = new HashSet(0);
+	private String channelCustName;
+	private Set<ChGroup> chGroups = new HashSet<ChGroup>(0);
+	private Set<ChDapCustMapping> chDapCustMappings = new HashSet<ChDapCustMapping>(0);
 
 	public ChChannelCustomer() {
 	}
@@ -34,16 +36,17 @@ public class ChChannelCustomer implements java.io.Serializable {
 		this.channelCustId = channelCustId;
 	}
 
-	public ChChannelCustomer(BigDecimal channelCustId, String channelCustName, String channelCustDesc,
-			Set chChannelCustGrpMappings) {
+	public ChChannelCustomer(BigDecimal channelCustId, String channelCustDesc, String channelCustName,
+			Set<ChGroup> chGroups, Set<ChDapCustMapping> chDapCustMappings) {
 		this.channelCustId = channelCustId;
-		this.channelCustName = channelCustName;
 		this.channelCustDesc = channelCustDesc;
-		this.chChannelCustGrpMappings = chChannelCustGrpMappings;
+		this.channelCustName = channelCustName;
+		this.chGroups = chGroups;
+		this.chDapCustMappings = chDapCustMappings;
 	}
 
 	@Id
-
+	@GeneratedValue
 	@Column(name = "channel_cust_id", unique = true, nullable = false, scale = 0)
 	public BigDecimal getChannelCustId() {
 		return this.channelCustId;
@@ -51,15 +54,6 @@ public class ChChannelCustomer implements java.io.Serializable {
 
 	public void setChannelCustId(BigDecimal channelCustId) {
 		this.channelCustId = channelCustId;
-	}
-
-	@Column(name = "channel_cust_name")
-	public String getChannelCustName() {
-		return this.channelCustName;
-	}
-
-	public void setChannelCustName(String channelCustName) {
-		this.channelCustName = channelCustName;
 	}
 
 	@Column(name = "channel_cust_desc", length = 1024)
@@ -71,13 +65,34 @@ public class ChChannelCustomer implements java.io.Serializable {
 		this.channelCustDesc = channelCustDesc;
 	}
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "chChannelCustomer",targetEntity=com.dcsoft.capmkt.orm.ChChannelCustGrpMapping.class)
-	public Set getChChannelCustGrpMappings() {
-		return this.chChannelCustGrpMappings;
+	@Column(name = "channel_cust_name")
+	public String getChannelCustName() {
+		return this.channelCustName;
 	}
 
-	public void setChChannelCustGrpMappings(Set chChannelCustGrpMappings) {
-		this.chChannelCustGrpMappings = chChannelCustGrpMappings;
+	public void setChannelCustName(String channelCustName) {
+		this.channelCustName = channelCustName;
+	}
+
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "ch_channel_cust_grp_mapping", schema = "public", joinColumns = {
+			@JoinColumn(name = "channel_cust_id", nullable = false, updatable = false) }, inverseJoinColumns = {
+					@JoinColumn(name = "group_id", nullable = false, updatable = false) })
+	public Set<ChGroup> getChGroups() {
+		return this.chGroups;
+	}
+
+	public void setChGroups(Set<ChGroup> chGroups) {
+		this.chGroups = chGroups;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "chChannelCustomer")
+	public Set<ChDapCustMapping> getChDapCustMappings() {
+		return this.chDapCustMappings;
+	}
+
+	public void setChDapCustMappings(Set<ChDapCustMapping> chDapCustMappings) {
+		this.chDapCustMappings = chDapCustMappings;
 	}
 
 }

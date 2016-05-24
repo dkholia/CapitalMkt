@@ -70,13 +70,9 @@ public class GenericDAOImpl extends HibernateDaoSupport  implements IGenericDao 
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<Serializable> findByExample(Class clazz, Serializable obj) {
-		List<Serializable> objList  = getSession().createCriteria(clazz)
+		return getSession().createCriteria(clazz)
 				 .add( Example.create(obj) )
 				 .list();
-	        for(Serializable serializable : objList){
-	            logger.info("Object List::"+serializable);
-	        }
-	        return objList;
 	}
 
 
@@ -96,6 +92,5 @@ public class GenericDAOImpl extends HibernateDaoSupport  implements IGenericDao 
 	
 	public Session getSession() {
 		return getHibernateTemplate().getSessionFactory().getCurrentSession();
-		
 	}
 }

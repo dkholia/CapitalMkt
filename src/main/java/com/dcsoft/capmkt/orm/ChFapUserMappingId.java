@@ -15,23 +15,23 @@ public class ChFapUserMappingId implements java.io.Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 8040931370122709763L;
-	private String userid;
+	private BigDecimal userid;
 	private BigDecimal fapId;
 
 	public ChFapUserMappingId() {
 	}
 
-	public ChFapUserMappingId(String userid, BigDecimal fapId) {
+	public ChFapUserMappingId(BigDecimal userid, BigDecimal fapId) {
 		this.userid = userid;
 		this.fapId = fapId;
 	}
 
 	@Column(name = "userid", length = 20)
-	public String getUserid() {
+	public BigDecimal getUserid() {
 		return this.userid;
 	}
 
-	public void setUserid(String userid) {
+	public void setUserid(BigDecimal userid) {
 		this.userid = userid;
 	}
 

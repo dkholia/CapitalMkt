@@ -3,14 +3,15 @@ package com.dcsoft.capmkt.bo.impl.group;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import com.dcsoft.capmkt.bo.impl.GenericService;
 import com.dcsoft.capmkt.bo.intf.IGroupService;
 import com.dcsoft.capmkt.bo.transferobj.ChGroupTO;
 import com.dcsoft.capmkt.orm.ChGroup;
 import com.dcsoft.capmkt.orm.dao.impl.GroupDAO;
-import com.dcsoft.capmkt.orm.dao.manager.GroupManager;
 
 @Service
 public class GroupServiceImpl extends GenericService implements IGroupService {
@@ -20,7 +21,13 @@ public class GroupServiceImpl extends GenericService implements IGroupService {
 	@Override
 	@Transactional
 	public List<Serializable> findByExample(Class<?> clazz, Serializable obj) {
-		return getGenericDao().findByExample(ChGroup.class, obj);
+		ChGroupTO groupTO = (ChGroupTO) obj;
+		ChGroup chGroup = new ChGroup();
+		
+		if(groupTO.getGroupName()!=null && groupTO.getGroupName()!=""){
+			chGroup.setGroupName(groupTO.getGroupName());
+		}
+		return getGenericDao().findByExample(clazz, chGroup);
 	}
 
 	@Override
@@ -77,6 +84,14 @@ public class GroupServiceImpl extends GenericService implements IGroupService {
 	@Transactional
 	public ChGroup getGroupDetails(BigDecimal id) {
 		return groupDao.getGroupDetails(id);
+	}
+
+	@Override
+	@Transactional
+	public List<Serializable> getGroupByCriteria(ChGroupTO chGroupTO) {
+		ChGroup group = new ChGroup();
+		group.setGroupName(chGroupTO.getGroupName());
+		return groupDao.getGroupByCriteria(group);
 	}
 
 }

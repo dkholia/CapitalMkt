@@ -1,5 +1,6 @@
 package com.dcsoft.capmkt.ca.controller;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -21,6 +22,7 @@ import com.dcsoft.capmkt.bo.intf.IChannelCustomerGrpMapping;
 import com.dcsoft.capmkt.bo.intf.IChannelCustomerService;
 import com.dcsoft.capmkt.bo.intf.IGroupService;
 import com.dcsoft.capmkt.bo.transferobj.ChGroupTO;
+import com.dcsoft.capmkt.bo.transferobj.ChUserTO;
 import com.dcsoft.capmkt.bo.transferobj.ChannelCustomerTO;
 import com.dcsoft.capmkt.orm.ChChannelCustomer;
 import com.dcsoft.capmkt.orm.ChGroup;
@@ -60,14 +62,31 @@ public class GroupController {
 		this.chnlCustomerService = chnlCustomerService;
 	}
 
-	@RequestMapping(value = "/group", method = RequestMethod.GET)
-	private String listGroups(Model model) {
-		//get all the groups 
-		model.addAttribute("group", new ChGroupTO());
-		model.addAttribute("listGroups", this.groupService.listGroups());
+	@RequestMapping(value="/group" , method=RequestMethod.GET)
+	public String gotoUserHomeBlank(Model model){
+		model.addAttribute("searchGroup", new ChGroupTO());
+		model.addAttribute("listGroups", null);
 		return "group";
 	}
-
+	
+	@RequestMapping(value = "/group", method = RequestMethod.POST)
+	private String listGroups(ChGroupTO chGroupTO, Model model) {
+		//get all the groups 
+		model.addAttribute("searchGroup", chGroupTO);
+		List<Serializable> returnList = groupService.getGroupByCriteria(chGroupTO);
+		model.addAttribute("listGroups", null);
+		if(returnList==null){
+			CustomErrorHandler.showNarrowCriteriaError(model);
+		}
+		else if(returnList.size()>0){
+			model.addAttribute("listGroups", returnList);
+		}else{
+			CustomErrorHandler.showNoDataFoundMessage(model);
+		}
+		return "group";
+	}
+	
+	
 	@RequestMapping(value= "/group/add", method = RequestMethod.POST)
 	public String addGroup(@Valid ChGroupTO chGroupTO,BindingResult result,Model model){
 
@@ -87,8 +106,9 @@ public class GroupController {
 		return "redirect:/group";
 	}
 	@RequestMapping("/group/remove/{id}"  )
-	public String removeGroup(@PathVariable("id") BigDecimal id){
-
+	public String removeGroup(@PathVariable("id") BigDecimal id, Model model){
+		List<Serializable> returnList = groupService.getGroupByCriteria(new ChGroupTO());
+		model.addAttribute("listGroups", returnList);
 		this.groupService.removeGroup(id);
 		return "redirect:/group";
 	}
@@ -126,6 +146,7 @@ public class GroupController {
 	@RequestMapping(value="/group/createeditgroup", method = RequestMethod.GET)
 	public String createEditGroup(Model model) {
 		model.addAttribute("mode", "create");
+		model.addAttribute("group", new ChGroupTO());
 		return "createeditgroup";
 	}
 
@@ -144,9 +165,7 @@ public class GroupController {
 		 Find out if a duplicate group exists
 		 */
 		
-		ChGroup tempGroup = new ChGroup();
-		tempGroup.setGroupName(chGroupTO.getGroupName());
-		if(this.groupService.findByExample(ChGroup.class, tempGroup).size()>0){
+		if(this.groupService.findByExample(ChGroup.class, chGroupTO).size()>0){
 			FieldError fieldError = new FieldError("grpname", "", "Group " + chGroupTO.getGroupName() + " already Exists");
 			result.addError(fieldError);
 	

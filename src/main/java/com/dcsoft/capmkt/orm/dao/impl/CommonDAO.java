@@ -23,7 +23,7 @@ public class CommonDAO extends GenericDAOImpl implements Serializable {
 	public List<Serializable> getCountryCodes() {
 		return getSession()
 				.createCriteria(BccCountry.class)
-				.addOrder( Order.asc("countryCodeEn") ).list();
+				.addOrder( Order.asc("countryName") ).list();
 	}
 	@SuppressWarnings("unchecked")
 	public List<Serializable> getStates(String countryName){

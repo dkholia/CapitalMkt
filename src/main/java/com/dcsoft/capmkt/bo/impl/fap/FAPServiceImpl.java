@@ -8,10 +8,22 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.dcsoft.capmkt.bo.impl.GenericService;
 import com.dcsoft.capmkt.bo.intf.IFapService;
+import com.dcsoft.capmkt.bo.transferobj.ChFapTO;
+import com.dcsoft.capmkt.orm.ChFap;
+import com.dcsoft.capmkt.orm.dao.impl.ServiceAccessDAO;
 
 @Service
 public class FAPServiceImpl extends GenericService implements IFapService {
 
+	private ServiceAccessDAO fapDAO;
+	
+	public ServiceAccessDAO getFapDAO() {
+		return fapDAO;
+	}
+
+	public void setFapDAO(ServiceAccessDAO fapDAO) {
+		this.fapDAO = fapDAO;
+	}
 
 	@Override
 	@Transactional
@@ -22,7 +34,15 @@ public class FAPServiceImpl extends GenericService implements IFapService {
 	@Override
 	@Transactional
 	public List<Serializable> findByExample(Class<?> clazz, Serializable obj) {
-		return null;
+		return super.getGenericDao().findByExample(clazz, obj);
 	}
 
+	@Override
+	@Transactional
+	public List<Serializable> getFapByCriteria(Serializable fapTO) {
+		ChFapTO chFapTO = (ChFapTO) fapTO;
+		ChFap fap = new ChFap((short) 1);
+		fap.setFapName(chFapTO.getFapName());
+		return fapDAO.getFapByCriteria(fap);
+	}
 }

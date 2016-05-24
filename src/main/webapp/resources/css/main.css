@@ -147,3 +147,14 @@ formfield {
 .fullwidth{
 	width:100%;
 }
+
+a.editObj
+{ 
+    background: transparent url('../images/edit.png') no-repeat center right;
+    padding-right: 20px;
+}
+a.deleteObj
+{ 
+    background: transparent url('../images/delete.png') no-repeat center right;
+    padding-right: 20px;
+}

@@ -20,4 +20,9 @@
    <rtexprvalue>false</rtexprvalue>
   </attribute>
  </tag>
+ <tag>
+  <name>channelsmenu</name>
+  <tag-class>com.dcsoft.capmkt.util.taglibs.ChannelsMenuTag</tag-class>
+  <body-content>JSP</body-content>
+ </tag>
 </taglib>
