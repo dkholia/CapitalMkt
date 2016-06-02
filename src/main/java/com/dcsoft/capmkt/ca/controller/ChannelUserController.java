@@ -12,14 +12,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.dcsoft.capmkt.bo.intf.IChannelUserService;
 import com.dcsoft.capmkt.bo.intf.ICommonService;
+import com.dcsoft.capmkt.bo.intf.IDapService;
+import com.dcsoft.capmkt.bo.intf.IFapService;
+import com.dcsoft.capmkt.bo.intf.IGroupService;
 import com.dcsoft.capmkt.bo.transferobj.ChUserTO;
+import com.dcsoft.capmkt.orm.ChGroup;
+import com.dcsoft.capmkt.orm.ChUser;
 import com.dcsoft.capmkt.util.errors.CustomErrorHandler;
 
 @Controller
@@ -33,6 +37,18 @@ public class ChannelUserController {
 	@Autowired(required=true)
 	@Qualifier(value="commonService")
 	private ICommonService commonService;
+	
+	@Autowired(required=true)
+	@Qualifier(value="groupService")
+	private IGroupService groupService;
+	
+	@Autowired(required=true)
+	@Qualifier(value="chnlFapService")
+	private IFapService chnlFapService;
+	
+	@Autowired(required=true)
+	@Qualifier(value="chnlDapService")
+	private IDapService chnlDapService;
 	
 	@RequestMapping(value="/channeluser" , method=RequestMethod.GET)
 	public String gotoUserHomeBlank(Model model){
@@ -69,6 +85,9 @@ public class ChannelUserController {
 		model.addAttribute("user", new ChUserTO());
 		model.addAttribute("countries", commonService.getCountryCodes());
 		model.addAttribute("states", commonService.getStates("us"));
+		model.addAttribute("allgroups", groupService.list());
+		model.addAttribute("allfaps", chnlFapService.list());
+		model.addAttribute("alldaps", chnlDapService.list());
 		return "createUser";
 	}
 	
@@ -78,6 +97,9 @@ public class ChannelUserController {
 		model.addAttribute("user", userTO);
 		model.addAttribute("countries", commonService.getCountryCodes());
 		model.addAttribute("states", commonService.getStates(userTO.getCountry().toUpperCase()));
+		model.addAttribute("allgroups", groupService.list());
+		model.addAttribute("allfaps", chnlFapService.list());
+		model.addAttribute("alldaps", chnlDapService.list());
 		if(result.hasErrors()){
 			CustomErrorHandler handler = new CustomErrorHandler(result.getAllErrors());
 			model.addAttribute("errors", handler.getCustomErrors());
@@ -100,7 +122,18 @@ public class ChannelUserController {
 		}
 		
 		if(channelUserService.addUser(userTO)){
+			//Once the user is created .. Add the associations for the user.
+			((ChUser)channelUserService.getUserByExample(userTO).get(0)).getUserid();
+			BigDecimal userID  = ((ChUser)channelUserService.getUserByExample(userTO).get(0)).getUserid();
+			try{
+			channelUserService.attachGroupsToUser(userID, userTO.getGroups());
+			channelUserService.attachFapsToUser(userID, userTO.getFaps());
+			channelUserService.attachDapsToUser(userID, userTO.getDaps());
 			model.addAttribute("success","User with Login ID  : "+ userTO.getLoginid() + " created successfully.");
+			}catch(Exception ex){
+				channelUserService.removeUser(userID);
+			}
+			
 		}
 		return "createUser";
 	}

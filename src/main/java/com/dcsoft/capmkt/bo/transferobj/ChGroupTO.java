@@ -1,5 +1,9 @@
 package com.dcsoft.capmkt.bo.transferobj;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -22,6 +26,9 @@ public class ChGroupTO extends Model {
 	//@NotEmpty
 	@DateTimeFormat(pattern="mm/dd/yyyy z hh:mm:ss a")
 	private String creationdate;
+	
+	private List<BigDecimal> customers = new ArrayList<BigDecimal>();
+	
 	public String getGroupId() {
 		return groupId;
 	}
@@ -51,5 +58,11 @@ public class ChGroupTO extends Model {
 	}
 	public void setCreationdate(String creationdate) {
 		this.creationdate = creationdate;
+	}
+	public List<BigDecimal> getCustomers() {
+		return customers;
+	}
+	public void setCustomers(List<BigDecimal> customers) {
+		this.customers = customers;
 	}
 }

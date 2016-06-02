@@ -26,8 +26,7 @@
 	src="<c:url value="/resources/js/jquery.smartmenus.js"/>"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
- <script type="text/javascript"
-	src="<c:url value="/resources/js/common.js"/>"></script>
+
 <link href="<c:url value="/resources/css/sm-core-css.css"/>"
 	rel="stylesheet" type="text/css" />
 <link href="<c:url value="/resources/css/sm-blue/sm-blue.css"/>"
@@ -40,7 +39,8 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="https://cdn.datatables.net/1.10.11/css/dataTables.bootstrap.min.css">
-
+ <script type="text/javascript"
+	src="<c:url value="/resources/js/common.js"/>"></script>
 <%-- <script src="//code.jquery.com/jquery-latest.min.js"></script>	
 <link href="<c:url value="/resources/css/jquery.editable-select.css"/>" rel="stylesheet">
 <script type="text/javascript"
@@ -48,7 +48,7 @@
 
 <!-- SmartMenus jQuery init -->
 <script type="text/javascript">
-	$(function() {
+	/* $(function() {
 		$('#main-menu').smartmenus({
 			subMenusSubOffsetX : 10,
 			subMenusSubOffsetY : -80
@@ -72,26 +72,12 @@
 	    });
 	  });
 	
-	/* $('.editabledropdown').editableSelect({
-
-		  // enable filter
-		  filter: true,
-
-		  // default, fade or slide
-		  effects: 'default',
-
-		  // fast, slow or [0-9]+
-		  duration: 'fast',
-
-		  // callback events
-		  onCreate: function () {},
-		  onShow: function () {},
-		  onHide: function () {},
-		  onSelect: function (element) {}
-		  
-		}); */
-		
-		/* $('.editabledropdown').editableSelect(); */
+	$('form,input,select,textarea').attr("autocomplete", "off");
+	
+	$( ".reset" ).click(function() {
+	    $(':input').not(':button, :submit, :reset, :hidden, :checkbox, :radio').val('');
+	    $(':checkbox, :radio').prop('checked', false);
+	}); */
 
 
 </script>

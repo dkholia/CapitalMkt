@@ -39,14 +39,14 @@ public class LoginController {
 	@RequestMapping(value= "/", method = RequestMethod.GET)
 	public String gotologinGet(Model model,HttpSession sessionObj){
 		model.addAttribute("login", new ChUserLogin());
-		return "";
+		return "/";
 	}
 	
 	@RequestMapping(value= "/", method = RequestMethod.POST)
 	public String gotologin(Model model,HttpSession sessionObj){
 		model.addAttribute("login", new ChUserLogin());
 		sessionObj.setAttribute("status", "valid");
-		return "";
+		return "/";
 	}
 
 	@RequestMapping(value= "/login", method = RequestMethod.POST)

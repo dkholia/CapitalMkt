@@ -3,23 +3,6 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <spring:message code="label.user.${mode}"></spring:message>
-<!--  
- <div class="panel panel-default" id="panel2">
-        <div class="panel-heading">
-             <h4 class="panel-title">
-        <a data-toggle="collapse" data-target="#collapseTwo" 
-           href="#collapseTwo" class="collapsed">
-          Collapsible Group Item #2
-        </a>
-      </h4>
-
-        </div>
-        <div id="collapseTwo" class="panel-collapse collapse">
-            <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div>
-        </div>
-    </div>
-    
-    -->
   <c:url var="addAction" value="/channeluser/createUser" ></c:url>
  <form:form id="createUser" commandName="user" method="post" action="${addAction}" autocomplete="false" >
  	<table class="table">
@@ -62,6 +45,102 @@
  			<td colspan="8"></td>
  		</tr>
  	</table>
+ 	<div class="panel panel-default" id="panel_groupMapping">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<a data-toggle="collapse" data-target="#groupMapping"
+					href="#groupMapping" class="collapsed"><spring:message code="label.createuser.attachgroup"/>
+				</a>
+			</h4>
+		</div>
+		<div id="groupMapping" class="panel-collapse collapse">
+			<div class="panel-body">
+				<table class="table table-striped table-bordered" style="width: 100%;">
+					<thead>
+						<tr>
+							<th><spring:message code="label.menu.groups.search.groupname"/></th>
+							<th><spring:message  code="label.menu.groups.search.groupdesc"/> </th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${allgroups}" var="group">
+							<tr>
+								<td>
+								<form:checkbox path="groups" value="${group.groupId}"/>
+								${group.groupName}</td>
+								<td>${group.groupdesc}</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+ 	
+ 	<div class="panel panel-default" id="panel_fapMapping">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<a data-toggle="collapse" data-target="#fapMapping"
+					href="#fapMapping" class="collapsed"><spring:message code="label.createuser.attachfap"/>
+				</a>
+			</h4>
+		</div>
+		<div id="fapMapping" class="panel-collapse collapse">
+			<div class="panel-body">
+				<table class="table table-striped table-bordered" style="width: 100%;">
+					<thead>
+						<tr>
+							<th><spring:message code="label.fap.fapname"/></th>
+							<th><spring:message  code="label.fap.fapdesc"/> </th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${allfaps}" var="fap">
+							<tr>
+								<td>
+								<form:checkbox path="faps" value="${fap.fapId}"/>
+								${fap.fapName}</td>
+								<td>${fap.fapDescription}</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-default" id="panel_dapMapping">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<a data-toggle="collapse" data-target="#dapMapping"
+					href="#dapMapping" class="collapsed"><spring:message code="label.createuser.attachdap"/>
+				</a>
+			</h4>
+		</div>
+		<div id="dapMapping" class="panel-collapse collapse">
+			<div class="panel-body">
+				<table class="table table-striped table-bordered" style="width: 100%;">
+					<thead>
+						<tr>
+							<th><spring:message code="label.dap.dapname"/></th>
+							<th><spring:message  code="label.dap.dapdesc"/> </th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${alldaps}" var="dap">
+							<tr>
+								<td>
+								<form:checkbox path="daps" value="${dap.dapId}"/>
+								${dap.dapName}</td>
+								<td>${dap.dapDescription}</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>	
+			</div>
+		</div>
+	</div>
+ 	
+ 	
  	<div align="right">
  		<input type="reset" value='<spring:message code="label.reset"></spring:message>'/>
  		<input type="submit" value='<spring:message code="label.submit"></spring:message>'/>

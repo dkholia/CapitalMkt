@@ -11,6 +11,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Example;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
 import com.dcsoft.capmkt.orm.dao.intf.IGenericDao;
@@ -19,7 +20,8 @@ public class GenericDAOImpl extends HibernateDaoSupport  implements IGenericDao 
 
 	private static final Logger logger = LoggerFactory.getLogger(GenericDAOImpl.class);
 	 
-    private SessionFactory sessionFactory;
+    @Autowired
+	private SessionFactory sessionFactory;
     
 	@Override
 	public void add(Serializable entity) {
@@ -93,4 +95,5 @@ public class GenericDAOImpl extends HibernateDaoSupport  implements IGenericDao 
 	public Session getSession() {
 		return getHibernateTemplate().getSessionFactory().getCurrentSession();
 	}
+
 }

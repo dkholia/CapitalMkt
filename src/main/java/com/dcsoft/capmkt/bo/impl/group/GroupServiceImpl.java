@@ -68,6 +68,7 @@ public class GroupServiceImpl extends GenericService implements IGroupService {
 	}
 
 	@Override
+	@Transactional
 	public List<Serializable> list() {
 		return getGenericDao().list("ChGroup");
 	}

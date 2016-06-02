@@ -1,9 +1,13 @@
 package com.dcsoft.capmkt.bo.transferobj;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -15,6 +19,7 @@ public class ChUserTO extends Model {
 
 	private static final long serialVersionUID = -6553586406628842718L;
 	@NotEmpty
+	@Pattern(regexp="^[A-Za-z0-9]*$" ,message="LoginId Pattern not correct")
 	private String loginid;
 	
 	@NotEmpty
@@ -51,6 +56,10 @@ public class ChUserTO extends Model {
 	
 	@Email
 	private String emailID;
+	
+	private List<BigDecimal> groups = new ArrayList<BigDecimal>();
+	private List<BigDecimal> faps = new ArrayList<BigDecimal>();
+	private List<BigDecimal> daps = new ArrayList<BigDecimal>();
 	
 	public String getLoginid() {
 		return loginid;
@@ -129,5 +138,23 @@ public class ChUserTO extends Model {
 	}
 	public void setEmailID(String emailID) {
 		this.emailID = emailID;
+	}
+	public List<BigDecimal> getGroups() {
+		return groups;
+	}
+	public List<BigDecimal> getFaps() {
+		return faps;
+	}
+	public List<BigDecimal> getDaps() {
+		return daps;
+	}
+	public void setGroups(List<BigDecimal> groups) {
+		this.groups = groups;
+	}
+	public void setFaps(List<BigDecimal> faps) {
+		this.faps = faps;
+	}
+	public void setDaps(List<BigDecimal> daps) {
+		this.daps = daps;
 	}
 }

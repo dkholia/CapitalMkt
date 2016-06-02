@@ -34,8 +34,11 @@
 	  </beans:bean>
 	  
 	   <beans:bean id="chnlUserService" class="com.dcsoft.capmkt.bo.impl.channeluser.ChannelUserServiceImpl">
-        <beans:property name="genericDao" ref="genericDao"/>
+          <beans:property name="genericDao" ref="genericDao"/>
        	  <beans:property name="channelUserDao" ref="channelUserDao"/>
+       	   <beans:property name="userGroupMapDAO" ref="userGroupMapDAO"/>
+       	    <beans:property name="userFapMapDAO" ref="userFapMapDAO"/>
+       	     <beans:property name="userDapMapDAO" ref="userDapMapDAO"/>
 	  </beans:bean>
 	 
 	   <beans:bean id="chnlFapService" class=" com.dcsoft.capmkt.bo.impl.fap.FAPServiceImpl">
@@ -50,6 +53,7 @@
 	  
 	  <beans:bean id="chnlDapService" class=" com.dcsoft.capmkt.bo.impl.dap.DapServiceImpl">
         <beans:property  name="genericDao" ref="genericDao"/>
+         <beans:property name="dapDAO" ref="dapDAO" />
 	  </beans:bean>
 	  
 	 <!--  chnlDapService -->

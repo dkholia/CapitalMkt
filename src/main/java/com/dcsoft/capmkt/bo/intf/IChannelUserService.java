@@ -13,4 +13,8 @@ public interface IChannelUserService extends IGenericService {
 	public List<Serializable> getUserByLoginID(String loginID);
 	public void removeUser(BigDecimal id);
 	public List<Serializable> getUserByExample(ChUserTO userTO);
+	
+	public void attachGroupsToUser(BigDecimal userID , List<BigDecimal> groupIDs);
+	public void attachFapsToUser(BigDecimal userID , List<BigDecimal> fapIDs);
+	public void attachDapsToUser(BigDecimal userID , List<BigDecimal> dapIDs);
 }

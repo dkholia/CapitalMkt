@@ -70,33 +70,33 @@
 	
 	<!-- 3rdparty Loggers -->
 	<logger name="org.springframework.core">
-		<level value="all" />
+		<level value="error" />
 		<appender-ref ref="springcore"/>
 	</logger>
 	
 	<logger name="org.hibernate">
-    	<level value="all" />
+    	<level value="error" />
     	<appender-ref ref="hibernate"/>
 	</logger>
 	
 	<logger name="org.springframework.beans">
-		<level value="all" />
+		<level value="error" />
 		<appender-ref ref="springbeans"/>
 	</logger>
 	
 	<logger name="org.springframework.context">
-		<level value="all" />
+		<level value="error" />
 		<appender-ref ref="springcontext"/>
 	</logger>
 
 	<logger name="org.springframework.web">
-		<level value="all" />
+		<level value="error" />
 		<appender-ref ref="springweb"/>
 	</logger>
 
 	<!-- Root Logger -->
 	<root>
-		<priority value="all" />
+		<priority value="error" />
 		<appender-ref ref="console" />
 	</root>
 	

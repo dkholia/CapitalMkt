@@ -11,13 +11,26 @@ import org.springframework.transaction.annotation.Transactional;
 import com.dcsoft.capmkt.bo.impl.GenericService;
 import com.dcsoft.capmkt.bo.intf.IChannelUserService;
 import com.dcsoft.capmkt.bo.transferobj.ChUserTO;
+import com.dcsoft.capmkt.orm.ChDapUserMapping;
+import com.dcsoft.capmkt.orm.ChDapUserMappingId;
+import com.dcsoft.capmkt.orm.ChFapUserMapping;
+import com.dcsoft.capmkt.orm.ChFapUserMappingId;
 import com.dcsoft.capmkt.orm.ChUser;
+import com.dcsoft.capmkt.orm.ChUserGroupMapping;
+import com.dcsoft.capmkt.orm.ChUserGroupMappingId;
 import com.dcsoft.capmkt.orm.dao.impl.ChannelUserDAO;
+import com.dcsoft.capmkt.orm.dao.impl.ChannelUserDapMappingDAO;
+import com.dcsoft.capmkt.orm.dao.impl.ChannelUserFapMappingDAO;
+import com.dcsoft.capmkt.orm.dao.impl.ChannelUserGroupMappingDAO;
 
 @Service
 public class ChannelUserServiceImpl extends GenericService implements IChannelUserService {
 
 	private ChannelUserDAO channelUserDao;
+	private ChannelUserGroupMappingDAO userGroupMapDAO;
+	private ChannelUserFapMappingDAO userFapMapDAO;
+	private ChannelUserDapMappingDAO userDapMapDAO;
+	
 	@Override
 	@Transactional
 	public List<Serializable> list() {
@@ -93,6 +106,67 @@ public class ChannelUserServiceImpl extends GenericService implements IChannelUs
 		if(!searchCriteriaProvided)
 				return null;
 		return getChannelUserDao().findByExample(ChUser.class, user);
+	}
+
+	public ChannelUserGroupMappingDAO getUserGroupMapDAO() {
+		return userGroupMapDAO;
+	}
+
+	public void setUserGroupMapDAO(ChannelUserGroupMappingDAO userGroupMapDAO) {
+		this.userGroupMapDAO = userGroupMapDAO;
+	}
+
+	public ChannelUserFapMappingDAO getUserFapMapDAO() {
+		return userFapMapDAO;
+	}
+
+	public void setUserFapMapDAO(ChannelUserFapMappingDAO userFapMapDAO) {
+		this.userFapMapDAO = userFapMapDAO;
+	}
+
+	public ChannelUserDapMappingDAO getUserDapMapDAO() {
+		return userDapMapDAO;
+	}
+
+	public void setUserDapMapDAO(ChannelUserDapMappingDAO userDapMapDAO) {
+		this.userDapMapDAO = userDapMapDAO;
+	}
+
+	@Override
+	@Transactional
+	public void attachGroupsToUser(BigDecimal userID, List<BigDecimal> groupIDs) {
+		ChUserGroupMapping mapping = null;
+		ChUserGroupMappingId id ;
+		for(BigDecimal groupID : groupIDs){
+			id = new ChUserGroupMappingId(groupID, userID);
+			mapping = new ChUserGroupMapping(id);
+			getGenericDao().add(mapping);
+		}
+	
+	}
+
+	@Override
+	@Transactional
+	public void attachFapsToUser(BigDecimal userID, List<BigDecimal> fapIDs) {
+		ChFapUserMapping mapping;
+		ChFapUserMappingId id ;
+		for(BigDecimal fapID : fapIDs){
+			id = new ChFapUserMappingId(userID, fapID);
+			mapping = new ChFapUserMapping(id);
+			getGenericDao().add(mapping);
+		}
+	}
+
+	@Override
+	@Transactional
+	public void attachDapsToUser(BigDecimal userID, List<BigDecimal> dapIDs) {
+		ChDapUserMapping mapping;
+		ChDapUserMappingId id ;
+		for(BigDecimal dapID : dapIDs){
+			id = new ChDapUserMappingId(userID,dapID);
+			mapping = new ChDapUserMapping(id);
+			getGenericDao().add(mapping);
+		}
 	}
 
 }

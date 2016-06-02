@@ -42,7 +42,7 @@ public class FAPServiceImpl extends GenericService implements IFapService {
 	public List<Serializable> getFapByCriteria(Serializable fapTO) {
 		ChFapTO chFapTO = (ChFapTO) fapTO;
 		ChFap fap = new ChFap((short) 1);
-		fap.setFapName(chFapTO.getFapName());
+		fap.setFapName(chFapTO.getFapName().trim());
 		return fapDAO.getFapByCriteria(fap);
 	}
 }

@@ -45,7 +45,7 @@ public class ServiceAccessController {
 			CustomErrorHandler.showNoDataFoundMessage(model);
 			return "fap";
 		}
-		model.addAttribute("fapList", chnlFapService.getFapByCriteria(chFapTO));
+		model.addAttribute("fapList", list);
 		return "fap";
 	}
 }

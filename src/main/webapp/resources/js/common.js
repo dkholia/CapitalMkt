@@ -76,4 +76,37 @@ $(window).load(function(){
 	        alert(msg);*/
 	    }
 	});
+	
 });
+
+$(function() {
+	$('#main-menu').smartmenus({
+		subMenusSubOffsetX : 10,
+		subMenusSubOffsetY : -80
+	});
+	$('.table').css("width","100%");
+	$('.table-striped').addClass("table-hover");
+	$('.table-striped').DataTable( {
+		  "lengthMenu": [ [5,10, 25, 50, -1], [5,10, 25, 50, "All"] ]
+	});
+	
+});
+
+$(function() {
+    $( ".datepicker" ).datepicker({
+    	  changeMonth: true,
+    	  changeYear: true,
+    	  yearRange: "c-100:c",
+    	  altFormat: "MM/dd/yyyy",
+    	  gotoCurrent: true,
+    	  showButtonPanel: true
+    });
+  });
+
+$('form,input,select,textarea').attr("autocomplete", "off");
+
+$( ".reset" ).click(function() {
+    $(':input').not(':button, :submit, :reset, :hidden, :checkbox, :radio').val('');
+    $(':checkbox, :radio').prop('checked', false);
+});
+

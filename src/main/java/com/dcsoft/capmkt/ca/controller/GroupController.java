@@ -89,7 +89,9 @@ public class GroupController {
 	
 	@RequestMapping(value= "/group/add", method = RequestMethod.POST)
 	public String addGroup(@Valid ChGroupTO chGroupTO,BindingResult result,Model model){
-
+		
+		List<Serializable> list = chnlCustomerService.list();
+		model.addAttribute("allCustomers", list);
 		if (result.hasErrors()) {
 			model.addAttribute("listGroups", this.groupService.listGroups());
 			CustomErrorHandler handler = new CustomErrorHandler(result.getAllErrors());
@@ -145,6 +147,8 @@ public class GroupController {
 	}
 	@RequestMapping(value="/group/createeditgroup", method = RequestMethod.GET)
 	public String createEditGroup(Model model) {
+		List<Serializable> list = chnlCustomerService.list();
+		model.addAttribute("allCustomers", list);
 		model.addAttribute("mode", "create");
 		model.addAttribute("group", new ChGroupTO());
 		return "createeditgroup";
@@ -154,7 +158,8 @@ public class GroupController {
 	public String createGroup(@Valid ChGroupTO chGroupTO,BindingResult result,Model model) {
 		model.addAttribute("mode", "create");
 		model.addAttribute("group", chGroupTO);
-		
+		List<Serializable> list = chnlCustomerService.list();
+		model.addAttribute("allCustomers", list);
 		
 		if (result.hasErrors()) {
 			CustomErrorHandler handler = new CustomErrorHandler(result.getAllErrors());
@@ -177,6 +182,10 @@ public class GroupController {
 		}
 		if(chGroupTO.getGroupId()== null){
 			this.groupService.addGroup(chGroupTO);
+			//Attach Channel Customers 
+			
+			BigDecimal groupId = ((ChGroup)groupService.findByExample(ChGroup.class, chGroupTO).get(0)).getGroupId();
+			this.chnlCustGrpMapService.addChannelCustomersToGroup(groupId, chGroupTO.getCustomers());
 			model.addAttribute("success","Group : "+ chGroupTO.getGroupName()+ " created successfully.");
 		}else{
 			this.groupService.updateGroup(chGroupTO);
