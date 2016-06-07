@@ -8,15 +8,15 @@
 <form:form method="post" action="${searchUser}" commandName="searchUser" >
 	<table class="table">
 		<tr>
-			<td><spring:message code="label.createuser.userid"></spring:message> </td>
+			<td><spring:message code="label.createuser.userid"/> </td>
 			<td>
 				<form:input path="loginid"/> 
 			</td>
-			<td><spring:message code="label.createuser.fname"></spring:message></td>
+			<td><spring:message code="label.user.username"/></td>
 			<td>
 				<form:input path="fname"/> 
 			</td>
-			<td><spring:message code="label.createuser.dob"></spring:message></td>
+			<td><spring:message code="label.createuser.dob"/></td>
 			<td>
 				<form:input path="dob" class="datepicker"/>
 			</td>

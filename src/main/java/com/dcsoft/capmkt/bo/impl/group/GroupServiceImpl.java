@@ -37,6 +37,9 @@ public class GroupServiceImpl extends GenericService implements IGroupService {
 		presistObj.setGroupName(p.getGroupName());
 		presistObj.setGroupdesc(p.getGroupDesc());
 		getGenericDao().add(presistObj);
+		
+		ChGroup group = ((ChGroup)getGenericDao().findByExample(ChGroup.class, presistObj).get(0));
+		getGenericDao().saveObjectHash(ChGroup.class.getName(), group.getGroupId().toPlainString() ,group.getGroupId().toPlainString());
 	}
 
 	@Override

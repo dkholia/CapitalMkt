@@ -1,6 +1,7 @@
 package com.dcsoft.capmkt.orm.dao.impl;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.hibernate.criterion.MatchMode;
@@ -19,5 +20,12 @@ public class ServiceAccessDAO extends GenericDAOImpl  {
 					.add(Restrictions.ilike("fapName", chFap.getFapName(), MatchMode.ANYWHERE))
 						.add(Restrictions.eq("channel", chFap.getChannel())).list();
 		}
+	}
+	
+	public Serializable getServiceAccessDetails(BigDecimal id){
+		ChFap fap = (ChFap) getById(ChFap.class, id.intValue());
+		getHibernateTemplate().initialize(fap.getChServiceDetailses());
+		getHibernateTemplate().initialize(fap.getChFapUserMappings());
+		return fap;
 	}
 }

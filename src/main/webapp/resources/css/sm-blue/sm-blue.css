@@ -22,7 +22,7 @@
   background-image: linear-gradient(to bottom, #3298c8, #2e8cb8);
   color: white;
   font-family: "PT Sans Narrow", "Arial Narrow", Arial, Helvetica, sans-serif;
-  font-size: 18px;
+  font-size: 13px;
   font-weight: bold;
   line-height: 23px;
   text-decoration: none;
@@ -49,7 +49,7 @@
   width: 34px;
   height: 34px;
   overflow: hidden;
-  font: bold 16px/34px monospace !important;
+  font: bold 13px/17px monospace !important;
   text-align: center;
   text-shadow: none;
   background: rgba(0, 0, 0, 0.1);
@@ -101,7 +101,7 @@
 .sm-blue ul a, .sm-blue ul a:hover, .sm-blue ul a:focus, .sm-blue ul a:active {
   background: transparent;
   color: #2b82ac;
-  font-size: 16px;
+  font-size: 13px;
   text-shadow: none;
   border-left: 8px solid transparent;
 }

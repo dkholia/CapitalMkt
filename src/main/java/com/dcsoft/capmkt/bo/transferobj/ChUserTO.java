@@ -57,8 +57,13 @@ public class ChUserTO extends Model {
 	@Email
 	private String emailID;
 	
+	@NotEmpty
 	private List<BigDecimal> groups = new ArrayList<BigDecimal>();
+	
+	@NotEmpty
 	private List<BigDecimal> faps = new ArrayList<BigDecimal>();
+	
+	@NotEmpty
 	private List<BigDecimal> daps = new ArrayList<BigDecimal>();
 	
 	public String getLoginid() {

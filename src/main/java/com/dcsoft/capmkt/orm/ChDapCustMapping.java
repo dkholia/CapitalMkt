@@ -45,7 +45,7 @@ public class ChDapCustMapping implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "dap_id", nullable = false, insertable = false, updatable = false)
 	public ChDap getChDap() {
 		return this.chDap;
@@ -55,7 +55,7 @@ public class ChDapCustMapping implements java.io.Serializable {
 		this.chDap = chDap;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "channel_cust_id", nullable = false, insertable = false, updatable = false)
 	public ChChannelCustomer getChChannelCustomer() {
 		return this.chChannelCustomer;

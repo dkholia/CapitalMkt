@@ -58,7 +58,7 @@
 				<table class="table table-striped table-bordered" style="width: 100%;">
 					<thead>
 						<tr>
-							<th><spring:message code="label.menu.groups.search.groupname"/></th>
+							<th><input type="checkbox" class="selectAll" /> <spring:message code="label.menu.groups.search.groupname"/></th>
 							<th><spring:message  code="label.menu.groups.search.groupdesc"/> </th>
 						</tr>
 					</thead>
@@ -90,7 +90,7 @@
 				<table class="table table-striped table-bordered" style="width: 100%;">
 					<thead>
 						<tr>
-							<th><spring:message code="label.fap.fapname"/></th>
+							<th> <input type="checkbox" class="selectAll" /> <spring:message code="label.fap.fapname"/></th>
 							<th><spring:message  code="label.fap.fapdesc"/> </th>
 						</tr>
 					</thead>
@@ -121,6 +121,7 @@
 				<table class="table table-striped table-bordered" style="width: 100%;">
 					<thead>
 						<tr>
+							<th  style="width: 20px;"><input type="checkbox" class="selectAll" /> </th>
 							<th><spring:message code="label.dap.dapname"/></th>
 							<th><spring:message  code="label.dap.dapdesc"/> </th>
 						</tr>
@@ -128,9 +129,8 @@
 					<tbody>
 						<c:forEach items="${alldaps}" var="dap">
 							<tr>
-								<td>
-								<form:checkbox path="daps" value="${dap.dapId}"/>
-								${dap.dapName}</td>
+								<td><form:checkbox path="daps" value="${dap.dapId}"/></td>
+								<td>${dap.dapName}</td>
 								<td>${dap.dapDescription}</td>
 							</tr>
 						</c:forEach>

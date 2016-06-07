@@ -21,20 +21,16 @@
 	<tbody>
 		<c:forEach items="${fapList}" var="fap">
 			<tr>
-				<%-- <td><a href="<c:url value='/group/${group.groupId}/detail' />" >${group.groupName}</a></td> --%>
 				<td>
 					<a class="editObj" href="<c:url value='/group/createeditgroup/${group.groupId}' />" ></a>
 					<a class="deleteObj" href="<c:url value='/group/remove/${group.groupId}' />" ></a> &nbsp;
-					${fap.fapName}
+					<a  href="<c:url value='/fap/details/${fap.fapId}' />" >
+					${fap.fapName}</a>
 				</td>
 				<td>${fap.fapDescription}</td>
 				<td>${fap.channel}</td>
 				<td>${fap.createdBy}</td>
 				<td>${fap.createdDate}</td>
-				<%-- <td>
-					<a class="editObj" href="<c:url value='/group/createeditgroup/${group.groupId}' />" ></a>
-					<a class="deleteObj" href="<c:url value='/group/remove/${group.groupId}' />" ></a>
-				</td> --%>
 			</tr>
 		</c:forEach>
 	</tbody>

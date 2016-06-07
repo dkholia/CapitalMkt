@@ -83,7 +83,7 @@
 </script>
 </head>
 <body>
-	<form:form id="mainform" class="form-inline" role="form">
+	<form:form id="mainform" class="form-inline" role="form" autocomplete="off">
 		
 		<div id="dialog-div"> </div>
 		<div id="header" style="display: none;">
@@ -96,7 +96,7 @@
 		</div>
 		<!-- <div id="content"> -->
 		<br>
-		<div id="message-div">
+		<div id="message-div" style="max-width: 600px; max-height: 100px; overflow: auto;">
 			<c:if test="${!empty errors}">
 				<div class="error">
 					<ul >

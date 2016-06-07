@@ -27,6 +27,7 @@ public class ChDap implements java.io.Serializable {
 	private String dapDescription;
 	private String dapName;
 	private BigDecimal dapServiceId;
+	private String chnlCustName;
 	private Set<ChDapUserMapping> chDapUserMappings = new HashSet<ChDapUserMapping>(0);
 	private Set<ChDapCustMapping> chDapCustMappings = new HashSet<ChDapCustMapping>(0);
 	private Set<ChDapValues> chDapValueses = new HashSet<ChDapValues>(0);
@@ -125,6 +126,15 @@ public class ChDap implements java.io.Serializable {
 
 	public void setChDapValueses(Set<ChDapValues> chDapValueses) {
 		this.chDapValueses = chDapValueses;
+	}
+
+	@Column(name="chnl_cust_name" , length=200)
+	public String getChnlCustName() {
+		return chnlCustName;
+	}
+
+	public void setChnlCustName(String chnlCustName) {
+		this.chnlCustName = chnlCustName;
 	}
 
 }

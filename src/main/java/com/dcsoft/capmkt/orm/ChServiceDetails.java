@@ -25,9 +25,9 @@ public class ChServiceDetails implements java.io.Serializable {
 	private ChHost chHost;
 	private String serviceId;
 	private String description;
-	private byte serviceType;
+	private Integer serviceType;
 	private String namespace;
-	private Boolean channel;
+	private Integer channel;
 	private String actionAlias;
 	private String param1;
 	private String param2;
@@ -39,14 +39,14 @@ public class ChServiceDetails implements java.io.Serializable {
 	public ChServiceDetails() {
 	}
 
-	public ChServiceDetails(int serviceDetailId, String serviceId, byte serviceType) {
+	public ChServiceDetails(int serviceDetailId, String serviceId, Integer serviceType) {
 		this.serviceDetailId = serviceDetailId;
 		this.serviceId = serviceId;
 		this.serviceType = serviceType;
 	}
 
-	public ChServiceDetails(int serviceDetailId, ChHost chHost, String serviceId, String description, byte serviceType,
-			String namespace, Boolean channel, String actionAlias, String param1, String param2, String param3,
+	public ChServiceDetails(int serviceDetailId, ChHost chHost, String serviceId, String description, Integer serviceType,
+			String namespace, Integer channel, String actionAlias, String param1, String param2, String param3,
 			String param4, String param5, String fieldId) {
 		this.serviceDetailId = serviceDetailId;
 		this.chHost = chHost;
@@ -104,12 +104,12 @@ public class ChServiceDetails implements java.io.Serializable {
 	}
 
 	@Column(name = "service_type", nullable = false, precision = 2, scale = 0)
-	public byte getServiceType() {
+	public Integer getServiceType() {
 		return this.serviceType;
 	}
 
-	public void setServiceType(byte serviceType) {
-		this.serviceType = serviceType;
+	public void setServiceType(Integer i) {
+		this.serviceType = i;
 	}
 
 	@Column(name = "namespace", length = 20)
@@ -122,11 +122,11 @@ public class ChServiceDetails implements java.io.Serializable {
 	}
 
 	@Column(name = "channel", precision = 1, scale = 0)
-	public Boolean getChannel() {
+	public Integer getChannel() {
 		return this.channel;
 	}
 
-	public void setChannel(Boolean channel) {
+	public void setChannel(Integer channel) {
 		this.channel = channel;
 	}
 

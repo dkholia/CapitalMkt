@@ -137,12 +137,13 @@ public class ChannelUserServiceImpl extends GenericService implements IChannelUs
 	public void attachGroupsToUser(BigDecimal userID, List<BigDecimal> groupIDs) {
 		ChUserGroupMapping mapping = null;
 		ChUserGroupMappingId id ;
-		for(BigDecimal groupID : groupIDs){
-			id = new ChUserGroupMappingId(groupID, userID);
-			mapping = new ChUserGroupMapping(id);
-			getGenericDao().add(mapping);
+		if(groupIDs!=null && groupIDs.size()>0){
+			for(BigDecimal groupID : groupIDs){
+				id = new ChUserGroupMappingId(groupID, userID);
+				mapping = new ChUserGroupMapping(id);
+				getGenericDao().add(mapping);
+			}
 		}
-	
 	}
 
 	@Override
@@ -150,10 +151,12 @@ public class ChannelUserServiceImpl extends GenericService implements IChannelUs
 	public void attachFapsToUser(BigDecimal userID, List<BigDecimal> fapIDs) {
 		ChFapUserMapping mapping;
 		ChFapUserMappingId id ;
-		for(BigDecimal fapID : fapIDs){
-			id = new ChFapUserMappingId(userID, fapID);
-			mapping = new ChFapUserMapping(id);
-			getGenericDao().add(mapping);
+		if(fapIDs!=null && fapIDs.size()>0){
+			for(BigDecimal fapID : fapIDs){
+				id = new ChFapUserMappingId(userID, fapID);
+				mapping = new ChFapUserMapping(id);
+				getGenericDao().add(mapping);
+			}
 		}
 	}
 
@@ -162,11 +165,19 @@ public class ChannelUserServiceImpl extends GenericService implements IChannelUs
 	public void attachDapsToUser(BigDecimal userID, List<BigDecimal> dapIDs) {
 		ChDapUserMapping mapping;
 		ChDapUserMappingId id ;
-		for(BigDecimal dapID : dapIDs){
-			id = new ChDapUserMappingId(userID,dapID);
-			mapping = new ChDapUserMapping(id);
-			getGenericDao().add(mapping);
+		if(dapIDs!=null && dapIDs.size()>0){
+			for(BigDecimal dapID : dapIDs){
+				id = new ChDapUserMappingId(userID,dapID);
+				mapping = new ChDapUserMapping(id);
+				getGenericDao().add(mapping);
+			}
 		}
+	}
+
+	@Override
+	@Transactional
+	public void saveObjectHash(String name, String objectID, String objectHash) {
+		getGenericDao().saveObjectHash(name, objectID, objectHash);
 	}
 
 }

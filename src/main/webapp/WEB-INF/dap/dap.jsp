@@ -19,7 +19,7 @@
 				<td>
 					<a class="editObj" href="<c:url value='/group/createeditgroup/${group.groupId}' />" ></a>
 					<a class="deleteObj" href="<c:url value='/group/remove/${group.groupId}' />" ></a> &nbsp;
-					${dap.dapName}
+					<a  href="<c:url value='/dap/details/${dap.dapId}' />" >${dap.dapName}</a>
 				</td>
 				<td>${dap.dapDescription}</td>
 				<td>${dap.channelCustId}</td>

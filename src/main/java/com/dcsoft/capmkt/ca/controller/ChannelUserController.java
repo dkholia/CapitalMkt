@@ -22,7 +22,6 @@ import com.dcsoft.capmkt.bo.intf.IDapService;
 import com.dcsoft.capmkt.bo.intf.IFapService;
 import com.dcsoft.capmkt.bo.intf.IGroupService;
 import com.dcsoft.capmkt.bo.transferobj.ChUserTO;
-import com.dcsoft.capmkt.orm.ChGroup;
 import com.dcsoft.capmkt.orm.ChUser;
 import com.dcsoft.capmkt.util.errors.CustomErrorHandler;
 
@@ -53,7 +52,7 @@ public class ChannelUserController {
 	@RequestMapping(value="/channeluser" , method=RequestMethod.GET)
 	public String gotoUserHomeBlank(Model model){
 		model.addAttribute("searchUser", new ChUserTO());
-		model.addAttribute("userList", channelUserService.list());
+		model.addAttribute("userList", null);
 		return "channeluser";
 	}
 	
@@ -84,7 +83,7 @@ public class ChannelUserController {
 		model.addAttribute("mode", "create");
 		model.addAttribute("user", new ChUserTO());
 		model.addAttribute("countries", commonService.getCountryCodes());
-		model.addAttribute("states", commonService.getStates("us"));
+		model.addAttribute("states", commonService.getStates("US"));
 		model.addAttribute("allgroups", groupService.list());
 		model.addAttribute("allfaps", chnlFapService.list());
 		model.addAttribute("alldaps", chnlDapService.list());
@@ -133,7 +132,7 @@ public class ChannelUserController {
 			}catch(Exception ex){
 				channelUserService.removeUser(userID);
 			}
-			
+			channelUserService.saveObjectHash(ChUser.class.getName(), userID.toString(), userID.toString());
 		}
 		return "createUser";
 	}

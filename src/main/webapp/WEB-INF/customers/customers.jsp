@@ -6,7 +6,6 @@
 	<table  class="table table-striped table-bordered" >
 		<thead>
 			<tr>
-			<th width="120" draggable="true" >Channel Customer ID</th>
 			<th width="120" draggable="true">Channel Customer Name</th>
 			<th width="60" draggable="true">Channel Customer Description</th>
 			<th width="60"></th>
@@ -15,8 +14,7 @@
 		<tbody>
 			<c:forEach items="${listCustomers}" var ="customer">
 				<tr>
-					<td><a>${customer.channelCustId}</a></td>
-					<td>${customer.channelCustName}</td>
+					<td><a href='<c:url value="/customers/customerdetails/${customer.channelCustId}"></c:url>'>${customer.channelCustName}</a></td>
 					<td>${customer.channelCustDesc}</td>
 					<td>
 						<a  class="editObj" href="<c:url value='/channeluser/${user.userid}/editUser' />" ></a>

@@ -65,6 +65,8 @@ public class LoginController {
 		HttpSession session = request.getSession();
 		
 		ChUser user = new ChUser(username,password,true);
+		user.setUsertyp("admin");
+
 		if(loginService.findByExample(user).isEmpty())
 			return "redirect:/";
 		

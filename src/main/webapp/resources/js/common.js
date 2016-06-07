@@ -1,3 +1,5 @@
+var endDate = new Date();
+
 $(function(){
 	$("#dialog-div").dialog({  //create dialog, but keep it closed
 		autoOpen: false,
@@ -77,6 +79,11 @@ $(window).load(function(){
 	    }
 	});
 	
+	$('.selectAll').click(function(e){
+		var table= $(e.target).closest('table');
+		$('td input:checkbox',table).prop('checked',e.target.checked);
+	});
+	
 });
 
 $(function() {
@@ -99,7 +106,8 @@ $(function() {
     	  yearRange: "c-100:c",
     	  altFormat: "MM/dd/yyyy",
     	  gotoCurrent: true,
-    	  showButtonPanel: true
+    	  showButtonPanel: true,
+    	  endDate:'+0d'
     });
   });
 
@@ -109,4 +117,6 @@ $( ".reset" ).click(function() {
     $(':input').not(':button, :submit, :reset, :hidden, :checkbox, :radio').val('');
     $(':checkbox, :radio').prop('checked', false);
 });
+
+
 

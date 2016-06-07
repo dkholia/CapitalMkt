@@ -1,6 +1,7 @@
 package com.dcsoft.capmkt.bo.impl.dap;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,6 +62,7 @@ public class DapServiceImpl extends GenericService implements IDapService {
 			chDap.setDapName(chDapTO.getDapName());
 			chDap.setDapDescription(chDapTO.getDapDescription());
 			chDap.setChannelCustId(chDapTO.getChannelCustId());
+			chDap.setChnlCustName(chDapTO.getChnlCustName());
 			getGenericDao().add(chDap);
 			return true;	
 		}catch(Exception e){
@@ -85,6 +87,12 @@ public class DapServiceImpl extends GenericService implements IDapService {
 		dap.setDapName(dapTO.getDapName());
 		dap.setChannelCustId(dapTO.getChannelCustId());
 		return getDapDAO().getDapByCriteria(dap);
+	}
+
+	@Override
+	@Transactional
+	public Serializable getDataAccessDetails(BigDecimal id) {
+		return dapDAO.getDataAccessDetails(id);
 	}
 
 }

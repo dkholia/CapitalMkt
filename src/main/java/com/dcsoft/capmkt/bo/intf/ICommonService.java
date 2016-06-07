@@ -6,4 +6,5 @@ import java.util.List;
 public interface ICommonService  extends IGenericService {
 	public List<Serializable> getCountryCodes();
 	public List<Serializable> getStates(String countryName);
+	public List<Serializable> getServices();
 }

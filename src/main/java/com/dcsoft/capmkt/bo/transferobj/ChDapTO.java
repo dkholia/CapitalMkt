@@ -6,6 +6,8 @@ package com.dcsoft.capmkt.bo.transferobj;
 import java.math.BigDecimal;
 import java.util.Random;
 
+import javax.validation.constraints.NotNull;
+
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
@@ -17,9 +19,13 @@ public class ChDapTO extends Model {
 	
 	@NotEmpty
 	private String dapName;
+	@NotEmpty
 	private String dapDescription;
 	private BigDecimal dapServiceId;
+	@NotNull
 	private BigDecimal channelCustId;
+	
+	private String chnlCustName;
 	
 	public String getDapName() {
 		return dapName;
@@ -46,6 +52,12 @@ public class ChDapTO extends Model {
 		this.channelCustId = channelCustId;
 	}
 	
+	public String getChnlCustName() {
+		return chnlCustName;
+	}
+	public void setChnlCustName(String chnlCustName) {
+		this.chnlCustName = chnlCustName;
+	}
 	@Override
 	public int hashCode() {
 		Random generator = new Random(999999999);

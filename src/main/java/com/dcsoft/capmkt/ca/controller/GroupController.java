@@ -110,7 +110,7 @@ public class GroupController {
 	@RequestMapping("/group/remove/{id}"  )
 	public String removeGroup(@PathVariable("id") BigDecimal id, Model model){
 		List<Serializable> returnList = groupService.getGroupByCriteria(new ChGroupTO());
-		model.addAttribute("listGroups", returnList);
+		model.addAttribute("listGroups", model.addAttribute("listGroups", this.groupService.listGroups()));
 		this.groupService.removeGroup(id);
 		return "redirect:/group";
 	}

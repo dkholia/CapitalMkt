@@ -14,6 +14,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
+import com.dcsoft.capmkt.orm.ChObjectMapping;
+import com.dcsoft.capmkt.orm.ChObjectMappingId;
 import com.dcsoft.capmkt.orm.dao.intf.IGenericDao;
 
 public class GenericDAOImpl extends HibernateDaoSupport  implements IGenericDao {
@@ -94,6 +96,12 @@ public class GenericDAOImpl extends HibernateDaoSupport  implements IGenericDao 
 	
 	public Session getSession() {
 		return getHibernateTemplate().getSessionFactory().getCurrentSession();
+	}
+	
+	public void saveObjectHash(String name, String objectID, String objectHash) {
+		ChObjectMappingId id = new ChObjectMappingId(name, objectID, objectHash);
+		ChObjectMapping mapping = new ChObjectMapping(id);
+		add(mapping);
 	}
 
 }

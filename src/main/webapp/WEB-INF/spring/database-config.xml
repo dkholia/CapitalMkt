@@ -51,6 +51,8 @@
 				<beans:value>com.dcsoft.capmkt.orm.ChChannelCustomer</beans:value>
 				<beans:value>com.dcsoft.capmkt.orm.ChDapCustMapping</beans:value>
 				<beans:value>com.dcsoft.capmkt.orm.ChDapValues</beans:value>
+				<beans:value>com.dcsoft.capmkt.orm.ChFapServiceMapping</beans:value>
+				<beans:value>com.dcsoft.capmkt.orm.ChObjectMapping</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">
@@ -125,6 +127,12 @@
 	</beans:bean>
 	<beans:bean id="userDapMapDAO"
 		class="com.dcsoft.capmkt.orm.dao.impl.ChannelUserDapMappingDAO">
+		<beans:property name="sessionFactory"
+			ref="hibernate4AnnotatedSessionFactory"></beans:property>
+	</beans:bean>
+	
+	<beans:bean id="objectMappingDAO"
+		class="com.dcsoft.capmkt.orm.dao.impl.ObjectMappingDAO">
 		<beans:property name="sessionFactory"
 			ref="hibernate4AnnotatedSessionFactory"></beans:property>
 	</beans:bean>

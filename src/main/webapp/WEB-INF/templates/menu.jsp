@@ -53,7 +53,7 @@
 		<li><a><spring:message code="label.menu.fap"/></a>
 			<ul>
 				<li><a href="<c:url value="/fap"/>"><spring:message code="label.fap.list" /> </a></li>
-				<li><a href="<c:url value="/fap"/>"> <spring:message code="label.fap.create"/> </a> </li>
+				<li><a href="<c:url value="/createfap"/>"> <spring:message code="label.fap.create"/> </a> </li>
 			</ul>
 		</li>
 		<li><a><spring:message code="label.menu.dap"/></a>

@@ -48,7 +48,9 @@ public class ChannelCustomerGrpMappingImpl extends GenericService implements ICh
 			chCustGrpMappingId = new ChChannelCustGrpMappingId(groupId, custId);
 			mapping = new ChChannelCustGrpMapping(chCustGrpMappingId);
 			chChannelCutGrpMappingDao.add(mapping);
+			
 		}
+		
 	}
 
 }

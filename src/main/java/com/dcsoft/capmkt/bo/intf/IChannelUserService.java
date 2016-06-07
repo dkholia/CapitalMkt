@@ -17,4 +17,6 @@ public interface IChannelUserService extends IGenericService {
 	public void attachGroupsToUser(BigDecimal userID , List<BigDecimal> groupIDs);
 	public void attachFapsToUser(BigDecimal userID , List<BigDecimal> fapIDs);
 	public void attachDapsToUser(BigDecimal userID , List<BigDecimal> dapIDs);
+	
+	 public void saveObjectHash(String name, String objectID, String objectHash);
 }

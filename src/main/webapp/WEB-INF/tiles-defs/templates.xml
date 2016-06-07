@@ -60,11 +60,23 @@
 		<put-attribute name="body" value="/WEB-INF/customers/createcustomer.jsp" />
 	</definition>
 	
+	<definition name="customerdetails" extends=".mainTemplate">
+		<put-attribute name="body" value="/WEB-INF/customers/customerdetails.jsp" />
+	</definition>
 	<!-- Channel Customer End -->
+	<!-- Service Access Start -->
 	<definition name="fap" extends=".mainTemplate">
 		<put-attribute name="search" value="/WEB-INF/fap/searchfap.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/fap/fap.jsp" />
 	</definition>
+	<definition name="createfap" extends=".mainTemplate">
+		<put-attribute name="body" value="/WEB-INF/fap/createfap.jsp" />
+	</definition>
+	<definition name="fapdetails" extends=".mainTemplate">
+		<put-attribute name="body" value="/WEB-INF/fap/fapdetails.jsp" />
+	</definition>
+	
+	<!-- Service Access end -->
 	
 	<!-- Data Access Start -->
 	<definition name="dap" extends=".mainTemplate">
@@ -74,6 +86,9 @@
 	
 	<definition name="createdap" extends=".mainTemplate">
 		<put-attribute name="body" value="/WEB-INF/dap/createdap.jsp" />
+	</definition>
+	<definition name="dapdetails" extends=".mainTemplate">
+		<put-attribute name="body" value="/WEB-INF/dap/dapdetails.jsp" />
 	</definition>
 	<!-- Data Access Ends -->
 	

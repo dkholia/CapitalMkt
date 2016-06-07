@@ -32,7 +32,7 @@
 		<table class="table table-striped table-bordered display">
 			<thead>
 			<tr>
-				<th>Option</th>
+				<th><input type="checkbox" class="selectAll" /> Option</th>
 				<th>Customer Name</th>	
 				<th>Customer Description</th>	
 			</tr>

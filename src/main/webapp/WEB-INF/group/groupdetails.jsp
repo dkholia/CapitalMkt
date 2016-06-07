@@ -37,8 +37,6 @@
 					style="width: 100%;">
 					<thead>
 						<tr>
-							<th width="80">Group Name</th>
-							<th width="120">Customer ID</th>
 							<th width="120">Customer Name</th>
 							<th width="120">Customer Description</th>
 						</tr>
@@ -47,9 +45,7 @@
 						<c:forEach items="${groupdetails.chChannelCustGrpMappings}" var="chChannelCustGrpMappings">
 							<tr>
 
-								<td>${groupdetails.groupName}</td>
-								<td>${chChannelCustGrpMappings.chChannelCustomer.channelCustId}</td>
-								<td>${chChannelCustGrpMappings.chChannelCustomer.channelCustName}</td>
+								<td><a href="<c:url value='/customers/customerdetails/${chChannelCustGrpMappings.chChannelCustomer.channelCustId}' />"> ${chChannelCustGrpMappings.chChannelCustomer.channelCustName}</a></td>
 								<td>${chChannelCustGrpMappings.chChannelCustomer.channelCustDesc}</td>
 							</tr>
 						</c:forEach>

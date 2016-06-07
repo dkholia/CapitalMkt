@@ -1,6 +1,7 @@
 package com.dcsoft.capmkt.bo.impl.channelcust;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -61,4 +62,9 @@ public class ChannelCustomerServiceImpl extends GenericService implements IChann
 		return true;
 	}
 
+	@Override
+	@Transactional
+	public Serializable getCustomerDetails(BigDecimal id) {
+		return channelCustomerDao.getCustomerDetails(id);
+	}
 }
