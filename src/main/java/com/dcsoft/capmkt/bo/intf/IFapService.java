@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
-public interface IFapService extends IGenericService {
+public interface IFapService extends IObjectHash {
 	public List<Serializable> getFapByCriteria(Serializable fapTO);
 	public boolean addServiceAccess(Serializable fapTO);
 	public void removeFap(BigDecimal id);

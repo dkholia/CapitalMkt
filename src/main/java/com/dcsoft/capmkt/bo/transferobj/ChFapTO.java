@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -69,5 +70,28 @@ public class ChFapTO extends Model {
 	}
 	public void setLinkedServices(List<Integer> linkedServices) {
 		this.linkedServices = linkedServices;
+	}
+	@Override
+	public int hashCode() {
+		Random generator = new Random(999999999);
+		int hashCode = generator.nextInt();
+		
+		if(fapName!=null && fapName.trim()!=""){
+			hashCode += fapName.length()* fapName.hashCode(); 
+		}
+		if(fapDescription!=null && fapDescription.trim()!=""){
+			hashCode += fapDescription.length()* fapDescription.hashCode(); 
+		}
+		if(servicesassoc!=null){
+			for(BigDecimal serviceID : servicesassoc){
+				hashCode += serviceID.intValueExact();
+			}
+		}
+		return hashCode;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		return super.equals(obj);
 	}
 }

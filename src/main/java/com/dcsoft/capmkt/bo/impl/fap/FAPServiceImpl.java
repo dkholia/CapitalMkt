@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.dcsoft.capmkt.bo.impl.GenericService;
+import com.dcsoft.capmkt.bo.impl.ObjectHashImpl;
 import com.dcsoft.capmkt.bo.intf.IFapService;
 import com.dcsoft.capmkt.bo.transferobj.ChFapTO;
 import com.dcsoft.capmkt.orm.ChFap;
@@ -16,7 +17,7 @@ import com.dcsoft.capmkt.orm.ChFapServiceMappingId;
 import com.dcsoft.capmkt.orm.dao.impl.ServiceAccessDAO;
 
 @Service
-public class FAPServiceImpl extends GenericService implements IFapService {
+public class FAPServiceImpl extends ObjectHashImpl implements IFapService {
 
 	private ServiceAccessDAO fapDAO;
 	

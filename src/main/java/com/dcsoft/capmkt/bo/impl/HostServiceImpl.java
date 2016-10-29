@@ -58,4 +58,16 @@ public class HostServiceImpl extends GenericService implements IHostService {
 		return getGenericDao().findByExample(ChHost.class, obj);
 	}
 
+	@Override
+	public List<Serializable> list() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Serializable> findByExample(Class<?> clazz, Serializable obj) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

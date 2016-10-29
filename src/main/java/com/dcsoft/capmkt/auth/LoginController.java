@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import javax.xml.ws.BindingType;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -23,25 +22,39 @@ import org.springframework.web.servlet.support.RequestContextUtils;
 import com.dcsoft.capmkt.bo.intf.LoginService;
 import com.dcsoft.capmkt.orm.ChUser;
 import com.dcsoft.capmkt.orm.ChUserLogin;
-import com.dcsoft.capmkt.util.errors.CustomErrorHandler;
 
 @Controller
 public class LoginController {
 	
-	private LoginService loginService;
+	/*@Autowired
+	private Facebook facebook;
 	
+	@Autowired
+	private ConnectionRepository connectionRepository;
+
+	public LoginController(Facebook facebook, ConnectionRepository connectionRepository) {
+		this.facebook = facebook;
+		this.connectionRepository = connectionRepository;
+	}
+	
+	public LoginController() {
+		// TODO Auto-generated constructor stub
+	}*/
+
+	private LoginService loginService;
+
 	@Autowired
 	@Qualifier(value="loginService")
 	public void setLoginService(LoginService loginService) {
 		this.loginService = loginService;
 	}
-	
+
 	@RequestMapping(value= "/", method = RequestMethod.GET)
 	public String gotologinGet(Model model,HttpSession sessionObj){
 		model.addAttribute("login", new ChUserLogin());
 		return "/";
 	}
-	
+
 	@RequestMapping(value= "/", method = RequestMethod.POST)
 	public String gotologin(Model model,HttpSession sessionObj){
 		model.addAttribute("login", new ChUserLogin());
@@ -51,30 +64,35 @@ public class LoginController {
 
 	@RequestMapping(value= "/login", method = RequestMethod.POST)
 	public String login(@Valid ChUserLogin chUserLogin ,BindingResult result , Model model, @RequestParam("username") String username , @RequestParam("password") String password,HttpServletRequest request, HttpServletResponse response){
-		
+
 		/*chUserLogin.setUname(username);
 		chUserLogin.setUpwd(password);
 		model.addAttribute("login", chUserLogin);
-		
+
 		if(result.hasErrors()){
 			CustomErrorHandler handler = new CustomErrorHandler(result.getAllErrors());
 			model.addAttribute("errors", handler.getCustomErrors());
 			return "redirect:/";
 		}*/
 		
+		/* if (connectionRepository.findPrimaryConnection(Facebook.class) == null) {
+	            return "redirect:/connect/facebook";
+	     }*/
+		 
 		HttpSession session = request.getSession();
-		
+
 		ChUser user = new ChUser(username,password,true);
 		user.setUsertyp("admin");
 
 		if(loginService.findByExample(user).isEmpty())
 			return "redirect:/";
-		
+
 		session.setAttribute("USER_TOKEN", user);
 		LocaleResolver localeResolver = RequestContextUtils.getLocaleResolver(request);
 		localeResolver.setLocale(request, response, StringUtils.parseLocaleString("en"));
 		session.setAttribute("locale", new Locale("en", "US"));
-		
+
 		return "redirect:/home";
 	}
+
 }

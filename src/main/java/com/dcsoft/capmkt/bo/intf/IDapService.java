@@ -6,7 +6,7 @@ import java.util.List;
 
 import com.dcsoft.capmkt.bo.transferobj.ChDapTO;
 
-public interface IDapService extends IGenericService {
+public interface IDapService extends IObjectHash {
 	public List<Serializable> getChannelCustomersDropDown();
 	public boolean addDataAccess(ChDapTO chDapTO);
 	public List<Serializable> getDataAccessByName(String dapName);

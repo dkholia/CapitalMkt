@@ -1,6 +1,11 @@
+<!DOCTYPE HTML>
+<html>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 <%@ page session="false" %>
 
 <link
@@ -44,7 +49,19 @@
 
 					<div style="display: none" id="login-alert"
 						class="alert alert-danger col-sm-12"></div>
-
+					
+					<h3>Connect to Facebook</h3>
+  					<form:form action="./connect/facebook" method="POST" sec:authorize="isAnonymous()" >
+   						<input type="hidden" name="scope" value="public_profile,email" />
+						<input type="hidden" name="_csrf" th:value="${_csrf.token}" />
+   							<p><button type="submit">Login With Facebook</button></p>
+  					</form:form>
+  					
+  					<form:form action="./connect/twitter" method="POST">
+   						<input type="hidden" name="scope" value="public_profile,email" />
+							<input type="hidden" name="_csrf" th:value="${_csrf.token}" />
+   							<p><button type="submit">Login With Twitter</button></p>
+  					</form:form>
 					<form:form id="loginform" class="form-horizontal" role="form" action="./login" method="post" commandName="login">
 
 						<div style="margin-bottom: 25px" class="input-group">
@@ -101,3 +118,4 @@
 		</div>
 	</div>
 </body>
+</html>

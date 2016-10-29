@@ -49,7 +49,10 @@
 	<definition name="userDetails" extends=".mainTemplate">
 		<put-attribute name="body" value="/WEB-INF/channeluser/userDetails.jsp" />
 	</definition>
-	
+	<definition name="editUser" extends=".mainTemplate">
+		<put-attribute name="body" value="/WEB-INF/channeluser/editUser.jsp" />
+	</definition>
+		
 	<!-- User Tab ends -->
 	
 	<!-- Channel Customer Start -->

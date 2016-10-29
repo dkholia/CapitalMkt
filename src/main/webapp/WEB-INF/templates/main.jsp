@@ -35,58 +35,20 @@
 	src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
 <script
 	src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js"></script>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<!-- <link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
 <link rel="stylesheet"
 	href="https://cdn.datatables.net/1.10.11/css/dataTables.bootstrap.min.css">
  <script type="text/javascript"
 	src="<c:url value="/resources/js/common.js"/>"></script>
-<%-- <script src="//code.jquery.com/jquery-latest.min.js"></script>	
-<link href="<c:url value="/resources/css/jquery.editable-select.css"/>" rel="stylesheet">
-<script type="text/javascript"
-	src="<c:url value="/resources/js/jquery.editable-select.js"/>"></script> --%>
-
-<!-- SmartMenus jQuery init -->
-<script type="text/javascript">
-	/* $(function() {
-		$('#main-menu').smartmenus({
-			subMenusSubOffsetX : 10,
-			subMenusSubOffsetY : -80
-		});
-		$('.table').css("width","100%");
-		$('.table-striped').addClass("table-hover");
-		$('.table-striped').DataTable( {
-			  "lengthMenu": [ [5,10, 25, 50, -1], [5,10, 25, 50, "All"] ]
-		});
-		
-	});
-	
-	$(function() {
-	    $( ".datepicker" ).datepicker({
-	    	  changeMonth: true,
-	    	  changeYear: true,
-	    	  yearRange: "c-100:c",
-	    	  altFormat: "MM/dd/yyyy",
-	    	  gotoCurrent: true,
-	    	  showButtonPanel: true
-	    });
-	  });
-	
-	$('form,input,select,textarea').attr("autocomplete", "off");
-	
-	$( ".reset" ).click(function() {
-	    $(':input').not(':button, :submit, :reset, :hidden, :checkbox, :radio').val('');
-	    $(':checkbox, :radio').prop('checked', false);
-	}); */
 
 
-</script>
 </head>
 <body>
 	<form:form id="mainform" class="form-inline" role="form" autocomplete="off">
 		
 		<div id="dialog-div"> </div>
-		<div id="header" style="display: none;">
+		<div id="header">
 			<div id="headerTitle">
 				<tiles:insertAttribute name="header" />
 			</div>
@@ -120,7 +82,7 @@
 		</div>
 		<br>
 		<br>
-		<div id="footer" style="display: none;">
+		<div id="footer" >
 			<tiles:insertAttribute name="footer" />
 		</div>
 	</form:form>

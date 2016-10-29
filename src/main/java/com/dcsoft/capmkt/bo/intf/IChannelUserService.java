@@ -7,7 +7,7 @@ import java.util.List;
 import com.dcsoft.capmkt.bo.transferobj.ChUserTO;
 import com.dcsoft.capmkt.orm.ChUser;
 
-public interface IChannelUserService extends IGenericService {
+public interface IChannelUserService extends IObjectHash {
 	public ChUser getUserDetails(BigDecimal id);
 	public boolean addUser(ChUserTO chUserTO);
 	public List<Serializable> getUserByLoginID(String loginID);
@@ -18,5 +18,4 @@ public interface IChannelUserService extends IGenericService {
 	public void attachFapsToUser(BigDecimal userID , List<BigDecimal> fapIDs);
 	public void attachDapsToUser(BigDecimal userID , List<BigDecimal> dapIDs);
 	
-	 public void saveObjectHash(String name, String objectID, String objectHash);
 }

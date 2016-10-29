@@ -53,6 +53,7 @@
 				<beans:value>com.dcsoft.capmkt.orm.ChDapValues</beans:value>
 				<beans:value>com.dcsoft.capmkt.orm.ChFapServiceMapping</beans:value>
 				<beans:value>com.dcsoft.capmkt.orm.ChObjectMapping</beans:value>
+				<!-- <beans:value>com.dcsoft.capmkt.auth.social.config.Social_User</beans:value> -->
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">

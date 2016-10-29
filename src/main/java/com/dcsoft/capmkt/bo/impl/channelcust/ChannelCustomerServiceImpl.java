@@ -8,13 +8,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.dcsoft.capmkt.bo.impl.GenericService;
+import com.dcsoft.capmkt.bo.impl.ObjectHashImpl;
 import com.dcsoft.capmkt.bo.intf.IChannelCustomerService;
 import com.dcsoft.capmkt.bo.transferobj.ChannelCustomerTO;
 import com.dcsoft.capmkt.orm.ChChannelCustomer;
 import com.dcsoft.capmkt.orm.dao.impl.ChannelCustomerDAO;
 
 @Service
-public class ChannelCustomerServiceImpl extends GenericService implements IChannelCustomerService {
+public class ChannelCustomerServiceImpl extends ObjectHashImpl implements IChannelCustomerService {
 
 	private ChannelCustomerDAO channelCustomerDao;
 	@Override

@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -161,5 +162,29 @@ public class ChUserTO extends Model {
 	}
 	public void setDaps(List<BigDecimal> daps) {
 		this.daps = daps;
+	}
+	
+	public int hashCode() {
+		Random generator = new Random(999999999);
+		int hashCode = generator.nextInt();
+		
+		if(loginid!=null && loginid.trim()!=""){
+			hashCode += loginid.length()* loginid.hashCode(); 
+		}
+		if(fname!=null && fname.trim()!=""){
+			hashCode += fname.length()* fname.hashCode(); 
+		}
+		if(mname!=null && mname.trim()!=""){
+			hashCode += mname.length()* mname.hashCode(); 
+		}
+		if(lname!=null && lname.trim()!=""){
+			hashCode += lname.length()* lname.hashCode(); 
+		}
+		return hashCode;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		return super.equals(obj);
 	}
 }

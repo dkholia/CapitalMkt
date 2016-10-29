@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:twitter="http://www.springframework.org/schema/social/twitter"
+	xmlns:social="http://www.springframework.org/schema/social"
+	xmlns:facebook="http://www.springframework.org/schema/social/facebook"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+		 http://www.springframework.org/schema/security
+          http://www.springframework.org/schema/security/spring-security-4.0.xsd
+           http://www.springframework.org/schema/social http://www.springframework.org/schema/social/spring-social.xsd
+       	http://www.springframework.org/schema/social/facebook http://www.springframework.org/schema/social/spring-social-facebook.xsd">
+
+    <context:property-placeholder location="classpath:application.properties"/>
+    
+    <facebook:config app-id="${facebook.app.id}" app-secret="${facebook.app.secret}"/>
+   <!--  <twitter:config app-id="${twitter.consumer.key}" app-secret="${twitter.consumer.secret}"/> -->
+
+    <social:jdbc-connection-repository/>
+
+    <beans:bean id="connectController" class="org.springframework.social.connect.web.ConnectController"
+          autowire="constructor"/>
+          
+     <beans:bean id="textEncryptor"
+		class="org.springframework.security.crypto.encrypt.Encryptors"
+		factory-method="noOpText" /> 
+		<beans:bean id="userIdSource" class="org.springframework.social.security.AuthenticationNameUserIdSource" />
+</beans:beans>
