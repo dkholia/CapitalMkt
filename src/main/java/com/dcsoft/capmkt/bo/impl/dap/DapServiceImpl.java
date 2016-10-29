@@ -6,9 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.dcsoft.capmkt.bo.impl.GenericService;
+import com.dcsoft.capmkt.bo.impl.ObjectHashImpl;
 import com.dcsoft.capmkt.bo.intf.IDapService;
 import com.dcsoft.capmkt.bo.transferobj.ChDapTO;
 import com.dcsoft.capmkt.bo.transferobj.DropDown;
@@ -17,7 +19,7 @@ import com.dcsoft.capmkt.orm.ChDap;
 import com.dcsoft.capmkt.orm.dao.impl.DataAccessDAO;
 
 @Service
-public class DapServiceImpl extends GenericService implements IDapService {
+public class DapServiceImpl extends ObjectHashImpl implements IDapService {
 
 	private DataAccessDAO dapDAO;
 	

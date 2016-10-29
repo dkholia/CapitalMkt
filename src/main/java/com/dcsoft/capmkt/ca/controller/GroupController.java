@@ -109,7 +109,7 @@ public class GroupController {
 	}
 	@RequestMapping("/group/remove/{id}"  )
 	public String removeGroup(@PathVariable("id") BigDecimal id, Model model){
-		List<Serializable> returnList = groupService.getGroupByCriteria(new ChGroupTO());
+		//List<Serializable> returnList = groupService.getGroupByCriteria(new ChGroupTO());
 		model.addAttribute("listGroups", model.addAttribute("listGroups", this.groupService.listGroups()));
 		this.groupService.removeGroup(id);
 		return "redirect:/group";
@@ -187,9 +187,12 @@ public class GroupController {
 			BigDecimal groupId = ((ChGroup)groupService.findByExample(ChGroup.class, chGroupTO).get(0)).getGroupId();
 			this.chnlCustGrpMapService.addChannelCustomersToGroup(groupId, chGroupTO.getCustomers());
 			model.addAttribute("success","Group : "+ chGroupTO.getGroupName()+ " created successfully.");
+			//chnlCustGrpMapService.saveObjectHash(ChGroup.class.getSimpleName(), groupId.toPlainString(), chGroupTO.hashCode()+"");
+			
 		}else{
 			this.groupService.updateGroup(chGroupTO);
 		}
+		
 		return "createeditgroup";
 	}
 }

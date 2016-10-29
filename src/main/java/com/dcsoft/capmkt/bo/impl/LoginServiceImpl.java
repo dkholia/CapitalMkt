@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.dcsoft.capmkt.bo.intf.LoginService;
+import com.dcsoft.capmkt.bo.transferobj.Model;
 import com.dcsoft.capmkt.orm.ChUser;
 import com.dcsoft.capmkt.orm.dao.impl.GenericDAOImpl;
 import com.dcsoft.capmkt.orm.dao.impl.UserDAO;
@@ -38,6 +39,23 @@ public class LoginServiceImpl implements LoginService {
 	@Transactional
 	public ChUser getUserDetails(ChUser user) throws Exception {
 		return this.userDAO.getUserDetails(user);
+	}
+	
+	@Override
+	public List<Serializable> list() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public List<Serializable> findByExample(Class<?> clazz, Serializable obj) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public void saveObjectHash(Class<? extends Model> clazz, String idColumnName, BigDecimal objectID,
+			BigDecimal objectHash) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 

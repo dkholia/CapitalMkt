@@ -17,7 +17,7 @@
 			</td>
 			<td>${dapdetails.dapDescription}</td>
 			<td><spring:message code="label.dap.chnlcust"/> </td>
-			<td>${dapdetails.channelCustId}</td>
+			<td><a href='<c:url value="/customers/customerdetails/${dapdetails.channelCustId}"></c:url>' > <i class="fa fa-user" aria-hidden="true"></i></a></td>
 		</tr>
 	</table>
 </div>

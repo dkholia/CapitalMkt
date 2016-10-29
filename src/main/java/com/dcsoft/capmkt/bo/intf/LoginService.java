@@ -6,7 +6,7 @@ import java.util.List;
 
 import com.dcsoft.capmkt.orm.ChUser;
 
-public interface LoginService {
+public interface LoginService extends IObjectHash{
 	public List<Serializable> findByExample(Serializable obj);
 	public ChUser getUserDetailsByID(BigDecimal userID) throws Exception;
 	public ChUser getUserDetails(ChUser user) throws Exception;

@@ -1,6 +1,7 @@
 package com.dcsoft.capmkt.bo.transferobj;
 
 import java.math.BigDecimal;
+import java.util.Random;
 
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -42,5 +43,26 @@ public class ChannelCustomerTO extends Model {
 	}
 	public void setChannelCustId(BigDecimal channelCustId) {
 		this.channelCustId = channelCustId;
+	}
+	@Override
+	public int hashCode() {
+		Random generator = new Random(999999999);
+		int hashCode = generator.nextInt();
+		
+		if(channelCustId!=null ){
+			hashCode += channelCustId.intValue() + channelCustId.hashCode();
+		} 
+		if(channelCustName!=null && channelCustName.trim()!=""){
+			hashCode += channelCustName.length()* channelCustName.hashCode(); 
+		}
+		if(channelCustDesc!=null && channelCustDesc.trim()!=""){
+			hashCode += channelCustDesc.length()* channelCustDesc.hashCode(); 
+		}
+		return hashCode;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		return super.equals(obj);
 	}
 }

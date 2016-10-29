@@ -7,7 +7,7 @@ import java.util.List;
 import com.dcsoft.capmkt.bo.transferobj.ChGroupTO;
 import com.dcsoft.capmkt.orm.ChGroup;
 
-public interface IGroupService extends IGenericService {
+public interface IGroupService extends IObjectHash {
 	public void addGroup(ChGroupTO p);
 	public void updateGroup(ChGroupTO p);
 	public List<Serializable> listGroups();

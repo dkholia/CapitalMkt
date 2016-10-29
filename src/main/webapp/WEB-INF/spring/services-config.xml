@@ -11,6 +11,10 @@
           http://www.springframework.org/schema/security/spring-security-4.0.xsd">
 
 	 <!-- Service Start -->
+	 
+	  <beans:bean id="objectHashService" class="com.dcsoft.capmkt.bo.impl.ObjectHashImpl">
+        <beans:property name="genericDao" ref="genericDao"></beans:property>
+	  </beans:bean>
     <beans:bean id="hostService" class="com.dcsoft.capmkt.bo.impl.HostServiceImpl">
         <beans:property name="genericDao" ref="genericDao"></beans:property>
 	  </beans:bean>

@@ -3,6 +3,7 @@ package com.dcsoft.capmkt.bo.transferobj;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javax.validation.constraints.Size;
 
@@ -64,5 +65,29 @@ public class ChGroupTO extends Model {
 	}
 	public void setCustomers(List<BigDecimal> customers) {
 		this.customers = customers;
+	}
+	
+	public int hashCode() {
+		Random generator = new Random();
+		int hashCode = Math.abs(generator.nextInt(Integer.MAX_VALUE));
+		
+		if(groupName!=null && groupName.trim()!=""){
+			hashCode += groupName.length()* groupName.hashCode(); 
+		}
+		if(groupDesc!=null && groupDesc.trim()!=""){
+			hashCode += groupDesc.length()* groupDesc.hashCode(); 
+		}
+		if(customers!=null){
+			for(int i=0;i<customers.size();i++){
+				hashCode+=customers.get(i).intValue();
+			}
+		}
+		
+		return hashCode;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		return super.equals(obj);
 	}
 }

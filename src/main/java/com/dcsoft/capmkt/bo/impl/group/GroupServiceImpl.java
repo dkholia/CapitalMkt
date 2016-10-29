@@ -8,13 +8,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.dcsoft.capmkt.bo.impl.GenericService;
+import com.dcsoft.capmkt.bo.impl.ObjectHashImpl;
 import com.dcsoft.capmkt.bo.intf.IGroupService;
 import com.dcsoft.capmkt.bo.transferobj.ChGroupTO;
 import com.dcsoft.capmkt.orm.ChGroup;
 import com.dcsoft.capmkt.orm.dao.impl.GroupDAO;
 
 @Service
-public class GroupServiceImpl extends GenericService implements IGroupService {
+public class GroupServiceImpl extends ObjectHashImpl implements IGroupService {
 	
 	private GroupDAO groupDao;
 	
@@ -37,9 +38,6 @@ public class GroupServiceImpl extends GenericService implements IGroupService {
 		presistObj.setGroupName(p.getGroupName());
 		presistObj.setGroupdesc(p.getGroupDesc());
 		getGenericDao().add(presistObj);
-		
-		ChGroup group = ((ChGroup)getGenericDao().findByExample(ChGroup.class, presistObj).get(0));
-		getGenericDao().saveObjectHash(ChGroup.class.getName(), group.getGroupId().toPlainString() ,group.getGroupId().toPlainString());
 	}
 
 	@Override

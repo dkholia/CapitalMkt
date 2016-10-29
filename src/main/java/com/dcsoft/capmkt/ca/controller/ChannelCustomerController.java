@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.dcsoft.capmkt.bo.intf.IChannelCustomerService;
 import com.dcsoft.capmkt.bo.transferobj.ChannelCustomerTO;
 import com.dcsoft.capmkt.constants.Constants;
+import com.dcsoft.capmkt.orm.ChChannelCustomer;
 import com.dcsoft.capmkt.util.errors.CustomErrorHandler;
 
 @Controller
@@ -67,6 +68,10 @@ public class ChannelCustomerController {
 		}else{
 			//Show failure message
 		}
+		ChChannelCustomer customer = (ChChannelCustomer) chnlCustomerService.findByExample(ChChannelCustomer.class, customerTO).get(0);
+		customerTO.setChannelCustId(customer.getChannelCustId());
+		//chnlCustomerService.saveObjectHash(ChChannelCustomer.class.getSimpleName(), customer.getChannelCustId().toPlainString(), customerTO.hashCode()+"");
+		
 		return "createcustomer";
 	}
 	

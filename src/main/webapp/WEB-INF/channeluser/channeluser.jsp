@@ -9,6 +9,7 @@
 		<thead>
 			<tr>
 			<th width="120" draggable="true" >User ID</th>
+			<th>User Name</th>
 			<th width="120" draggable="true">Status</th>
 			<th width="60" draggable="true">Date Created</th>
 			<th width="60"></th>
@@ -18,7 +19,8 @@
 			<c:forEach items="${userList}" var ="user">
 				<c:if test="${user.usertyp eq 'nonadmin'}">
 				<tr>
-					<td ><a  class="contextMenu" href="<c:url value='/channeluser/${user.userid}/details/' />" >${user.uname} <%-- ${user.lasname}, ${user.firstname} ${user.middlename} --%></a></td>
+					<td ><a oncontextmenu="alert('hi');" contextmenu="menu"  href="<c:url value='/channeluser/${user.userid}/details/' />" >${user.uname} </a></td>
+					<td>${user.lasname}, ${user.firstname} ${user.middlename}</td>
 					<td>${user.isactive}</td>
 					<td>${user.datecreated}</td>
 					<td><a  class="editObj" href="<c:url value='/channeluser/${user.userid}/editUser' />" ></a>

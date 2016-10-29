@@ -1,16 +1,17 @@
 package com.dcsoft.capmkt.bo.impl;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
-import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Service;
 
 import com.dcsoft.capmkt.bo.intf.ICommonService;
 import com.dcsoft.capmkt.bo.transferobj.DropDown;
+import com.dcsoft.capmkt.bo.transferobj.Model;
 import com.dcsoft.capmkt.orm.BccCountry;
 import com.dcsoft.capmkt.orm.BccStateRef;
 import com.dcsoft.capmkt.orm.ChServiceDetails;
@@ -82,6 +83,14 @@ public class CommonServiceImpl extends GenericService implements ICommonService{
 
 	public void setCommonDAO(CommonDAO commonDAO) {
 		this.commonDAO = commonDAO;
+	}
+
+
+	@Override
+	public void saveObjectHash(Class<? extends Model> clazz, String idColumnName, BigDecimal objectID,
+			BigDecimal objectHash) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

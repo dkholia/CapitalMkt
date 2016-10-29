@@ -132,7 +132,7 @@ public class ChannelUserController {
 			}catch(Exception ex){
 				channelUserService.removeUser(userID);
 			}
-			channelUserService.saveObjectHash(ChUser.class.getName(), userID.toString(), userID.toString());
+			//channelUserService.saveObjectHash(ChUser.class.getSimpleName(), userID.toString(),""+userTO.hashCode());
 		}
 		return "createUser";
 	}
@@ -140,12 +140,12 @@ public class ChannelUserController {
 	@RequestMapping(value="/channeluser/{id}/editUser")
 	public String edituser(@PathVariable ("id") BigDecimal id, Model model){
 		model.addAttribute("mode", "edit");
-		return "createUser";
+		model.addAttribute("userDetails", channelUserService.getUserDetails(id));
+		return "editUser";
 	}
 	
 	@RequestMapping(value="/channeluser/{id}/deleteUser" /*, method=RequestMethod.DELETE*/)
 	public String deleteuser(@PathVariable ("id") BigDecimal id, Model model){
-		//model.addAttribute("mode", "Delete User");
 		channelUserService.removeUser(id);
 		return "redirect:/channeluser";
 	}

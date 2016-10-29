@@ -8,13 +8,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.dcsoft.capmkt.bo.impl.GenericService;
+import com.dcsoft.capmkt.bo.impl.ObjectHashImpl;
 import com.dcsoft.capmkt.bo.intf.IChannelCustomerGrpMapping;
 import com.dcsoft.capmkt.orm.ChChannelCustGrpMapping;
 import com.dcsoft.capmkt.orm.ChChannelCustGrpMappingId;
 import com.dcsoft.capmkt.orm.dao.impl.ChChannelCustGrpMappingDAO;
 
 @Service
-public class ChannelCustomerGrpMappingImpl extends GenericService implements IChannelCustomerGrpMapping {
+public class ChannelCustomerGrpMappingImpl extends ObjectHashImpl implements IChannelCustomerGrpMapping {
 	
 	private ChChannelCustGrpMappingDAO chChannelCutGrpMappingDao;
 

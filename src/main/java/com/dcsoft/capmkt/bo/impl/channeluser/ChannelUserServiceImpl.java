@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.dcsoft.capmkt.bo.impl.GenericService;
+import com.dcsoft.capmkt.bo.impl.ObjectHashImpl;
 import com.dcsoft.capmkt.bo.intf.IChannelUserService;
 import com.dcsoft.capmkt.bo.transferobj.ChUserTO;
 import com.dcsoft.capmkt.orm.ChDapUserMapping;
@@ -24,7 +25,7 @@ import com.dcsoft.capmkt.orm.dao.impl.ChannelUserFapMappingDAO;
 import com.dcsoft.capmkt.orm.dao.impl.ChannelUserGroupMappingDAO;
 
 @Service
-public class ChannelUserServiceImpl extends GenericService implements IChannelUserService {
+public class ChannelUserServiceImpl extends ObjectHashImpl implements IChannelUserService {
 
 	private ChannelUserDAO channelUserDao;
 	private ChannelUserGroupMappingDAO userGroupMapDAO;
@@ -173,11 +174,4 @@ public class ChannelUserServiceImpl extends GenericService implements IChannelUs
 			}
 		}
 	}
-
-	@Override
-	@Transactional
-	public void saveObjectHash(String name, String objectID, String objectHash) {
-		getGenericDao().saveObjectHash(name, objectID, objectHash);
-	}
-
 }
