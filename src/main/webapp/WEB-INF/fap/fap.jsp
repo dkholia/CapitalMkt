@@ -22,9 +22,9 @@
 		<c:forEach items="${fapList}" var="fap">
 			<tr>
 				<td>
-					<a class="editObj" href="<c:url value='/group/createeditgroup/${group.groupId}' />" ></a>
-					<a class="deleteObj" href="<c:url value='/group/remove/${group.groupId}' />" ></a> &nbsp;
-					<a  href="<c:url value='/fap/details/${fap.fapId}' />" >
+					<a class="editObj" href="<c:url value='/home/group/createeditgroup/${group.groupId}' />" ></a>
+					<a class="deleteObj" href="<c:url value='/home/group/remove/${group.groupId}' />" ></a> &nbsp;
+					<a  href="<c:url value='/home/fap/details/${fap.fapId}' />" >
 					${fap.fapName}</a>
 				</td>
 				<td>${fap.fapDescription}</td>

@@ -32,7 +32,7 @@ public class DataAccessController  {
 	@Qualifier(value="chnlDapService")
 	private IDapService chnlDapService;
 	
-	@RequestMapping(value="/dap" , method=RequestMethod.GET)
+	@RequestMapping(value="/home/dap" , method=RequestMethod.GET)
 	public String gotoDapHome(Model model){
 		model.addAttribute("seaarchDap", new ChDapTO());
 		model.addAttribute("dapList", null);
@@ -40,7 +40,7 @@ public class DataAccessController  {
 		return "dap";
 	}
 	
-	@RequestMapping(value="/dap" , method=RequestMethod.POST)
+	@RequestMapping(value="/home/dap" , method=RequestMethod.POST)
 	public String searchDap(ChDapTO dapTO,Model model){
 		model.addAttribute("seaarchDap",dapTO);
 		model.addAttribute("customers", chnlDapService.getChannelCustomersDropDown());
@@ -58,7 +58,7 @@ public class DataAccessController  {
 		return "dap";
 	}
 	
-	@RequestMapping(value="/createdap" , method=RequestMethod.GET)
+	@RequestMapping(value="/home/createdap" , method=RequestMethod.GET)
 	public String gotocreatedap(Model model){
 		model.addAttribute("mode", Constants.MODE_CREATE);
 		model.addAttribute("dap", new ChDapTO());
@@ -66,7 +66,7 @@ public class DataAccessController  {
 		return "createdap";
 	}
 	
-	@RequestMapping(value="/createdap" , method=RequestMethod.POST)
+	@RequestMapping(value="/home/createdap" , method=RequestMethod.POST)
 	public String createdap(@Valid ChDapTO chDapTO , BindingResult result,Model model){
 		model.addAttribute("mode", Constants.MODE_CREATE);
 		model.addAttribute("dap", chDapTO);
@@ -92,13 +92,18 @@ public class DataAccessController  {
 			}
 		}
 		chDapTO.setUniqueSequenceNumber(chDapTO.hashCode());
-		if(chnlDapService.addDataAccess(chDapTO)){
-			model.addAttribute("success","Data Access  : "+ chDapTO.getDapName() + " created successfully.");
+		try {
+			if(chnlDapService.addDataAccess(chDapTO)){
+				model.addAttribute("success","Data Access  : "+ chDapTO.getDapName() + " created successfully.");
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return "createdap";
 	}
 	
-	@RequestMapping(value="/dap/details/{id}" , method=RequestMethod.GET)
+	@RequestMapping(value="/home/dap/details/{id}" , method=RequestMethod.GET)
 	public String dapDetails(@PathVariable("id") BigDecimal id, Model model){
 		model.addAttribute("dapdetails", chnlDapService.getDataAccessDetails(id));
 		return "dapdetails";

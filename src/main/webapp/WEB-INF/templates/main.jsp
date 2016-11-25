@@ -45,10 +45,26 @@
 
 </head>
 <body>
+
+	<c:url value="/logout" var="logoutUrl" />
+	<form action="${logoutUrl}" method="post" id="logoutForm">
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
+	</form>
+	<script>
+		function formSubmit() {
+			document.getElementById("logoutForm").submit();
+		}
+	</script>
+
+	<c:if test="${pageContext.request.userPrincipal.name != null}">
+				<a href="javascript:formSubmit()"> Logout</a>
+	</c:if>
+	
 	<form:form id="mainform" class="form-inline" role="form" autocomplete="off">
 		
 		<div id="dialog-div"> </div>
-		<div id="header">
+		<div id="header" style="display: none;">
 			<div id="headerTitle">
 				<tiles:insertAttribute name="header" />
 			</div>
@@ -82,7 +98,7 @@
 		</div>
 		<br>
 		<br>
-		<div id="footer" >
+		<div id="footer" style="display: none;" >
 			<tiles:insertAttribute name="footer" />
 		</div>
 	</form:form>

@@ -18,6 +18,8 @@
 	});
 </script>
 </head>
+
+
 <nav id="main-nav" role="navigation">
 	<ul id="main-menu" class="sm sm-blue">
 		<li><a href="<c:url value="/home"/>"><spring:message code="label.menu.home"/></a>
@@ -33,33 +35,33 @@
 		</li>
 		<li><a><spring:message code="label.menu.users"/></a>
 			<ul id="sub-menu-users">
-				<li><a href="<c:url value="/channeluser"/>">User List</a></li>
-				<li><a href="<c:url value="/channeluser/createUser"/>"><spring:message code="label.menu.users.createuser"></spring:message></a></li>
+				<li><a href="<c:url value="/home/channeluser"/>">User List</a></li>
+				<li><a href="<c:url value="/home/channeluser/createUser"/>"><spring:message code="label.menu.users.createuser"></spring:message></a></li>
 			</ul>
 		</li>
 		<li><a><spring:message code="label.menu.groups"/></a>
 			<ul id="sub-menu-group">
-				<li><a href="<c:url value="/group"/>">Group List</a></li>
-				<li><a href="<c:url value="/group/createeditgroup"/>">Create Group</a></li>
-				<li><a href="<c:url value="/group/createeditgroup"/>">Attach Customers to Group</a></li>
+				<li><a href="<c:url value="/home/group"/>">Group List</a></li>
+				<li><a href="<c:url value="/home/group/createeditgroup"/>">Create Group</a></li>
+				<li><a href="<c:url value="/home/group/createeditgroup"/>">Attach Customers to Group</a></li>
 			</ul>
 		</li>
 		<li><a><spring:message code="label.menu.customers"/></a>
 				<ul id="sub-menu-group">
-						<li><a href="<c:url value="/customers"/>"><spring:message code="label.channelcust.list"/></a></li>
-						<li><a href="<c:url value="/createcustomer"/>"><spring:message code="label.channelcust.create"/></a></li>
+						<li><a href="<c:url value="/home/customers"/>"><spring:message code="label.channelcust.list"/></a></li>
+						<li><a href="<c:url value="/home/createcustomer"/>"><spring:message code="label.channelcust.create"/></a></li>
 				</ul>			
 		</li>
 		<li><a><spring:message code="label.menu.fap"/></a>
 			<ul>
-				<li><a href="<c:url value="/fap"/>"><spring:message code="label.fap.list" /> </a></li>
-				<li><a href="<c:url value="/createfap"/>"> <spring:message code="label.fap.create"/> </a> </li>
+				<li><a href="<c:url value="/home/fap"/>"><spring:message code="label.fap.list" /> </a></li>
+				<li><a href="<c:url value="/home/createfap"/>"> <spring:message code="label.fap.create"/> </a> </li>
 			</ul>
 		</li>
 		<li><a><spring:message code="label.menu.dap"/></a>
 			<ul>
-				<li><a href="<c:url value="/dap"/>"><spring:message code="label.dap.list" /> </a></li>
-				<li><a href="<c:url value="/createdap"/>"> <spring:message code="label.dap.create"/> </a> </li>
+				<li><a href="<c:url value="/home/dap"/>"><spring:message code="label.dap.list" /> </a></li>
+				<li><a href="<c:url value="/home/createdap"/>"> <spring:message code="label.dap.create"/> </a> </li>
 			</ul>
 		</li>
 	</ul>

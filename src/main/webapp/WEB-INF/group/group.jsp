@@ -34,11 +34,11 @@
 			<tbody>
 				<c:forEach items="${listGroups}" var="group">
 					<tr>
-						<td class="contextMenu"><a href="<c:url value='/group/${group.groupId}/detail' />" >${group.groupName}</a></td>
+						<td class="contextMenu"><a href="<c:url value='/home/group/${group.groupId}/detail' />" >${group.groupName}</a></td>
 						<td>${group.groupdesc}</td>
 						<td>
-							<a  class="editObj" href="<c:url value='/group/createeditgroup/${group.groupId}' />" ></a>
-							<a class="deleteObj" href="<c:url value='/group/remove/${group.groupId}' />" ></a>
+							<a  class="editObj" href="<c:url value='/home/group/createeditgroup/${group.groupId}' />" ></a>
+							<a class="deleteObj" href="<c:url value='/home/group/remove/${group.groupId}' />" ></a>
 						</td>
 					</tr>
 				</c:forEach>
@@ -54,7 +54,7 @@
 
 <!-- Context Menu Start-->
 	<ul id="contextMenu" class="dropdown-menu" role="menu" style="display:none" >
-	    <li><a tabindex="-1" href= "<c:url value='/group/55/detail' />">Action</a></li>
+	    <li><a tabindex="-1" href= "<c:url value='/home/group/55/detail' />">Action</a></li>
 	    <li><a tabindex="-1" href="#">Another action</a></li>
 	    <li><a tabindex="-1" href="#">Something else here</a></li>
 	    <li class="divider"></li>

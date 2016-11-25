@@ -97,11 +97,11 @@
 
 		<!-- End of logging -->
 
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
 			<version>${spring.data.jpa.version}</version>
-		</dependency>
+		</dependency> -->
 
 		<dependency>
 			<groupId>org.sitemesh</groupId>

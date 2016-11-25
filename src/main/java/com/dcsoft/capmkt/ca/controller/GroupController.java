@@ -62,14 +62,14 @@ public class GroupController {
 		this.chnlCustomerService = chnlCustomerService;
 	}
 
-	@RequestMapping(value="/group" , method=RequestMethod.GET)
+	@RequestMapping(value="/home/group" , method=RequestMethod.GET)
 	public String gotoUserHomeBlank(Model model){
 		model.addAttribute("searchGroup", new ChGroupTO());
 		model.addAttribute("listGroups", null);
 		return "group";
 	}
 	
-	@RequestMapping(value = "/group", method = RequestMethod.POST)
+	@RequestMapping(value = "/home/group", method = RequestMethod.POST)
 	private String listGroups(ChGroupTO chGroupTO, Model model) {
 		//get all the groups 
 		model.addAttribute("searchGroup", chGroupTO);
@@ -87,7 +87,7 @@ public class GroupController {
 	}
 	
 	
-	@RequestMapping(value= "/group/add", method = RequestMethod.POST)
+	@RequestMapping(value= "/home/group/add", method = RequestMethod.POST)
 	public String addGroup(@Valid ChGroupTO chGroupTO,BindingResult result,Model model){
 		
 		List<Serializable> list = chnlCustomerService.list();
@@ -107,7 +107,7 @@ public class GroupController {
 		}
 		return "redirect:/group";
 	}
-	@RequestMapping("/group/remove/{id}"  )
+	@RequestMapping("/home/group/remove/{id}"  )
 	public String removeGroup(@PathVariable("id") BigDecimal id, Model model){
 		//List<Serializable> returnList = groupService.getGroupByCriteria(new ChGroupTO());
 		model.addAttribute("listGroups", model.addAttribute("listGroups", this.groupService.listGroups()));
@@ -115,7 +115,7 @@ public class GroupController {
 		return "redirect:/group";
 	}
 
-	@RequestMapping("/group/createeditgroup/{id}")
+	@RequestMapping("/home/group/createeditgroup/{id}")
 	public String getGroup(@PathVariable("id") BigDecimal id, Model model){
 		model.addAttribute("group", new GroupManager().convertToChGroupTOFromChgroup(groupService.getGroupById(id)));
 		ChGroup group = groupService.getGroupDetails(id);
@@ -125,7 +125,7 @@ public class GroupController {
 		return "createeditgroup";
 	}
 	
-	@RequestMapping(value="/group/createeditgroup/{id}" , method=RequestMethod.POST)
+	@RequestMapping(value="/home/group/createeditgroup/{id}" , method=RequestMethod.POST)
 	public String editGroup(@PathVariable("id") BigDecimal id,@Valid ChGroupTO chGroupTO, BindingResult result, Model model){
 		model.addAttribute("group", chGroupTO);
 		if (result.hasErrors()) {
@@ -139,13 +139,13 @@ public class GroupController {
 		return "createeditgroup";
 	}
 	
-	@RequestMapping(value="/group/{id}/detail", method = RequestMethod.GET)
+	@RequestMapping(value="/home/group/{id}/detail", method = RequestMethod.GET)
 	public String groupDetails(@PathVariable("id") BigDecimal id, Model model){
 		ChGroup group = groupService.getGroupDetails(id);
 		model.addAttribute("groupdetails", group);
 		return "groupdetails";	
 	}
-	@RequestMapping(value="/group/createeditgroup", method = RequestMethod.GET)
+	@RequestMapping(value="/home/group/createeditgroup", method = RequestMethod.GET)
 	public String createEditGroup(Model model) {
 		List<Serializable> list = chnlCustomerService.list();
 		model.addAttribute("allCustomers", list);
@@ -154,7 +154,7 @@ public class GroupController {
 		return "createeditgroup";
 	}
 
-	@RequestMapping(value="/group/createeditgroup", method = RequestMethod.POST)
+	@RequestMapping(value="/home/group/createeditgroup", method = RequestMethod.POST)
 	public String createGroup(@Valid ChGroupTO chGroupTO,BindingResult result,Model model) {
 		model.addAttribute("mode", "create");
 		model.addAttribute("group", chGroupTO);

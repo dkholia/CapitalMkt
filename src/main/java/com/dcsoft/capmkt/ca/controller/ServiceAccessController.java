@@ -49,14 +49,14 @@ public class ServiceAccessController {
 		this.chnlFapService = chnlFapService;
 	}
 
-	@RequestMapping(value="/fap" , method=RequestMethod.GET)
+	@RequestMapping(value="/home/fap" , method=RequestMethod.GET)
 	public String gotoFapHome(Model model){
 		model.addAttribute("searchFap", new ChFapTO());
 		model.addAttribute("fapList", null);
 		return "fap";
 	}
 	
-	@RequestMapping(value="/fap" , method=RequestMethod.POST)
+	@RequestMapping(value="/home/fap" , method=RequestMethod.POST)
 	public String searchFap(ChFapTO chFapTO, Model model){
 		model.addAttribute("searchFap", chFapTO);
 		List<Serializable> list = chnlFapService.getFapByCriteria(chFapTO);
@@ -68,7 +68,7 @@ public class ServiceAccessController {
 		return "fap";
 	}
 	
-	@RequestMapping(value="/createfap" , method=RequestMethod.GET)
+	@RequestMapping(value="/home/createfap" , method=RequestMethod.GET)
 	public String gotocreateFap( Model model){
 		model.addAttribute("mode", "create");
 		model.addAttribute("fap", new ChFapTO());
@@ -76,7 +76,7 @@ public class ServiceAccessController {
 		return "createfap";
 	}
 	
-	@RequestMapping(value="/createfap" , method=RequestMethod.POST)
+	@RequestMapping(value="/home/createfap" , method=RequestMethod.POST)
 	public String createFap(@Valid ChFapTO fapTO, BindingResult result, Model model){
 		model.addAttribute("mode", "create");
 		model.addAttribute("fap",fapTO);
@@ -109,7 +109,7 @@ public class ServiceAccessController {
 		return "createfap";
 	}
 	
-	@RequestMapping(value="/moveright" , method=RequestMethod.GET)
+	@RequestMapping(value="/home/moveright" , method=RequestMethod.GET)
 	public String moveLeft(@Valid ChFapTO fapTO, BindingResult result, Model model){
 		model.addAttribute("mode", "create");
 		model.addAttribute("fap",fapTO);
@@ -118,7 +118,7 @@ public class ServiceAccessController {
 		return "createfap";
 	}
 	
-	@RequestMapping(value="/fap/details/{id}" , method=RequestMethod.GET)
+	@RequestMapping(value="/home/fap/details/{id}" , method=RequestMethod.GET)
 	public String fapDetails(@PathVariable("id") BigDecimal id, Model model){
 		model.addAttribute("fapdetails", chnlFapService.getServiceAccessDetails(id));
 		return "fapdetails";

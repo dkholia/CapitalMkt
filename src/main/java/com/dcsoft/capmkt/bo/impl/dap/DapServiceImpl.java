@@ -19,6 +19,7 @@ import com.dcsoft.capmkt.orm.ChDap;
 import com.dcsoft.capmkt.orm.dao.impl.DataAccessDAO;
 
 @Service
+@Transactional(rollbackFor=Exception.class )
 public class DapServiceImpl extends ObjectHashImpl implements IDapService {
 
 	private DataAccessDAO dapDAO;
@@ -32,7 +33,7 @@ public class DapServiceImpl extends ObjectHashImpl implements IDapService {
 	}
 
 	@Override
-	@Transactional
+	@Transactional(readOnly=true)
 	public List<Serializable> list() {
 		return getGenericDao().list(ChDap.class.getName());
 	}
@@ -43,7 +44,7 @@ public class DapServiceImpl extends ObjectHashImpl implements IDapService {
 	}
 
 	@Override
-	@Transactional
+	@Transactional(readOnly=true)
 	public List<Serializable> getChannelCustomersDropDown() {
 		List<Serializable> customers = getGenericDao().list("ChChannelCustomer");
 		List<Serializable> dropDowns = new ArrayList<Serializable>();
@@ -57,24 +58,20 @@ public class DapServiceImpl extends ObjectHashImpl implements IDapService {
 	}
 
 	@Override
-	@Transactional
-	public boolean addDataAccess(ChDapTO chDapTO) {
-		try{
+	public boolean addDataAccess(ChDapTO chDapTO)  throws Exception{
 			ChDap chDap = new ChDap();
 			chDap.setDapName(chDapTO.getDapName());
 			chDap.setDapDescription(chDapTO.getDapDescription());
 			chDap.setChannelCustId(chDapTO.getChannelCustId());
 			chDap.setChnlCustName(chDapTO.getChnlCustName());
 			getGenericDao().add(chDap);
+			if(true)
+				throw new Exception("Exception");
 			return true;	
-		}catch(Exception e){
-			e.printStackTrace();
-			return false;
-		}
 	}
 
 	@Override
-	@Transactional
+	@Transactional(readOnly=true)
 	public List<Serializable> getDataAccessByName(String dapName) {
 		ChDap dap = new ChDap();
 		dap.setDapName(dapName);
@@ -82,7 +79,7 @@ public class DapServiceImpl extends ObjectHashImpl implements IDapService {
 	}
 
 	@Override
-	@Transactional
+	@Transactional(readOnly=true)
 	public List<Serializable> getDapByCriteria(Serializable obj) {
 		ChDapTO dapTO = (ChDapTO) obj;
 		ChDap dap = new ChDap();
@@ -92,7 +89,7 @@ public class DapServiceImpl extends ObjectHashImpl implements IDapService {
 	}
 
 	@Override
-	@Transactional
+	@Transactional(readOnly=true)
 	public Serializable getDataAccessDetails(BigDecimal id) {
 		return dapDAO.getDataAccessDetails(id);
 	}

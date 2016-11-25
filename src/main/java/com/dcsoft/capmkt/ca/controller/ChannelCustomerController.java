@@ -25,19 +25,19 @@ public class ChannelCustomerController {
 	@Autowired(required=true)
 	private IChannelCustomerService chnlCustomerService;
 	
-	@RequestMapping(value="/customers" , method=RequestMethod.GET)
+	@RequestMapping(value="/home/customers" , method=RequestMethod.GET)
 	public String gotoUserHome(Model model){
 		model.addAttribute("listCustomers", chnlCustomerService.list());
 		return "customers";
 	}
-	@RequestMapping(value="/createcustomer" , method=RequestMethod.GET)
+	@RequestMapping(value="/home/createcustomer" , method=RequestMethod.GET)
 	public String gotoCreateScreen(Model model){
 		model.addAttribute("mode", Constants.MODE_CREATE);
 		model.addAttribute("customer", new ChannelCustomerTO());
 		return "createcustomer";
 	}
 	
-	@RequestMapping(value="/createcustomer" , method=RequestMethod.POST)
+	@RequestMapping(value="/home/createcustomer" , method=RequestMethod.POST)
 	public String createChannelCustomer(@Valid ChannelCustomerTO customerTO , BindingResult result, Model model){
 		model.addAttribute("mode", Constants.MODE_CREATE);
 		model.addAttribute("customer",customerTO);
@@ -75,7 +75,7 @@ public class ChannelCustomerController {
 		return "createcustomer";
 	}
 	
-	@RequestMapping(value="/customers/customerdetails/{id}" , method=RequestMethod.GET)
+	@RequestMapping(value="/home/customers/customerdetails/{id}" , method=RequestMethod.GET)
 	public String getCustomerDetails(@PathVariable("id") BigDecimal id , Model model ) {
 		model.addAttribute("custdetails", chnlCustomerService.getCustomerDetails(id));
 		return "customerdetails";

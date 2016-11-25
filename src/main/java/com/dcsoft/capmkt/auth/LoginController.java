@@ -1,98 +1,79 @@
 package com.dcsoft.capmkt.auth;
 
-import java.util.Locale;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.LockedException;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.LocaleResolver;
-import org.springframework.web.servlet.support.RequestContextUtils;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.dcsoft.capmkt.bo.intf.LoginService;
-import com.dcsoft.capmkt.orm.ChUser;
-import com.dcsoft.capmkt.orm.ChUserLogin;
 
 @Controller
 public class LoginController {
+
 	
-	/*@Autowired
-	private Facebook facebook;
-	
-	@Autowired
-	private ConnectionRepository connectionRepository;
 
-	public LoginController(Facebook facebook, ConnectionRepository connectionRepository) {
-		this.facebook = facebook;
-		this.connectionRepository = connectionRepository;
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public ModelAndView login(@RequestParam(value = "error", required = false) String error,
+			@RequestParam(value = "logout", required = false) String logout, HttpServletRequest request) {
+
+		ModelAndView model = new ModelAndView();
+		if (error != null) {
+			model.addObject("error", getErrorMessage(request, "SPRING_SECURITY_LAST_EXCEPTION"));
+		}
+
+		if (logout != null) {
+			model.addObject("msg", "You've been logged out successfully.");
+		}
+		model.setViewName("login");
+
+		return model;
+
 	}
-	
-	public LoginController() {
-		// TODO Auto-generated constructor stub
-	}*/
+	// customize the error message
+	private String getErrorMessage(HttpServletRequest request, String key) {
 
-	private LoginService loginService;
+		Exception exception = (Exception) request.getSession().getAttribute(key);
 
-	@Autowired
-	@Qualifier(value="loginService")
-	public void setLoginService(LoginService loginService) {
-		this.loginService = loginService;
-	}
+		String error = "";
+		if (exception instanceof BadCredentialsException) {
+			error = "Invalid username and password!";
+		} else if (exception instanceof LockedException) {
+			error = exception.getMessage();
+		} else {
+			error = "Invalid username and password!";
+		}
 
-	@RequestMapping(value= "/", method = RequestMethod.GET)
-	public String gotologinGet(Model model,HttpSession sessionObj){
-		model.addAttribute("login", new ChUserLogin());
-		return "/";
-	}
-
-	@RequestMapping(value= "/", method = RequestMethod.POST)
-	public String gotologin(Model model,HttpSession sessionObj){
-		model.addAttribute("login", new ChUserLogin());
-		sessionObj.setAttribute("status", "valid");
-		return "/";
-	}
-
-	@RequestMapping(value= "/login", method = RequestMethod.POST)
-	public String login(@Valid ChUserLogin chUserLogin ,BindingResult result , Model model, @RequestParam("username") String username , @RequestParam("password") String password,HttpServletRequest request, HttpServletResponse response){
-
-		/*chUserLogin.setUname(username);
-		chUserLogin.setUpwd(password);
-		model.addAttribute("login", chUserLogin);
-
-		if(result.hasErrors()){
-			CustomErrorHandler handler = new CustomErrorHandler(result.getAllErrors());
-			model.addAttribute("errors", handler.getCustomErrors());
-			return "redirect:/";
-		}*/
-		
-		/* if (connectionRepository.findPrimaryConnection(Facebook.class) == null) {
-	            return "redirect:/connect/facebook";
-	     }*/
-		 
-		HttpSession session = request.getSession();
-
-		ChUser user = new ChUser(username,password,true);
-		user.setUsertyp("admin");
-
-		if(loginService.findByExample(user).isEmpty())
-			return "redirect:/";
-
-		session.setAttribute("USER_TOKEN", user);
-		LocaleResolver localeResolver = RequestContextUtils.getLocaleResolver(request);
-		localeResolver.setLocale(request, response, StringUtils.parseLocaleString("en"));
-		session.setAttribute("locale", new Locale("en", "US"));
-
-		return "redirect:/home";
+		return error;
 	}
 
+	@RequestMapping(value = "/403", method = RequestMethod.GET)
+	public ModelAndView accesssDenied() {
+
+		ModelAndView model = new ModelAndView();
+
+		// check if user is login
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		if (!(auth instanceof AnonymousAuthenticationToken)) {
+			UserDetails userDetail = (UserDetails) auth.getPrincipal();
+			System.out.println(userDetail);
+
+			model.addObject("username", userDetail.getUsername());
+
+		}
+
+		model.setViewName("403");
+		return model;
+
+	}
 }

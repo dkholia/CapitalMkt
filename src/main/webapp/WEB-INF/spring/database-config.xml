@@ -9,6 +9,7 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
 		 http://www.springframework.org/schema/security
           http://www.springframework.org/schema/security/spring-security-4.0.xsd">
+          
 	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<beans:property name="driverClassName" value="org.postgresql.Driver" />
@@ -17,7 +18,7 @@
 		<beans:property name="username" value="postgres" />
 		<beans:property name="password" value="postgres" />
 	</beans:bean>
-
+	
 	<!-- Hibernate 4 SessionFactory Bean definition -->
 	<beans:bean id="hibernate4AnnotatedSessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
@@ -34,6 +35,8 @@
 				<beans:value>com.dcsoft.capmkt.orm.CrwCaResoln</beans:value>
 				<beans:value>com.dcsoft.capmkt.orm.UserPreferences</beans:value>
 				<beans:value>com.dcsoft.capmkt.orm.User</beans:value>
+				<beans:value>com.dcsoft.security.config.Users</beans:value>
+				<beans:value>com.dcsoft.security.config.UserRoles</beans:value>
 				<beans:value>com.dcsoft.capmkt.orm.AdtAdtDtlTbl</beans:value>
 				<beans:value>com.dcsoft.capmkt.orm.BccCountry</beans:value>
 				<beans:value>com.dcsoft.capmkt.orm.DsCustodyTiStaging</beans:value>
@@ -46,7 +49,8 @@
 				<beans:value>com.dcsoft.capmkt.orm.ChUser</beans:value>
 				<beans:value>com.dcsoft.capmkt.orm.ChUserGroupMapping</beans:value>
 				<beans:value> com.dcsoft.capmkt.orm.ChGroup</beans:value>
-				<beans:value>com.dcsoft.capmkt.orm.ChChannelCustGrpMapping</beans:value>
+				<beans:value>com.dcsoft.capmkt.orm.ChChannelCustGrpMapping
+				</beans:value>
 				<beans:value>com.dcsoft.capmkt.orm.ChUserGroupMapping</beans:value>
 				<beans:value>com.dcsoft.capmkt.orm.ChChannelCustomer</beans:value>
 				<beans:value>com.dcsoft.capmkt.orm.ChDapCustMapping</beans:value>
@@ -61,7 +65,8 @@
 				<beans:prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect
 				</beans:prop>
 				<beans:prop key="hibernate.show_sql">false</beans:prop>
-				 <beans:prop key="hibernate.hbm2ddl.auto" >update</beans:prop>
+				<beans:prop key="hibernate.hbm2ddl.auto">update
+				</beans:prop>
 			</beans:props>
 		</beans:property>
 	</beans:bean>
@@ -97,25 +102,24 @@
 		<beans:property name="sessionFactory"
 			ref="hibernate4AnnotatedSessionFactory"></beans:property>
 	</beans:bean>
-	
-	<beans:bean id="commonDAO"
-		class="com.dcsoft.capmkt.orm.dao.impl.CommonDAO">
+
+	<beans:bean id="commonDAO" class="com.dcsoft.capmkt.orm.dao.impl.CommonDAO">
 		<beans:property name="sessionFactory"
 			ref="hibernate4AnnotatedSessionFactory"></beans:property>
 	</beans:bean>
-	
+
 	<beans:bean id="fapDAO"
 		class="com.dcsoft.capmkt.orm.dao.impl.ServiceAccessDAO">
 		<beans:property name="sessionFactory"
 			ref="hibernate4AnnotatedSessionFactory"></beans:property>
 	</beans:bean>
-	
+
 	<beans:bean id="dapDAO"
 		class="com.dcsoft.capmkt.orm.dao.impl.DataAccessDAO">
 		<beans:property name="sessionFactory"
 			ref="hibernate4AnnotatedSessionFactory"></beans:property>
 	</beans:bean>
-	
+
 	<beans:bean id="userGroupMapDAO"
 		class="com.dcsoft.capmkt.orm.dao.impl.ChannelUserGroupMappingDAO">
 		<beans:property name="sessionFactory"
@@ -131,13 +135,12 @@
 		<beans:property name="sessionFactory"
 			ref="hibernate4AnnotatedSessionFactory"></beans:property>
 	</beans:bean>
-	
+
 	<beans:bean id="objectMappingDAO"
 		class="com.dcsoft.capmkt.orm.dao.impl.ObjectMappingDAO">
 		<beans:property name="sessionFactory"
 			ref="hibernate4AnnotatedSessionFactory"></beans:property>
 	</beans:bean>
-	
-	<!-- DAO End -->
 
+	<!-- DAO End -->
 </beans:beans>

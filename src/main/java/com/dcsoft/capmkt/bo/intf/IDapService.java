@@ -8,7 +8,7 @@ import com.dcsoft.capmkt.bo.transferobj.ChDapTO;
 
 public interface IDapService extends IObjectHash {
 	public List<Serializable> getChannelCustomersDropDown();
-	public boolean addDataAccess(ChDapTO chDapTO);
+	public boolean addDataAccess(ChDapTO chDapTO) throws Exception;
 	public List<Serializable> getDataAccessByName(String dapName);
 	public List<Serializable> getDapByCriteria(Serializable fapTO);
 	public Serializable getDataAccessDetails(BigDecimal id);

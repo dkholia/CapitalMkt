@@ -14,11 +14,11 @@
 		<tbody>
 			<c:forEach items="${listCustomers}" var ="customer">
 				<tr>
-					<td><a href='<c:url value="/customers/customerdetails/${customer.channelCustId}"></c:url>'>${customer.channelCustName}</a></td>
+					<td><a href='<c:url value="/home/customers/customerdetails/${customer.channelCustId}"></c:url>'>${customer.channelCustName}</a></td>
 					<td>${customer.channelCustDesc}</td>
 					<td>
-						<a  class="editObj" href="<c:url value='/channeluser/${user.userid}/editUser' />" ></a>
-						<a class="deleteObj" href="<c:url value='/channeluser/${user.userid}/deleteUser' />" ></a>
+						<a  class="editObj" href="<c:url value='/home/channeluser/${user.userid}/editUser' />" ></a>
+						<a class="deleteObj" href="<c:url value='/home/channeluser/${user.userid}/deleteUser' />" ></a>
 					</td>
 				</tr>
 			</c:forEach>

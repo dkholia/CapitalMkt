@@ -19,12 +19,12 @@
 			<c:forEach items="${userList}" var ="user">
 				<c:if test="${user.usertyp eq 'nonadmin'}">
 				<tr>
-					<td ><a oncontextmenu="alert('hi');" contextmenu="menu"  href="<c:url value='/channeluser/${user.userid}/details/' />" >${user.uname} </a></td>
+					<td ><a oncontextmenu="alert('hi');" contextmenu="menu"  href="<c:url value='/home/channeluser/${user.userid}/details/' />" >${user.uname} </a></td>
 					<td>${user.lasname}, ${user.firstname} ${user.middlename}</td>
 					<td>${user.isactive}</td>
 					<td>${user.datecreated}</td>
-					<td><a  class="editObj" href="<c:url value='/channeluser/${user.userid}/editUser' />" ></a>
-					<a class="deleteObj" href="<c:url value='/channeluser/${user.userid}/deleteUser' />" ></a></td>
+					<td><a  class="editObj" href="<c:url value='/home/channeluser/${user.userid}/editUser' />" ></a>
+					<a class="deleteObj" href="<c:url value='/home/channeluser/${user.userid}/deleteUser' />" ></a></td>
 				</tr>
 				</c:if>
 			</c:forEach>

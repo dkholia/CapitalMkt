@@ -24,7 +24,6 @@ import com.dcsoft.capmkt.bo.intf.IGroupService;
 import com.dcsoft.capmkt.bo.transferobj.ChUserTO;
 import com.dcsoft.capmkt.orm.ChUser;
 import com.dcsoft.capmkt.util.errors.CustomErrorHandler;
-
 @Controller
 public class ChannelUserController {
 	
@@ -49,14 +48,14 @@ public class ChannelUserController {
 	@Qualifier(value="chnlDapService")
 	private IDapService chnlDapService;
 	
-	@RequestMapping(value="/channeluser" , method=RequestMethod.GET)
+	@RequestMapping(value="/home/channeluser" , method=RequestMethod.GET)
 	public String gotoUserHomeBlank(Model model){
 		model.addAttribute("searchUser", new ChUserTO());
 		model.addAttribute("userList", null);
 		return "channeluser";
 	}
 	
-	@RequestMapping(value="/channeluser" , method=RequestMethod.POST)
+	@RequestMapping(value="/home/channeluser" , method=RequestMethod.POST )
 	public String gotoUserHome(ChUserTO userto,Model model){
 		model.addAttribute("searchUser", userto);
 		List<Serializable> returnList = channelUserService.getUserByExample(userto);
@@ -72,13 +71,13 @@ public class ChannelUserController {
 		return "channeluser";
 	}
 	
-	@RequestMapping(value="/channeluser/{id}/details" , method=RequestMethod.GET)
+	@RequestMapping(value="/home/channeluser/{id}/details" , method=RequestMethod.GET)
 	public String getUserDetails(@PathVariable ("id") BigDecimal id,Model model){
 		model.addAttribute("userDetails", channelUserService.getUserDetails(id));
 		return "userDetails";
 	}
 	
-	@RequestMapping(value="/channeluser/createUser" , method= RequestMethod.GET)
+	@RequestMapping(value="/home/channeluser/createUser" , method= RequestMethod.GET)
 	public String opencreateUserScreen(Model model) {
 		model.addAttribute("mode", "create");
 		model.addAttribute("user", new ChUserTO());
@@ -90,7 +89,7 @@ public class ChannelUserController {
 		return "createUser";
 	}
 	
-	@RequestMapping(value="/channeluser/createUser" , method= RequestMethod.POST)
+	@RequestMapping(value="/home/channeluser/createUser" , method= RequestMethod.POST)
 	public String createUser(@Valid ChUserTO userTO, BindingResult result, Model model) {
 		model.addAttribute("mode", "create");
 		model.addAttribute("user", userTO);
@@ -137,16 +136,16 @@ public class ChannelUserController {
 		return "createUser";
 	}
 	
-	@RequestMapping(value="/channeluser/{id}/editUser")
+	@RequestMapping(value="/home/channeluser/{id}/editUser")
 	public String edituser(@PathVariable ("id") BigDecimal id, Model model){
 		model.addAttribute("mode", "edit");
 		model.addAttribute("userDetails", channelUserService.getUserDetails(id));
 		return "editUser";
 	}
 	
-	@RequestMapping(value="/channeluser/{id}/deleteUser" /*, method=RequestMethod.DELETE*/)
+	@RequestMapping(value="/home/channeluser/{id}/deleteUser" /*, method=RequestMethod.DELETE*/)
 	public String deleteuser(@PathVariable ("id") BigDecimal id, Model model){
 		channelUserService.removeUser(id);
-		return "redirect:/channeluser";
+		return "redirect:/home/channeluser";
 	}
 }
