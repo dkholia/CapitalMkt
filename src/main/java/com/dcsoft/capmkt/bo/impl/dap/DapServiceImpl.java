@@ -65,8 +65,6 @@ public class DapServiceImpl extends ObjectHashImpl implements IDapService {
 			chDap.setChannelCustId(chDapTO.getChannelCustId());
 			chDap.setChnlCustName(chDapTO.getChnlCustName());
 			getGenericDao().add(chDap);
-			if(true)
-				throw new Exception("Exception");
 			return true;	
 	}
 

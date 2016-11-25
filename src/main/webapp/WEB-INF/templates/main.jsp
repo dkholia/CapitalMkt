@@ -64,7 +64,7 @@
 	<form:form id="mainform" class="form-inline" role="form" autocomplete="off">
 		
 		<div id="dialog-div"> </div>
-		<div id="header" style="display: none;">
+		<div id="header">
 			<div id="headerTitle">
 				<tiles:insertAttribute name="header" />
 			</div>
