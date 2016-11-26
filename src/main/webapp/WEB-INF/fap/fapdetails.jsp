@@ -77,7 +77,7 @@
 					<tbody>
 						<c:forEach items="${fapdetails.chFapUserMappings}" var="userMappings">
 							<tr>
-								<td><a href="<c:url value='/channeluser/${userMappings.chUser.userid}/details' />">${userMappings.chUser.uname}</a></td>
+								<td><a href="<c:url value='/home/channeluser/${userMappings.chUser.userid}/details' />">${userMappings.chUser.uname}</a></td>
 								<td>${userMappings.chUser.lasname},${userMappings.chUser.firstname} ${userMappings.chUser.middlename}</td>
 							</tr>
 						</c:forEach>

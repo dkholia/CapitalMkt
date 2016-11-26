@@ -18,6 +18,7 @@
 
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script
@@ -48,23 +49,18 @@
 
 	<c:url value="/logout" var="logoutUrl" />
 	<form action="${logoutUrl}" method="post" id="logoutForm">
-		<input type="hidden" name="${_csrf.parameterName}"
-			value="${_csrf.token}" />
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 	</form>
 	<script>
-		function formSubmit() {
+		function logout() {
 			document.getElementById("logoutForm").submit();
 		}
 	</script>
-
-	<c:if test="${pageContext.request.userPrincipal.name != null}">
-				<a href="javascript:formSubmit()"> Logout</a>
-	</c:if>
 	
 	<form:form id="mainform" class="form-inline" role="form" autocomplete="off">
 		
 		<div id="dialog-div"> </div>
-		<div id="header">
+		<!-- <div id="header"> -->
 			<div id="headerTitle">
 				<tiles:insertAttribute name="header" />
 			</div>
@@ -98,7 +94,7 @@
 		</div>
 		<br>
 		<br>
-		<div id="footer" style="display: none;" >
+		<div style="position: absolute;bottom: 0;" >
 			<tiles:insertAttribute name="footer" />
 		</div>
 	</form:form>

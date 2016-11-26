@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -29,14 +30,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http.authorizeRequests().antMatchers("/home/**")
-			.access("hasRole('ROLE_ADMIN')").and().formLogin()
+			.access("hasRole('ROLE_ADMIN')")
+			.and().formLogin()
 			.loginPage("/login").defaultSuccessUrl("/home").failureUrl("/login?error")
 				.usernameParameter("username")
 				.passwordParameter("password")
-				.and().logout().logoutUrl("/logout").logoutSuccessUrl("/login?logout")
-				.and().csrf().and().sessionManagement().invalidSessionUrl("/login")
+				.and().logout().logoutUrl("/logout")
+				.and().csrf()
+				//.and().rememberMe()
 				.and().exceptionHandling().accessDeniedPage("/403")
-				.and().rememberMe();
+				.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.ALWAYS).maximumSessions(1)
+				.expiredUrl("/login?expired");
 	}
 	
 	@Bean

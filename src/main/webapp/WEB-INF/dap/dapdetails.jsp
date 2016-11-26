@@ -17,7 +17,7 @@
 			</td>
 			<td>${dapdetails.dapDescription}</td>
 			<td><spring:message code="label.dap.chnlcust"/> </td>
-			<td><a href='<c:url value="/customers/customerdetails/${dapdetails.channelCustId}"></c:url>' > <i class="fa fa-user" aria-hidden="true"></i></a></td>
+			<td><a href='<c:url value="/home/customers/customerdetails/${dapdetails.channelCustId}"></c:url>' > <i class="fa fa-user" aria-hidden="true"></i></a></td>
 		</tr>
 	</table>
 </div>
@@ -44,7 +44,7 @@
 					<tbody>
 						<c:forEach items="${dapdetails.chDapUserMappings}" var="userMappings">
 							<tr>
-								<td><a href="<c:url value='/channeluser/${userMappings.chUser.userid}/details' />">${userMappings.chUser.uname}</a></td>
+								<td><a href="<c:url value='/home/channeluser/${userMappings.chUser.userid}/details' />">${userMappings.chUser.uname}</a></td>
 								<td>${userMappings.chUser.lasname},${userMappings.chUser.firstname} ${userMappings.chUser.middlename}</td>
 							</tr>
 						</c:forEach>

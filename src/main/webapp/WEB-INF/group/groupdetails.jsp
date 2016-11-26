@@ -45,7 +45,7 @@
 						<c:forEach items="${groupdetails.chChannelCustGrpMappings}" var="chChannelCustGrpMappings">
 							<tr>
 
-								<td><a href="<c:url value='/customers/customerdetails/${chChannelCustGrpMappings.chChannelCustomer.channelCustId}' />"> ${chChannelCustGrpMappings.chChannelCustomer.channelCustName}</a></td>
+								<td><a href="<c:url value='/home/customers/customerdetails/${chChannelCustGrpMappings.chChannelCustomer.channelCustId}' />"> ${chChannelCustGrpMappings.chChannelCustomer.channelCustName}</a></td>
 								<td>${chChannelCustGrpMappings.chChannelCustomer.channelCustDesc}</td>
 							</tr>
 						</c:forEach>
@@ -84,7 +84,7 @@
 						var="chUserGroupMappings">
 						<tr>
 							<td><a
-								href="<c:url value='/channeluser/${chUserGroupMappings.chUser.userid}/details' />">${chUserGroupMappings.chUser.uname}</a></td>
+								href="<c:url value='/home/channeluser/${chUserGroupMappings.chUser.userid}/details' />">${chUserGroupMappings.chUser.uname}</a></td>
 							<td>${chUserGroupMappings.chUser.lasname},${chUserGroupMappings.chUser.firstname}&nbsp;${chUserGroupMappings.chUser.middlename}</td>
 							<td>${chUserGroupMappings.chUser.datecreated}</td>
 						</tr>

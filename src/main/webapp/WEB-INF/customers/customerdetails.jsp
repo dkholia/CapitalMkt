@@ -41,7 +41,7 @@
 						<c:forEach items="${custdetails.chGroups}"
 							var="group">
 							<tr>
-								<td><a href="<c:url value='/group/${group.groupId}/detail' />">${group.groupName }</a></td>
+								<td><a href="<c:url value='/home/group/${group.groupId}/detail' />">${group.groupName }</a></td>
 								<td>${group.groupdesc }</td>
 							</tr>
 						</c:forEach>

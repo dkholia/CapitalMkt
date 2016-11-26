@@ -21,7 +21,8 @@ public class LoginController {
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView login(@RequestParam(value = "error", required = false) String error,
-			@RequestParam(value = "logout", required = false) String logout, HttpServletRequest request) {
+			@RequestParam(value = "logout", required = false) String logout,
+			@RequestParam(value = "expired", required = false) String expired,HttpServletRequest request) {
 
 		ModelAndView model = new ModelAndView();
 		if (error != null) {
@@ -31,11 +32,15 @@ public class LoginController {
 		if (logout != null) {
 			model.addObject("msg", "You've been logged out successfully.");
 		}
+		if(expired!=null){
+			model.addObject("msg", "Your session has expired. Please login again.");
+		}
 		model.setViewName("login");
 
 		return model;
 
 	}
+	
 	// customize the error message
 	private String getErrorMessage(HttpServletRequest request, String key) {
 

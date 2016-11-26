@@ -47,7 +47,7 @@
 						<c:forEach items="${userDetails.chUserGroupMappings}"
 							var="usergroupMap">
 							<tr>
-								<td><a href="<c:url value='/group/${usergroupMap.chGroup.groupId}/detail' />">${usergroupMap.chGroup.groupName }</a></td>
+								<td><a href="<c:url value='/home/group/${usergroupMap.chGroup.groupId}/detail' />">${usergroupMap.chGroup.groupName }</a></td>
 								<td>${usergroupMap.chGroup.groupdesc }</td>
 							</tr>
 						</c:forEach>
@@ -84,7 +84,7 @@
 					<c:forEach items="${userDetails.chFapUserMappings}"
 						var="userfapMap">
 						<tr>
-							<td><a href="<c:url value='/fap/details/${userfapMap.chFap.fapId}' />">${userfapMap.chFap.fapName }</a></td>
+							<td><a href="<c:url value='/home/fap/details/${userfapMap.chFap.fapId}' />">${userfapMap.chFap.fapName }</a></td>
 							<td>${userfapMap.chFap.fapDescription }</td>
 						</tr>
 					</c:forEach>
@@ -121,7 +121,7 @@
 					<c:forEach items="${userDetails.chDapUserMappings}"
 						var="userdapMap">
 						<tr>
-							<td><a href="<c:url value='/dap/details/${userdapMap.chDap.dapId}' />">${userdapMap.chDap.dapName }</a></td>
+							<td><a href="<c:url value='/home/dap/details/${userdapMap.chDap.dapId}' />">${userdapMap.chDap.dapName }</a></td>
 							<td>${userdapMap.chDap.dapDescription }</td>
 						</tr>
 					</c:forEach>

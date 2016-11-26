@@ -1,6 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+
 <head>
 <link
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
@@ -22,17 +24,7 @@
 
 <nav id="main-nav" role="navigation">
 	<ul id="main-menu" class="sm sm-blue">
-		<li><a href="<c:url value="/home"/>"><spring:message code="label.menu.home"/></a>
-			<!-- <ul class="mega-menu">
-				<li>
-					<div style="width:400px;max-width:100%;">
-            			<div style="padding:5px 24px;">
-							for more details visit our website <a href="http://www.google.com">Google</a>            				
-  	 					 </div>
-  					</div>
-				</li>
-			</ul> -->
-		</li>
+		<li><a href="<c:url value="/home"/>"><spring:message code="label.menu.home"/></a></li>
 		<li><a><spring:message code="label.menu.users"/></a>
 			<ul id="sub-menu-users">
 				<li><a href="<c:url value="/home/channeluser"/>">User List</a></li>
@@ -43,7 +35,7 @@
 			<ul id="sub-menu-group">
 				<li><a href="<c:url value="/home/group"/>">Group List</a></li>
 				<li><a href="<c:url value="/home/group/createeditgroup"/>">Create Group</a></li>
-				<li><a href="<c:url value="/home/group/createeditgroup"/>">Attach Customers to Group</a></li>
+				<li><a href="<c:url value="/home/group/createeditgroup"/>">Attach Customers to Group</a></li>				
 			</ul>
 		</li>
 		<li><a><spring:message code="label.menu.customers"/></a>

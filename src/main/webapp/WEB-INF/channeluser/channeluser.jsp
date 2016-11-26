@@ -32,7 +32,7 @@
 	</table>
 	<!-- Context Menu Start-->
 	<ul id="contextMenu" class="dropdown-menu" role="menu" style="display:none" >
-	    <li><a tabindex="-1" href= "<c:url value='/group/55/detail' />">Action</a></li>
+	    <li><a tabindex="-1" href= "<c:url value='/home/group/55/detail' />">Action</a></li>
 	    <li><a tabindex="-1" href="#">Another action</a></li>
 	    <li><a tabindex="-1" href="#">Something else here</a></li>
 	    <li class="divider"></li>
