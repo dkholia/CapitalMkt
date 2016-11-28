@@ -22,12 +22,9 @@ import com.dcsoft.capmkt.bo.intf.IChannelCustomerGrpMapping;
 import com.dcsoft.capmkt.bo.intf.IChannelCustomerService;
 import com.dcsoft.capmkt.bo.intf.IGroupService;
 import com.dcsoft.capmkt.bo.transferobj.ChGroupTO;
-import com.dcsoft.capmkt.bo.transferobj.ChUserTO;
 import com.dcsoft.capmkt.bo.transferobj.ChannelCustomerTO;
-import com.dcsoft.capmkt.orm.ChChannelCustomer;
 import com.dcsoft.capmkt.orm.ChGroup;
 import com.dcsoft.capmkt.orm.dao.manager.GroupManager;
-import com.dcsoft.capmkt.util.errors.CustomError;
 import com.dcsoft.capmkt.util.errors.CustomErrorHandler;
 
 @Controller

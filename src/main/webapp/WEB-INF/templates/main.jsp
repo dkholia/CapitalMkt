@@ -42,40 +42,40 @@
 	href="https://cdn.datatables.net/1.10.11/css/dataTables.bootstrap.min.css">
  <script type="text/javascript"
 	src="<c:url value="/resources/js/common.js"/>"></script>
+<script type="text/javascript">
+var elements= "";
 
+$(function(){
+	var array = elements.split(",");
+	$.each(array,function(i){
+		 $(array[i]).addClass("borderRed");
+	});
+});
+</script>
 
 </head>
 <body>
-
+	
 	<c:url value="/logout" var="logoutUrl" />
 	<form action="${logoutUrl}" method="post" id="logoutForm">
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 	</form>
-	<script>
-		function logout() {
-			document.getElementById("logoutForm").submit();
-		}
-	</script>
 	
 	<form:form id="mainform" class="form-inline" role="form" autocomplete="off">
-		
-		<div id="dialog-div"> </div>
-		<!-- <div id="header"> -->
-			<div id="headerTitle">
-				<tiles:insertAttribute name="header" />
-			</div>
-		</div>
-		<div>
+		<tiles:insertAttribute name="header" />
+		<div style="margin-top: 0px;">
 			<tiles:insertAttribute name="menu" />
 		</div>
-		<!-- <div id="content"> -->
 		<br>
-		<div id="message-div" style="max-width: 600px; max-height: 100px; overflow: auto;">
+		<div id="message-div" style="max-height: 100px; overflow: auto;max-width:1000px;">
 			<c:if test="${!empty errors}">
 				<div class="error">
 					<ul >
 						<c:forEach items="${errors}" var="error">
 							<li>${error.name}&nbsp;${error.message} </li>
+							<script>
+								elements= elements+"#${error.name},";
+							</script>
 						</c:forEach>
 					</ul>
 				</div>

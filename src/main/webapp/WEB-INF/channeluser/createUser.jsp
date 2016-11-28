@@ -7,7 +7,7 @@
  <form:form id="createUser" commandName="user" method="post" action="${addAction}" autocomplete="false" >
  	<table class="table">
  		<tr>
- 			<td><spring:message code="label.createuser.userid"></spring:message> </td><td><form:input path="loginid"/> </td><td/><td/><td/><td/><td/><td/>
+ 			<td><spring:message code="label.createuser.userid"></spring:message> </td><td colspan="7"><form:input path="loginid"/> </td>
  		</tr>
  		<tr>
  			<td><spring:message code="label.createuser.fname"></spring:message> </td><td><form:input path="fname"/> </td>

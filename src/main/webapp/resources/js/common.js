@@ -118,5 +118,26 @@ $( ".reset" ).click(function() {
     $(':checkbox, :radio').prop('checked', false);
 });
 
+function logout() {
+	document.getElementById("logoutForm").submit();
+}
+
+function deleteUser(userid) {
+	//$( "#mainform").trigger( "submit");
+	var jqxhr = $.post( "http://localhost:18080/CapitalMkt/home/channeluser/"+userid+"/deleteUser", function() {
+		})
+		  .done(function() {
+		  })
+		  .fail(function() {
+		  })
+		  .always(function() {
+			  $( "#message-div" ).css("color","green").text( "User deleted successfully" ).show().fadeOut( 2000 );
+		  });
+	/*$.ajax({
+		  type: "POST",
+		  url: "./home/channeluser/"+userid+"/deleteUser"
+	});*/
+	//$( "#mainform").trigger( "submit");
+}
 
 

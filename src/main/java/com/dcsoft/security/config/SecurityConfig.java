@@ -37,7 +37,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.passwordParameter("password")
 				.and().logout().logoutUrl("/logout")
 				.and().csrf()
-				//.and().rememberMe()
 				.and().exceptionHandling().accessDeniedPage("/403")
 				.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.ALWAYS).maximumSessions(1)
 				.expiredUrl("/login?expired");

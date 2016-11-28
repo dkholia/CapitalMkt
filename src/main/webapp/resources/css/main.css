@@ -116,17 +116,19 @@ body {
 }
 
 ul{
-	list-style-type: none;
+	list-style-type: circle;
 }
 
 .success {
-	background-color: #53F9CE;
+	/* background-color: #53F9CE; */
 	width:50%;
+	color: green;
 }
 
 .error {
-	background-color: #FBBCBC;
+	/* background-color: #FBBCBC; */
 	width:50%;
+	color: red;
 }
 
 formfield {
@@ -160,6 +162,11 @@ a.deleteObj
     padding-right: 20px;
 }
 
+img.closeObj
+{
+	 background: transparent url('../images/close-icon.png') no-repeat center right;
+}
+
 .table td
 {
 	font-size: 13px;
@@ -191,3 +198,47 @@ a.deleteObj
 	padding: 2px;
 }
 
+img.close-image{
+    display: block;
+    float:right;
+    position:relative;
+    top:0px;
+    right: 0px;
+    height: 20px;
+}
+
+.borderRed{
+	border-color :red;
+	border:solid 1px red;
+	border-image: none;
+}
+
+/* ul {list-style: none;padding: 0px;margin: 0px;  display:table;width: 100%;}
+  ul li {display: block;position: relative;float: left;border:1px solid #85C1A9;}
+  li ul {display: none;}
+  ul li a {display: block;background: #85C1E9;padding: 5px 10px 5px 10px;text-decoration: none;
+           white-space: nowrap;color: #fff;}
+  ul li a:hover {background: #fff;}
+  li:hover ul {display: block; position: absolute;}
+  li:hover li {float: none;}
+  li:hover a {background: #85C1E9;}
+  li:hover li a:hover {background: #fff;}
+  #navbar li ul li {border-top: 0px;} */
+
+
+/* ul {list-style: none;padding: 0px;margin: 0px; display: table;width: 100%; background-color:#fff;}
+ ul li{
+    padding: 2px;
+    display:table-cell;
+    width: 50px; 
+    text-align: center;
+    background: #85C1E9;
+}
+li ul {display: none;}
+ul li a {display: block;padding: 5px 10px 5px 10px;text-decoration: none;white-space: nowrap;color: #fff;}
+ul li a:hover {background: #CEE3F6;}
+li:hover ul {display: block; position: absolute;}
+li:hover li {float: none;}
+li:hover a {background: #85C1E9;}
+li:hover li a:hover {background: #CEE3F6;}
+ #navbar li ul li {border-top: 0px;}  */
