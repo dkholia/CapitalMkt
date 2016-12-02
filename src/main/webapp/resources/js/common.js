@@ -139,5 +139,20 @@ function deleteUser(userid) {
 	});*/
 	//$( "#mainform").trigger( "submit");
 }
-
-
+//Show loading page when any action is being performed. Added by Deep Kholia
+function showWaitScreen(formname){
+	//var msg=getApplicationMessage("WCMSG001");
+	$(document).ready(function() {
+ 		$("body").prepend('<div id="overlay"  style="z-index: 5000; display: none;opacity:0.1; background-color:#ccc;position:fixed;width:100%;height:100%;top:0px;left:0px;z-index:5000;filter:alpha(opacity=10);"></div>');
+    	$("body").prepend("<div id='PleaseWait' style='display: none;z-index: 6000; position:absolute;top:35%;left:50%;'><center><img src='./img/loading.gif' /></center></div>");
+	});
+	$("#"+formname).submit(function() {
+		var pass = true;
+		//showScreenCoverDiv();
+		if(pass == false){
+		   return false;
+		}
+		$("#overlay, #PleaseWait").show();
+		return true;
+	});
+}
