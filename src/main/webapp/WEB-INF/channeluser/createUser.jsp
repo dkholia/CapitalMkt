@@ -10,7 +10,7 @@
  			<td><spring:message code="label.createuser.userid"></spring:message> </td><td colspan="7"><form:input path="loginid"/> </td>
  		</tr>
  		<tr>
- 			<td><spring:message code="label.createuser.fname"></spring:message> </td><td><form:input path="fname"/> </td>
+ 			<td><spring:message code="label.createuser.fname"></spring:message> </td><td><form:input path="fname"/></td>
  			<td><spring:message code="label.createuser.mname"></spring:message> </td><td><form:input path="mname"/></td>
  			<td><spring:message code="label.createuser.lname"></spring:message> </td><td><form:input path="lname"/></td>
  			<td><spring:message code="label.createuser.dob"></spring:message> </td><td><form:input path="dob" class="datepicker"/></td>
@@ -139,10 +139,8 @@
 			</div>
 		</div>
 	</div>
- 	
- 	
  	<div align="right">
- 		<input type="reset" value='<spring:message code="label.reset"></spring:message>'/>
- 		<input type="submit" value='<spring:message code="label.submit"></spring:message>'/>
+ 		<input type="submit" class="btn btn-primary btn-large center" value='<spring:message code="label.submit"></spring:message>'/>
+ 		<input type="reset"  class="btn  btn-large center" value='<spring:message code="label.reset"></spring:message>'/>
  	</div>
  </form:form>

@@ -5,7 +5,7 @@
 <c:if test="${!empty userList}">
 	<spring:message code="label.user.list"></spring:message>
 	
-	<table  class="table table-striped table-bordered" id="usersTable">
+	<table  class="width99 table table-striped table-bordered " id="usersTable">
 		<thead>
 			<tr>
 			<th width="120" draggable="true" >User ID</th>
@@ -19,7 +19,7 @@
 			<c:forEach items="${userList}" var ="user">
 				<c:if test="${user.usertyp eq 'nonadmin'}">
 				<tr>
-					<td ><a oncontextmenu="alert('hi');" contextmenu="menu"  href="<c:url value='/home/channeluser/${user.userid}/details/' />" >${user.uname} </a></td>
+					<td ><a  contextmenu="menu"  href="<c:url value='/home/channeluser/${user.userid}/details/' />" >${user.uname} </a></td>
 					<td>${user.lasname}, ${user.firstname} ${user.middlename}</td>
 					<td>${user.isactive}</td>
 					<td>${user.datecreated}</td>
@@ -34,7 +34,7 @@
 		</tbody>	
 	</table>
 	<!-- Context Menu Start-->
-	<ul id="contextMenu" class="dropdown-menu" role="menu" style="display:none" >
+	<ul id="contextMenu" class="dropdown-menu" role="menu" >
 	    <li><a tabindex="-1" href= "<c:url value='/home/group/55/detail' />">Action</a></li>
 	    <li><a tabindex="-1" href="#">Another action</a></li>
 	    <li><a tabindex="-1" href="#">Something else here</a></li>

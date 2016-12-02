@@ -21,13 +21,5 @@
 				<form:input path="dob" class="datepicker"/>
 			</td>
 		</tr>
-		<tr>
-			<td colspan="6" align="right">
-				<button type="submit" class="btn btn-primary btn-large center"
-					value="Submit"><spring:message code="label.search" /></button>
-				<button class="btn btn-primary btn-large center" type="reset"
-					onclick=""><spring:message code="label.reset"/></button>
-			</td>
-		</tr>
 	</table>
 </form:form>

@@ -19,13 +19,13 @@
  				 <form:options items="${customers}" itemValue="id" itemLabel="value" />
  			</form:select></td>
 		</tr>
-		<tr>
+		<%-- <tr>
 			<td colspan="6" align="right">
 				<button type="submit" class="btn btn-primary btn-large center"
 					value="Submit"><spring:message code="label.search" /></button>
 				<button class="btn btn-primary btn-large center reset" type="reset" 
 					onclick=""><spring:message code="label.reset"/></button>
 			</td>
-		</tr>
+		</tr> --%>
 	</table>
 </form:form>

@@ -52,7 +52,7 @@
 				<div class="panel-heading">
 					<div class="panel-title">Sign In</div>
 					<div style="float: right; font-size: 80%; position: relative; top: -10px">
-						<a href="#">Forgot password?</a>
+						<!-- <a href="#">Forgot password?</a> -->
 					</div>
 				</div>
 			<div style="padding-top: 30px" class="panel-body">
@@ -89,7 +89,18 @@
 					<input id="login-password" type="password" class="form-control" name="password" placeholder="password">
 								<%-- <form:input path="upwd"/> --%>
 				</div>
-				<div class="input-group" style="display: none;">
+				<div style="margin-bottom: 25px" class="input-group">
+					<span class="input-group-addon">
+						<i class="glyphicon glyphicon-lock"></i>
+					</span> 
+					<select id="login-locale" class="form-control" >
+						<option value="en_US">English</option>
+						<option value="es_ES">Spanish</option>
+						<option value="fr_FR">French</option>
+					</select>
+					
+				</div>
+				<div class="input-group">
 					<div class="checkbox">
 						<label> <input id="login-remember" type="checkbox" name="remember" value="1" > Remember me</label>
 					</div>

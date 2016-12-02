@@ -5,16 +5,13 @@
 
 <html>
 <form:form commandName="group">
-	
 	<c:if test="${mode eq 'create'}">
 		<spring:message code="label.group.create"></spring:message>
 	</c:if>
 	<c:if test="${mode eq 'edit'}">
 		<spring:message code="label.group.edit"></spring:message>
 	</c:if>
-	<hr>
 	<table class="table">
-		
 		<tr>
 			<c:if test="${!empty group.groupId}">
 				<td><label>Group ID</label></td>
@@ -55,16 +52,10 @@
 			</c:forEach>
 			</tbody>
 		</table>
-		<table>
-			<tr>			
-			<td colspan="6" align="right">
-			<button type="submit" class="btn btn-primary btn-large center" value="Submit" >Submit</button> 
-			<button class="btn btn-primary btn-large center" type="reset"  onclick="">
-                        Reset
-			</button>
-			</td>
-		</tr>
-		</table>
+		<div align="right">
+ 			<input type="submit" class="btn btn-primary btn-large center" value='<spring:message code="label.submit"></spring:message>'/>
+ 			<input type="reset"  class="btn  btn-large center" value='<spring:message code="label.reset"></spring:message>'/>
+ 		</div>
 	</c:if>
 	</form:form>
 </html>

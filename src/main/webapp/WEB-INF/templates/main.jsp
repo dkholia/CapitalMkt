@@ -62,8 +62,9 @@ $(function(){
 	</form>
 	
 	<form:form id="mainform" class="form-inline" role="form" autocomplete="off">
-		<tiles:insertAttribute name="header" />
-		<div style="margin-top: 0px;">
+		<!-- <div id="loading-div" style="background-color: grey;z-index: 1000;width: 500px;height: 500px;"></div> -->
+		<tiles:insertAttribute name="header"/>
+		<div style="margin-top: 0px;" class="width99">
 			<tiles:insertAttribute name="menu" />
 		</div>
 		<br>
@@ -88,13 +89,14 @@ $(function(){
 				</div>
 			</c:if>
 		</div>
-		<div id="maincontent">
+		<div id="maincontent" class="width99">
 			<tiles:insertAttribute name="search"/>
+			<tiles:insertAttribute name="buttonbar" />
 			<tiles:insertAttribute name="body" />
 		</div>
 		<br>
 		<br>
-		<div style="position: absolute;bottom: 0;" >
+		<div style="position: relative;bottom: 0; display: none;" class="width99" >
 			<tiles:insertAttribute name="footer" />
 		</div>
 	</form:form>

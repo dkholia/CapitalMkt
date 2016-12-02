@@ -13,6 +13,7 @@
 		<put-attribute name="footer" value="/WEB-INF/templates/footer.jsp" />
 		<put-attribute name="menu" value="/WEB-INF/templates/menu.jsp" />
 		<put-attribute name="body" value="/WEB-INF/templates/blank.jsp" />
+		<put-attribute name="buttonbar" value="/WEB-INF/templates/blank.jsp" />
 	</definition>
  
 	<definition name="index" template="/WEB-INF/index.jsp" />
@@ -27,6 +28,7 @@
 	<!-- Group Tab start -->
 	<definition name="group" extends=".mainTemplate">
 		<put-attribute name="search" value="/WEB-INF/group/searchGroup.jsp"/>
+		<put-attribute name="buttonbar" value="/WEB-INF/templates/buttonbar.jsp" />
 		<put-attribute name="body" value="/WEB-INF/group/group.jsp" />
 	</definition>
 	
@@ -41,6 +43,7 @@
 	<!-- User Tab start -->
 	<definition name="channeluser" extends=".mainTemplate">
 		<put-attribute name="search" value="/WEB-INF/channeluser/searchUser.jsp" />
+		<put-attribute name="buttonbar" value="/WEB-INF/templates/buttonbar.jsp" />
 		<put-attribute name="body" value="/WEB-INF/channeluser/channeluser.jsp" />
 	</definition>
 	<definition name="createUser" extends=".mainTemplate">
@@ -70,6 +73,7 @@
 	<!-- Service Access Start -->
 	<definition name="fap" extends=".mainTemplate">
 		<put-attribute name="search" value="/WEB-INF/fap/searchfap.jsp"/>
+		<put-attribute name="buttonbar" value="/WEB-INF/templates/buttonbar.jsp" />
 		<put-attribute name="body" value="/WEB-INF/fap/fap.jsp" />
 	</definition>
 	<definition name="createfap" extends=".mainTemplate">
@@ -84,6 +88,7 @@
 	<!-- Data Access Start -->
 	<definition name="dap" extends=".mainTemplate">
 		<put-attribute name="search" value="/WEB-INF/dap/searchdap.jsp"/>
+		<put-attribute name="buttonbar" value="/WEB-INF/templates/buttonbar.jsp" />
 		<put-attribute name="body" value="/WEB-INF/dap/dap.jsp" />
 	</definition>
 	

@@ -23,7 +23,7 @@ public class LoginController {
 	public ModelAndView login(@RequestParam(value = "error", required = false) String error,
 			@RequestParam(value = "logout", required = false) String logout,
 			@RequestParam(value = "expired", required = false) String expired,HttpServletRequest request) {
-
+		
 		ModelAndView model = new ModelAndView();
 		if (error != null) {
 			model.addObject("error", getErrorMessage(request, "SPRING_SECURITY_LAST_EXCEPTION"));
