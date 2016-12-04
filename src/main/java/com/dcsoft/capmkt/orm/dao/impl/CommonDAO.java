@@ -30,6 +30,7 @@ public class CommonDAO extends GenericDAOImpl implements Serializable {
 		return getSession()
 		.createCriteria(BccStateRef.class)
 			.add(Restrictions.eq("id.countryCodeEn", countryName))
+			.addOrder(Order.asc("stateName"))
 				.list();
 	}
 }

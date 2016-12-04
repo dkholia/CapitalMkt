@@ -71,15 +71,7 @@ public class GroupController {
 		//get all the groups 
 		model.addAttribute("searchGroup", chGroupTO);
 		List<Serializable> returnList = groupService.getGroupByCriteria(chGroupTO);
-		model.addAttribute("listGroups", null);
-		if(returnList==null){
-			CustomErrorHandler.showNarrowCriteriaError(model);
-		}
-		else if(returnList.size()>0){
-			model.addAttribute("listGroups", returnList);
-		}else{
-			CustomErrorHandler.showNoDataFoundMessage(model);
-		}
+		CustomErrorHandler.showResults(returnList, model, "listGroups");
 		return "group";
 	}
 	
@@ -106,7 +98,6 @@ public class GroupController {
 	}
 	@RequestMapping("/home/group/remove/{id}"  )
 	public String removeGroup(@PathVariable("id") BigDecimal id, Model model){
-		//List<Serializable> returnList = groupService.getGroupByCriteria(new ChGroupTO());
 		model.addAttribute("listGroups", model.addAttribute("listGroups", this.groupService.listGroups()));
 		this.groupService.removeGroup(id);
 		return "redirect:/group";

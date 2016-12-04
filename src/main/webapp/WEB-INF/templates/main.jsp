@@ -5,54 +5,33 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html>
 <head>
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
-<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-<script type="text/javascript"
-	src="<c:url value="/resources/js/jquery.js"/>"></script>
-<link rel="stylesheet" type="text/css"
-	href="<c:url value="/resources/css/main.css"/>" />
-<link
-	href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
-	rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<script type="text/javascript" src="<c:url value="/resources/js/jquery.js"/>"></script>
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/main.css"/>" />
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="<c:url value="/resources/js/jquery.smartmenus.js"/>"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<link href="<c:url value="/resources/css/sm-core-css.css"/>" rel="stylesheet" type="text/css" />
+	<link href="<c:url value="/resources/css/sm-blue/sm-blue.css"/>" rel="stylesheet" type="text/css" />
+	<script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.11/css/dataTables.bootstrap.min.css">
+	<script type="text/javascript" src="<c:url value="/resources/js/common.js"/>"></script>
 
-<link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-<script
-	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<script type="text/javascript"
-	src="<c:url value="/resources/js/jquery.smartmenus.js"/>"></script>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
- <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-
-<link href="<c:url value="/resources/css/sm-core-css.css"/>"
-	rel="stylesheet" type="text/css" />
-<link href="<c:url value="/resources/css/sm-blue/sm-blue.css"/>"
-	rel="stylesheet" type="text/css" />
-<script
-	src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
-<script
-	src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js"></script>
-<!-- <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
-<link rel="stylesheet"
-	href="https://cdn.datatables.net/1.10.11/css/dataTables.bootstrap.min.css">
- <script type="text/javascript"
-	src="<c:url value="/resources/js/common.js"/>"></script>
-<script type="text/javascript">
-var elements= "";
-
-$(function(){
-	var array = elements.split(",");
-	$.each(array,function(i){
-		 $(array[i]).addClass("borderRed");
+	<script type="text/javascript">
+	var elements= "";
+	$(function(){
+		var array = elements.split(",");
+		$.each(array,function(i){
+			 $(array[i]).addClass("borderRed");
+		});
 	});
-});
-</script>
-
+	</script>
 </head>
 <body>
 	
@@ -62,7 +41,6 @@ $(function(){
 	</form>
 	
 	<form:form id="mainform" class="form-inline" role="form" autocomplete="off">
-		<!-- <div id="loading-div" style="background-color: grey;z-index: 1000;width: 500px;height: 500px;"></div> -->
 		<tiles:insertAttribute name="header"/>
 		<div style="margin-top: 0px;" class="width99">
 			<tiles:insertAttribute name="menu" />

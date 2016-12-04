@@ -139,20 +139,42 @@ function deleteUser(userid) {
 	});*/
 	//$( "#mainform").trigger( "submit");
 }
-//Show loading page when any action is being performed. Added by Deep Kholia
+
 function showWaitScreen(formname){
-	//var msg=getApplicationMessage("WCMSG001");
+	var msg="Please wait ...";
 	$(document).ready(function() {
- 		$("body").prepend('<div id="overlay"  style="z-index: 5000; display: none;opacity:0.1; background-color:#ccc;position:fixed;width:100%;height:100%;top:0px;left:0px;z-index:5000;filter:alpha(opacity=10);"></div>');
-    	$("body").prepend("<div id='PleaseWait' style='display: none;z-index: 6000; position:absolute;top:35%;left:50%;'><center><img src='./img/loading.gif' /></center></div>");
-	});
+ 		$("body").prepend('<div id="overlay"  style="z-index: 5000; opacity:0.1; background-color:#ccc;position:fixed;width:100%;height:100%;top:0px;left:0px;z-index:5000;filter:alpha(opacity=5);"></div>');
+ 		$("body").prepend("<div id='PleaseWaitText' style='z-index: 5500; position:absolute;top:50%;left:45%;opacity:0.5;'><center>"+msg+"</center></img></center></div>");
+ 		$("body").prepend("<div id='PleaseWait' style='z-index: 6000; position:absolute;top:35%;left:44%;'><center><img src='/CapitalMkt/resources/images/loading.gif'></img></center></div>");
+   	});
 	$("#"+formname).submit(function() {
 		var pass = true;
-		//showScreenCoverDiv();
 		if(pass == false){
 		   return false;
 		}
-		$("#overlay, #PleaseWait").show();
+		$("#overlay, #PleaseWait , #PleaseWaitText").show();
 		return true;
 	});
+}
+
+function getStates(element) {
+
+	$.ajax({
+		type : "GET",
+		contentType : "application/json",
+		url : "/CapitalMkt/states?countryCode="+ $("#"+element).val(),
+		dataType : 'json',
+		timeout : 100000,
+		success : function(data) {
+			$('#states')[0].options.length = 0;
+			 $('#states').append('<option value="">--Select Please--</option>');
+			$.each( data.result, function( key, value ) {
+				 $('#states').append('<option value="' + value.id + '">' + value.value + '</option>');
+			});
+		},
+		error : function(e) {
+			alert("ERROR: "+ e.errText);
+		}
+	});
+
 }

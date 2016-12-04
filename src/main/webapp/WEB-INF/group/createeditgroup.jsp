@@ -53,7 +53,7 @@
 			</tbody>
 		</table>
 		<div align="right">
- 			<input type="submit" class="btn btn-primary btn-large center" value='<spring:message code="label.submit"></spring:message>'/>
+ 			<input type="submit" class="btn btn-primary btn-large center" onclick="javascript:showWaitScreen('createUser');" value='<spring:message code="label.submit"></spring:message>'/>
  			<input type="reset"  class="btn  btn-large center" value='<spring:message code="label.reset"></spring:message>'/>
  		</div>
 	</c:if>

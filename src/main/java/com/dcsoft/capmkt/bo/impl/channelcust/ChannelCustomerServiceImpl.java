@@ -68,4 +68,12 @@ public class ChannelCustomerServiceImpl extends ObjectHashImpl implements IChann
 	public Serializable getCustomerDetails(BigDecimal id) {
 		return channelCustomerDao.getCustomerDetails(id);
 	}
+
+	@Override
+	@Transactional
+	public List<Serializable> getCustomersByCriteria(ChannelCustomerTO customerTO) {
+		ChChannelCustomer customer = new ChChannelCustomer();
+		customer.setChannelCustName(customerTO.getChannelCustName());
+		return channelCustomerDao.getCustomerByCriteria(customer);
+	}
 }

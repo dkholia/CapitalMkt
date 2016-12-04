@@ -1,5 +1,6 @@
 package com.dcsoft.capmkt.util.errors;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,5 +46,18 @@ public class CustomErrorHandler {
 	public static void showNarrowCriteriaError(Model model) {
 		CustomErrorHandler handler = new CustomErrorHandler("Please enter atleast one field to narrow down the search");
 		model.addAttribute("errors", handler.getErrorFromString() );
+	}
+	
+	public static void showResults(List<Serializable> returnList, Model model , String screenName ){
+		
+		model.addAttribute(screenName, null);
+		if(returnList==null){
+			showNarrowCriteriaError(model);
+		}
+		else if(!returnList.isEmpty()){
+			model.addAttribute(screenName, returnList);
+		}else{
+			showNoDataFoundMessage(model);
+		}
 	}
 }

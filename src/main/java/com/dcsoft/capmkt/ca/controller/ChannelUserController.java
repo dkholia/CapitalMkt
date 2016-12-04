@@ -59,15 +59,7 @@ public class ChannelUserController {
 	public String gotoUserHome(ChUserTO userto,Model model){
 		model.addAttribute("searchUser", userto);
 		List<Serializable> returnList = channelUserService.getUserByExample(userto);
-		model.addAttribute("userList", null);
-		if(returnList==null){
-			CustomErrorHandler.showNarrowCriteriaError(model);
-		}
-		else if(returnList.size()>0){
-			model.addAttribute("userList", returnList);
-		}else{
-			CustomErrorHandler.showNoDataFoundMessage(model);
-		}
+		CustomErrorHandler.showResults(returnList, model, "userList");
 		return "channeluser";
 	}
 	
@@ -82,7 +74,6 @@ public class ChannelUserController {
 		model.addAttribute("mode", "create");
 		model.addAttribute("user", new ChUserTO());
 		model.addAttribute("countries", commonService.getCountryCodes());
-		model.addAttribute("states", commonService.getStates("US"));
 		model.addAttribute("allgroups", groupService.list());
 		model.addAttribute("allfaps", chnlFapService.list());
 		model.addAttribute("alldaps", chnlDapService.list());

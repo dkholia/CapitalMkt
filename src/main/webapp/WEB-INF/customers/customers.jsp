@@ -1,8 +1,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<spring:message code="label.customer.list"></spring:message>
+
 <c:if test="${!empty listCustomers}">
+	<spring:message code="label.customer.list"></spring:message>
 	<table  class="table table-striped table-bordered" >
 		<thead>
 			<tr>

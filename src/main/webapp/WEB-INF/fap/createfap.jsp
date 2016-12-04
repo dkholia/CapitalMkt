@@ -40,8 +40,8 @@
 		</tr>
 		<tr>			
 			<td colspan="6" align="right">
-			<button type="submit" class="btn btn-primary btn-large center" value="Submit" ><spring:message code="label.create"/> </button> 
-			<button class="btn btn-primary btn-large center" type="reset"  onclick=""><spring:message code="label.reset"/> </button>
+			<button type="submit" class="btn btn-primary btn-large center" onclick="javascript:showWaitScreen('createUser');" value="Submit" ><spring:message code="label.create"/> </button> 
+			<button class="btn  btn-large center" type="reset"  onclick=""><spring:message code="label.reset"/> </button>
 			</td>
 		</tr>
 	</table>

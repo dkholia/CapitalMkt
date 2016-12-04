@@ -6,8 +6,6 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -26,8 +24,6 @@ import com.dcsoft.capmkt.util.errors.CustomErrorHandler;
 @Controller
 public class DataAccessController  {
 
-	private static final Logger logger = LoggerFactory.getLogger(DataAccessController.class);
-	
 	@Autowired(required=true)
 	@Qualifier(value="chnlDapService")
 	private IDapService chnlDapService;
@@ -44,17 +40,8 @@ public class DataAccessController  {
 	public String searchDap(ChDapTO dapTO,Model model){
 		model.addAttribute("seaarchDap",dapTO);
 		model.addAttribute("customers", chnlDapService.getChannelCustomersDropDown());
-		
-		List<Serializable> list = chnlDapService.getDapByCriteria(dapTO);
-		if(list==null){
-			CustomErrorHandler.showNarrowCriteriaError(model);
-			return "dap";
-		}
-		if(list.isEmpty()){
-			CustomErrorHandler.showNoDataFoundMessage(model);
-			return "dap";
-		}
-		model.addAttribute("dapList", list);
+		List<Serializable> returnList = chnlDapService.getDapByCriteria(dapTO);
+		CustomErrorHandler.showResults(returnList, model, "dapList");
 		return "dap";
 	}
 	

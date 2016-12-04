@@ -59,12 +59,8 @@ public class ServiceAccessController {
 	@RequestMapping(value="/home/fap" , method=RequestMethod.POST)
 	public String searchFap(ChFapTO chFapTO, Model model){
 		model.addAttribute("searchFap", chFapTO);
-		List<Serializable> list = chnlFapService.getFapByCriteria(chFapTO);
-		if(list.isEmpty()){
-			CustomErrorHandler.showNoDataFoundMessage(model);
-			return "fap";
-		}
-		model.addAttribute("fapList", list);
+		List<Serializable> returnList = chnlFapService.getFapByCriteria(chFapTO);
+		CustomErrorHandler.showResults(returnList, model, "fapList");
 		return "fap";
 	}
 	

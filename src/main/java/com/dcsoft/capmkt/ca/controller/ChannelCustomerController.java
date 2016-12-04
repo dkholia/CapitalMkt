@@ -1,6 +1,8 @@
 package com.dcsoft.capmkt.ca.controller;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -26,8 +28,17 @@ public class ChannelCustomerController {
 	private IChannelCustomerService chnlCustomerService;
 	
 	@RequestMapping(value="/home/customers" , method=RequestMethod.GET)
-	public String gotoUserHome(Model model){
-		model.addAttribute("listCustomers", chnlCustomerService.list());
+	public String gotoUserHomeBlank(Model model){
+		model.addAttribute("searchCustomer", new ChannelCustomerTO());
+		model.addAttribute("listCustomers", null);
+		return "customers";
+	}
+	
+	@RequestMapping(value="/home/customers" , method=RequestMethod.POST)
+	public String gotoUserHome(ChannelCustomerTO customerTO, Model model){
+		model.addAttribute("searchCustomer", customerTO);
+		List<Serializable> returnList = chnlCustomerService.getCustomersByCriteria(customerTO);
+		CustomErrorHandler.showResults(returnList, model, "listCustomers");
 		return "customers";
 	}
 	@RequestMapping(value="/home/createcustomer" , method=RequestMethod.GET)

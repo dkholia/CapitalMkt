@@ -14,7 +14,7 @@ public class ServiceAccessDAO extends GenericDAOImpl  {
 	@SuppressWarnings("unchecked")
 	public List<Serializable> getFapByCriteria(ChFap chFap){
 		if(chFap.getFapName()==null || chFap.getFapName().trim().equals("")){
-			return findByExample(ChFap.class,  new ChFap((short) 1));
+			return null;
 		}else{
 			return getSession().createCriteria(chFap.getClass())
 					.add(Restrictions.ilike("fapName", chFap.getFapName(), MatchMode.ANYWHERE))

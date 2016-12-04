@@ -4,7 +4,7 @@
 
 <spring:message code="label.user.${mode}"></spring:message>
   <c:url var="addAction" value="/channeluser/createUser" ></c:url>
- <form:form id="createUser" commandName="user" method="post" action="${addAction}" autocomplete="false" >
+ <form:form id="createUser" commandName="user" method="post" action="${addAction}" autocomplete="false"  onsubmit="javascript:showWaitScreen('createUser');">
  	<table class="table">
  		<tr>
  			<td><spring:message code="label.createuser.userid"></spring:message> </td><td colspan="7"><form:input path="loginid"/> </td>
@@ -20,22 +20,25 @@
  			<td><spring:message code="label.createuser.address1"></spring:message> </td><td><form:input path="address1"/></td>
  			<td><spring:message code="label.createuser.address2"></spring:message> </td><td><form:input path="address2"/></td>
  			<td><spring:message code="label.createuser.city"></spring:message> </td><td><form:input path="city"/></td>
- 			<td><spring:message code="label.createuser.state"></spring:message> </td><td><%-- <form:input path="state"/> --%>
+ 			<td colspan="2"></td>
+ 		</tr>
+ 		<tr>
  			
-	 			<form:select path="state" >
+ 			<td><spring:message code="label.createuser.country"></spring:message> </td>
+ 			<td>
+ 			<form:select id="countryDropdown" path="country"  onchange="javascript:getStates('countryDropdown');">
+ 				 <form:option value="" label="--Select Please--" />
+ 				 <form:options items="${countries}" itemValue="id" itemLabel="value" />
+ 			</form:select></td>
+ 			<td><spring:message code="label.createuser.state"></spring:message> </td>
+ 			<td>
+	 			<form:select path="state" id="states">
 	 				 <form:option value="" label="--Select Please--" />
 	 				 <form:options items="${states}" itemValue="id" itemLabel="value" />
 	 			</form:select>
  			</td>
- 		</tr>
- 		<tr>
  			<td><spring:message code="label.createuser.postalcode"></spring:message> </td><td><form:input path="postalcode"/></td>
- 			<td><spring:message code="label.createuser.country"></spring:message> </td><td colspan="5"><%-- <form:select path="country" items="${countries}" itemValue="id" itemLabel="value"  title="select.." ></form:select> --%>
- 			
- 			<form:select path="country" >
- 				 <form:option value="" label="--Select Please--" />
- 				 <form:options items="${countries}" itemValue="id" itemLabel="value" />
- 			</form:select></td></td>
+ 			<td colspan="2"></td>
  		</tr>
  		<tr>
  			<td><spring:message code="label.createuser.contactNumber"></spring:message> </td><td><form:input path="contactNumber"/></td>
@@ -140,7 +143,7 @@
 		</div>
 	</div>
  	<div align="right">
- 		<input type="submit" class="btn btn-primary btn-large center" value='<spring:message code="label.submit"></spring:message>'/>
+ 		<input type="submit" class="btn btn-primary btn-large center" onclick="javascript:showWaitScreen('createUser');" value='<spring:message code="label.submit" ></spring:message>'/>
  		<input type="reset"  class="btn  btn-large center" value='<spring:message code="label.reset"></spring:message>'/>
  	</div>
  </form:form>

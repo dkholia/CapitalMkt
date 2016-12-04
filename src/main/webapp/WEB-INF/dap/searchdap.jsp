@@ -14,7 +14,7 @@
 			</td>
 			<td><spring:message code ="label.dap.chnlcustid"/> </td>
 			
-			<td><form:select path="channelCustId" cssClass="editabledropdown" >
+			<td><form:select path="channelCustId" cssClass="editabledropdown" data-live-search="true" >
  				 <form:option value="" label="--Select Please--" />
  				 <form:options items="${customers}" itemValue="id" itemLabel="value" />
  			</form:select></td>

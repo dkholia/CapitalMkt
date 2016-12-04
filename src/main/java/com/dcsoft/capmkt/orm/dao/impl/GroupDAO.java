@@ -30,7 +30,7 @@ public class GroupDAO extends GenericDAOImpl {
 	@SuppressWarnings("unchecked")
 	public List<Serializable> getGroupByCriteria(ChGroup chGroup){
 		if(chGroup.getGroupName()==null || chGroup.getGroupName().trim().equals(""))
-			return findByExample(ChGroup.class, new ChGroup());
+			return null;
 		else
 			return getSession().createCriteria(ChGroup.class)
 					.add(Restrictions.ilike("groupName", chGroup.getGroupName(), MatchMode.ANYWHERE)).list();

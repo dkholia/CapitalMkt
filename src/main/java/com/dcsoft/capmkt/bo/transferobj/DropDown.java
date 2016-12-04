@@ -1,11 +1,20 @@
 package com.dcsoft.capmkt.bo.transferobj;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
-public class DropDown extends Model  implements Comparator<DropDown>{
+import javax.xml.bind.annotation.XmlRootElement;
+
+import com.dcsoft.capmkt.ajax.Views;
+import com.fasterxml.jackson.annotation.JsonView;
+
+@XmlRootElement
+public class DropDown  implements Serializable,Comparator<DropDown>{
 
 	private static final long serialVersionUID = 3967011223808561661L;
+	@JsonView(Views.Public.class)
 	private String id;
+	@JsonView(Views.Public.class)
 	private String value;
 	
 	public DropDown(String id, String value) {

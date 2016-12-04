@@ -1,10 +1,10 @@
 package com.dcsoft.capmkt.bo.transferobj;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Random;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -15,6 +15,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.dcsoft.capmkt.annotations.Phone;
+
 
 public class ChUserTO extends Model {
 
@@ -66,6 +67,16 @@ public class ChUserTO extends Model {
 	
 	@NotEmpty
 	private List<BigDecimal> daps = new ArrayList<BigDecimal>();
+	
+	private List<Serializable> allGroups = new ArrayList<Serializable>();
+	
+	private List<Serializable> allFaps = new ArrayList<Serializable>();
+	
+	private List<Serializable> allDaps = new ArrayList<Serializable>();
+	
+	private List<Serializable> countries = new ArrayList<Serializable>();
+	
+	private List<Serializable> states = new ArrayList<Serializable>();
 	
 	public String getLoginid() {
 		return loginid;
@@ -163,28 +174,45 @@ public class ChUserTO extends Model {
 	public void setDaps(List<BigDecimal> daps) {
 		this.daps = daps;
 	}
-	
-	public int hashCode() {
-		Random generator = new Random(999999999);
-		int hashCode = generator.nextInt();
-		
-		if(loginid!=null && loginid.trim()!=""){
-			hashCode += loginid.length()* loginid.hashCode(); 
-		}
-		if(fname!=null && fname.trim()!=""){
-			hashCode += fname.length()* fname.hashCode(); 
-		}
-		if(mname!=null && mname.trim()!=""){
-			hashCode += mname.length()* mname.hashCode(); 
-		}
-		if(lname!=null && lname.trim()!=""){
-			hashCode += lname.length()* lname.hashCode(); 
-		}
-		return hashCode;
+	public List<Serializable> getAllGroups() {
+		return allGroups;
+	}
+	public List<Serializable> getAllFaps() {
+		return allFaps;
+	}
+	public List<Serializable> getAllDaps() {
+		return allDaps;
+	}
+	public List<Serializable> getCountries() {
+		return countries;
+	}
+	public List<Serializable> getStates() {
+		return states;
+	}
+	public void setAllGroups(List<Serializable> allGroups) {
+		this.allGroups = allGroups;
+	}
+	public void setAllFaps(List<Serializable> allFaps) {
+		this.allFaps = allFaps;
+	}
+	public void setAllDaps(List<Serializable> allDaps) {
+		this.allDaps = allDaps;
+	}
+	public void setCountries(List<Serializable> countries) {
+		this.countries = countries;
+	}
+	public void setStates(List<Serializable> states) {
+		this.states = states;
 	}
 	
+	
 	@Override
-	public boolean equals(Object obj) {
-		return super.equals(obj);
+	public String toString() {
+		return "ChUserTO [loginid=" + loginid + ", fname=" + fname + ", mname=" + mname + ", lname=" + lname + ", dob="
+				+ dob + ", address1=" + address1 + ", address2=" + address2 + ", city=" + city + ", state=" + state
+				+ ", country=" + country + ", postalcode=" + postalcode + ", contactNumber=" + contactNumber
+				+ ", emailID=" + emailID + ", groups=" + groups + ", faps=" + faps + ", daps=" + daps + ", allGroups="
+				+ allGroups + ", allFaps=" + allFaps + ", allDaps=" + allDaps + ", countries=" + countries + ", states="
+				+ states + "]";
 	}
 }

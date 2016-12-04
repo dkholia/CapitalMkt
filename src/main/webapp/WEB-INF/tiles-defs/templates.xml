@@ -60,6 +60,8 @@
 	
 	<!-- Channel Customer Start -->
 	<definition name="customers" extends=".mainTemplate">
+		<put-attribute name="search" value="/WEB-INF/customers/searchCustomer.jsp"/>
+		<put-attribute name="buttonbar" value="/WEB-INF/templates/buttonbar.jsp" />
 		<put-attribute name="body" value="/WEB-INF/customers/customers.jsp" />
 	</definition>
 	<definition name="createcustomer" extends=".mainTemplate">
