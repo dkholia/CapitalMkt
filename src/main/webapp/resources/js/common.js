@@ -176,5 +176,32 @@ function getStates(element) {
 			alert("ERROR: "+ e.errText);
 		}
 	});
+}
 
+function moveRight(){
+	$('#servicesassoc :selected').each(function(i, sel){ 
+	    $(sel).remove();
+	    $('#linkedServices').append( $(sel));
+	});
+}
+
+function moveAllRight(){
+	selectAll('servicesassoc');
+	moveRight();
+}
+
+function moveLeft(){
+	$('#linkedServices :selected').each(function(i, sel){ 
+	    $(sel).remove();
+	    $('#servicesassoc').append( $(sel));
+	});
+}
+
+function moveAllLeft(){
+	selectAll('linkedServices');
+	moveLeft();
+}
+
+function selectAll(id){
+	 $('select#'+id+ '> option').prop('selected', 'selected');
 }

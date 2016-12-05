@@ -19,9 +19,9 @@ public class ChFapTO extends Model {
 	private String fapDescription;
 	@NotEmpty
 	private String fapName;
-	@NotEmpty
 	private List<BigDecimal> servicesassoc = new ArrayList<BigDecimal>();
-	private List<Integer> linkedServices = new ArrayList<Integer>();
+	@NotEmpty
+	private List<BigDecimal> linkedServices = new ArrayList<BigDecimal>();
 	
 	public BigDecimal getFapId() {
 		return fapId;
@@ -65,10 +65,10 @@ public class ChFapTO extends Model {
 	public void setServicesassoc(List<BigDecimal> servicesassoc) {
 		this.servicesassoc = servicesassoc;
 	}
-	public List<Integer> getLinkedServices() {
+	public List<BigDecimal> getLinkedServices() {
 		return linkedServices;
 	}
-	public void setLinkedServices(List<Integer> linkedServices) {
+	public void setLinkedServices(List<BigDecimal> linkedServices) {
 		this.linkedServices = linkedServices;
 	}
 	@Override

@@ -37,7 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
-		http.authorizeRequests().antMatchers("/home/**, /states")
+		http.authorizeRequests().antMatchers("/home/**, /states, /500")
 			.access("hasRole('ROLE_ADMIN')")
 			.and().formLogin()
 			.successHandler(savedRequestAwareAuthenticationSuccessHandler())

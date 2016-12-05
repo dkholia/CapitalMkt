@@ -26,13 +26,13 @@
  			
  			<td><spring:message code="label.createuser.country"></spring:message> </td>
  			<td>
- 			<form:select id="countryDropdown" path="country"  onchange="javascript:getStates('countryDropdown');">
+ 			<form:select id="countryDropdown" path="country"  onchange="javascript:getStates('countryDropdown');" cssClass="width123px">
  				 <form:option value="" label="--Select Please--" />
  				 <form:options items="${countries}" itemValue="id" itemLabel="value" />
  			</form:select></td>
  			<td><spring:message code="label.createuser.state"></spring:message> </td>
  			<td>
-	 			<form:select path="state" id="states">
+	 			<form:select path="state" id="states" cssClass="width123px">
 	 				 <form:option value="" label="--Select Please--" />
 	 				 <form:options items="${states}" itemValue="id" itemLabel="value" />
 	 			</form:select>

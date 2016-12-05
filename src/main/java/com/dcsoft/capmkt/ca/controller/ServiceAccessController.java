@@ -96,7 +96,7 @@ public class ServiceAccessController {
 		if(getChnlFapService().addServiceAccess(fapTO)){
 			BigDecimal fapID = ((ChFap)getChnlFapService().getFapByCriteria(fapTO).get(0)).getFapId();
 			try {
-				getChnlFapService().attachServicesToFAP(fapID, fapTO.getServicesassoc());
+				getChnlFapService().attachServicesToFAP(fapID, fapTO.getLinkedServices());
 				model.addAttribute("success","Service Access : "+ fapTO.getFapName() + " created successfully.");
 			} catch (Exception e) {
 				getChnlFapService().removeFap(fapID);
@@ -105,14 +105,6 @@ public class ServiceAccessController {
 		return "createfap";
 	}
 	
-	@RequestMapping(value="/home/moveright" , method=RequestMethod.GET)
-	public String moveLeft(@Valid ChFapTO fapTO, BindingResult result, Model model){
-		model.addAttribute("mode", "create");
-		model.addAttribute("fap",fapTO);
-		model.asMap().get("fap");
-		model.addAttribute("services", commonService.getServices());
-		return "createfap";
-	}
 	
 	@RequestMapping(value="/home/fap/details/{id}" , method=RequestMethod.GET)
 	public String fapDetails(@PathVariable("id") BigDecimal id, Model model){

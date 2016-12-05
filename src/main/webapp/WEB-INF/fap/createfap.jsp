@@ -15,28 +15,37 @@
 		</tr>
 		<tr>
 			<td>
-				<form:select  multiple="multiple" path="servicesassoc" items="${services}" itemLabel="value" itemValue="id"/>
+				<form:select  multiple="multiple" path="servicesassoc" items="${services}" itemLabel="value" itemValue="id" cssClass="width250px" id="servicesassoc"/>
 			</td>
 			<td>
 				<table>
 					<tr><td>
-					<a href='<c:url value="/moveright"></c:url>' >></a>
+					<a  onclick="javascript:moveRight();">
+					 	<span class="glyphicon glyphicon-chevron-right"></span>
+					</a>
 					</td>
 					</tr>
 					<tr><td>
-					<a href="" >>></a>
+					<a onclick="javascript:moveAllRight();" >
+						 <span class="glyphicon glyphicon-forward"></span>
+					</a>
 					</td></tr>
 					<tr><td>
-					<a href="" ><</a>
+					<a onclick="javascript:moveLeft();" >
+						 <span class="glyphicon glyphicon-chevron-left"></span>
+					</a>
 					</td></tr>
 					<tr><td>
-					<a href="" ><<</a>
+					<a onclick="javascript:moveAllLeft();" > 
+						<span class="glyphicon glyphicon-backward"></span>
+					</a>
 					</td></tr>
 				</table>
 			</td>
-			<td>
-				<form:select  multiple="multiple" path="linkedServices" />
+			<td >
+				<form:select  multiple="multiple" cssClass="width250px" path="linkedServices" id="linkedServices" items="${fap.linkedServices}"/>
 			</td>
+			<td></td>
 		</tr>
 		<tr>			
 			<td colspan="6" align="right">
