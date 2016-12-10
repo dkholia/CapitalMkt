@@ -44,15 +44,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.loginPage("/login").defaultSuccessUrl("/home").failureUrl("/login?error")
 				.usernameParameter("username")
 				.passwordParameter("password")
-				.and().logout().logoutUrl("/logout")
+				.and().logout().logoutUrl("/logout").logoutSuccessUrl("/login?logout")
 				.and().csrf()
 				.and().exceptionHandling().accessDeniedPage("/403")
 				.and().rememberMe().tokenRepository(persistentTokenRepository())
 				.tokenValiditySeconds(1209600)
 				.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.ALWAYS).maximumSessions(1)
 				.expiredUrl("/login?expired")
-				.and()
-				;
+				.and();
 	}
 	
 	@Bean

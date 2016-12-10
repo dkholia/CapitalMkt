@@ -17,8 +17,6 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class LoginController {
 
-	
-
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView login(@RequestParam(value = "error", required = false) String error,
 			@RequestParam(value = "logout", required = false) String logout,
@@ -31,6 +29,7 @@ public class LoginController {
 
 		if (logout != null) {
 			model.addObject("msg", "You've been logged out successfully.");
+			request.getSession().invalidate();
 		}
 		if(expired!=null){
 			model.addObject("msg", "Your session has expired. Please login again.");
@@ -74,6 +73,13 @@ public class LoginController {
 		}
 
 		model.setViewName("403");
+		return model;
+	}
+	
+	@RequestMapping(value = "/500", method = RequestMethod.GET)
+	public ModelAndView internalServerError() {
+		ModelAndView model = new ModelAndView();
+		model.setViewName("500");
 		return model;
 	}
 }

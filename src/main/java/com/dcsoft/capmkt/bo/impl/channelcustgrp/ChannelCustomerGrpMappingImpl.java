@@ -48,8 +48,7 @@ public class ChannelCustomerGrpMappingImpl extends ObjectHashImpl implements ICh
 		for(BigDecimal custId : customers){
 			chCustGrpMappingId = new ChChannelCustGrpMappingId(groupId, custId);
 			mapping = new ChChannelCustGrpMapping(chCustGrpMappingId);
-			chChannelCutGrpMappingDao.add(mapping);
-			
+			chChannelCutGrpMappingDao.update(mapping);
 		}
 		
 	}

@@ -49,7 +49,6 @@
      <!-- Messages and Internalization -->
     <beans:bean id="messageSource"
         class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-        <!-- <beans:property name="basename" value="classpath:messages,classpath:errormessages" /> -->
         <beans:property name="basenames">
             <beans:list>
                 <beans:value>classpath:messages</beans:value>
@@ -58,6 +57,7 @@
         </beans:property>
         <beans:property name="defaultEncoding" value="UTF-8" />
     </beans:bean>
+    
      <beans:bean id="localeChangeInterceptor"
     	class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
     	<beans:property name="paramName" value="lang"/>

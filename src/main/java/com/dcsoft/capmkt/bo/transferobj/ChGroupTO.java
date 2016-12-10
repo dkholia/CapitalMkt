@@ -28,6 +28,7 @@ public class ChGroupTO extends Model {
 	@DateTimeFormat(pattern="mm/dd/yyyy z hh:mm:ss a")
 	private String creationdate;
 	
+	@NotEmpty
 	private List<BigDecimal> customers = new ArrayList<BigDecimal>();
 	
 	public String getGroupId() {

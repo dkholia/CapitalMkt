@@ -22,6 +22,7 @@
 	<script src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js"></script>
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.11/css/dataTables.bootstrap.min.css">
 	<script type="text/javascript" src="<c:url value="/resources/js/common.js"/>"></script>
+	<script type="text/javascript" src="<c:url value="/resources/js/jquery.userTimeout.js"/>"></script>
 
 	<script type="text/javascript">
 	var elements= "";
@@ -31,6 +32,20 @@
 			 $(array[i]).addClass("borderRed");
 		});
 	});
+	
+	/* $(document).userTimeout({
+		  logouturl: 'javascript:logout();',              
+		  referer: false,            
+		  refererName: 'refer',        
+		  notify: true,                      
+		  timer: true,             
+		  session: 30000,                   
+		  force: 15000,       
+		  ui: 'auto',                        
+		  debug: false,            
+		  modalTitle: 'Session Timeout',     
+		  modalBody: 'You\'re being timed out due to inactivity. Please choose to stay signed in or to logoff. Otherwise, you will logged off automatically.'
+		}); */
 	</script>
 </head>
 <body>

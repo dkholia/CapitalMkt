@@ -87,9 +87,7 @@ public class CommonServiceImpl extends GenericService implements ICommonService{
 
 
 	@Override
-	public void saveObjectHash(Class<? extends Model> clazz, String idColumnName, BigDecimal objectID,
-			BigDecimal objectHash) {
-		// TODO Auto-generated method stub
+	public void saveObjectHash(Class<? extends Model> clazz, String idColumnName, BigDecimal objectID,BigDecimal objectHash) {
 		
 	}
 

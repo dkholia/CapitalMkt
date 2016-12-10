@@ -13,10 +13,10 @@
 	</c:if>
 	<table class="table">
 		<tr>
-			<c:if test="${!empty group.groupId}">
+			<%-- <c:if test="${!empty group.groupId}">
 				<td><label>Group ID</label></td>
-				<td><form:input path="groupId" readonly="true"/></td>
-			</c:if>
+				<td><form:input path="groupId" readonly/></td>
+			</c:if> --%>
 			<td><label>Group Name</label></td>
 			<td><form:input path="groupName"/></td>
 			<td><label>Group Description</label></td>
@@ -24,7 +24,7 @@
 		</tr>
 		
 	</table>
-	<c:if test="${mode eq 'create'}">
+	<%-- <c:if test="${mode eq 'create'}"> --%>
 		All Customers
 		<table class="table table-striped table-bordered display">
 			<thead>
@@ -37,14 +37,18 @@
 			<tbody>
 			<c:forEach items="${allCustomers}" var="customer">
 				<tr>
-					<%-- <c:if test="${customer.selected eq true}">
-						<td><input type="checkbox" checked="checked"> </td>
-					</c:if>
-					<c:if test="${customer.selected eq false}">
-						<td><input type="checkbox"> </td>
-					</c:if> --%>
 					<td>
-					<form:checkbox path="customers" value="${customer.channelCustId}"/></td>
+					<c:if test="${mode eq 'edit'}">
+						<c:if test="${customer.selected eq true}">
+							<form:checkbox path="customers" value="${customer.channelCustId}" checked="checked" /></td>
+						</c:if>
+						<c:if test="${customer.selected eq false}">
+							<form:checkbox path="customers" value="${customer.channelCustId}"  /></td>
+						</c:if>
+					</c:if>
+					<c:if test="${mode eq 'create'}">
+						<form:checkbox path="customers" value="${customer.channelCustId}" /></td>
+					</c:if>
 					<td>${customer.channelCustName}</td>
 					<td>${customer.channelCustDesc}</td>
 					
@@ -56,6 +60,6 @@
  			<input type="submit" class="btn btn-primary btn-large center" onclick="javascript:showWaitScreen('createUser');" value='<spring:message code="label.submit"></spring:message>'/>
  			<input type="reset"  class="btn  btn-large center" value='<spring:message code="label.reset"></spring:message>'/>
  		</div>
-	</c:if>
+	<%-- </c:if> --%>
 	</form:form>
 </html>

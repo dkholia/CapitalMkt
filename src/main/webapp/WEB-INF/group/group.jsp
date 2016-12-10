@@ -38,7 +38,8 @@
 						<td>${group.groupdesc}</td>
 						<td>
 							<a  class="editObj" href="<c:url value='/home/group/createeditgroup/${group.groupId}' />" ></a>
-							<a class="deleteObj" href="<c:url value='/home/group/remove/${group.groupId}' />" ></a>
+							<%-- <a class="deleteObj" href="<c:url value='/home/group/remove/${group.groupId}' />" ></a> --%>
+							<a class="deleteObj" href="javascript:deleteGroup('${group.groupId}','${group.groupName}')" ></a>	
 						</td>
 					</tr>
 				</c:forEach>

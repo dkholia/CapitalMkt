@@ -24,9 +24,9 @@
 					<td>${user.isactive}</td>
 					<td>${user.datecreated}</td>
 					<td><a  class="editObj" href="<c:url value='/home/channeluser/${user.userid}/editUser' />" ></a>
-					<a class="deleteObj" href="<c:url value='/home/channeluser/${user.userid}/deleteUser' />" ></a>
-<%-- 					<a class="deleteObj" href="javascript:deleteUser('${user.userid}')" ></a>	
- --%>					
+					<%-- <a class="deleteObj" href="<c:url value='/home/channeluser/${user.userid}/deleteUser' />" ></a> --%>
+					<a class="deleteObj" href="javascript:deleteUser('${user.userid}','${user.uname}')" ></a>	
+					
 					</td>
 				</tr>
 				</c:if>

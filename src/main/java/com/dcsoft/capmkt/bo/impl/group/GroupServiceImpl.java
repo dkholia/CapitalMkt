@@ -7,8 +7,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.dcsoft.capmkt.bo.impl.GenericService;
 import com.dcsoft.capmkt.bo.impl.ObjectHashImpl;
+import com.dcsoft.capmkt.bo.intf.IChannelCustomerGrpMapping;
 import com.dcsoft.capmkt.bo.intf.IGroupService;
 import com.dcsoft.capmkt.bo.transferobj.ChGroupTO;
 import com.dcsoft.capmkt.orm.ChGroup;
@@ -34,20 +34,23 @@ public class GroupServiceImpl extends ObjectHashImpl implements IGroupService {
 	@Override
 	@Transactional
 	public void addGroup(ChGroupTO p) {
-		ChGroup presistObj = new ChGroup();
-		presistObj.setGroupName(p.getGroupName());
-		presistObj.setGroupdesc(p.getGroupDesc());
-		getGenericDao().add(presistObj);
+		ChGroup persistObj = new ChGroup();
+		persistObj.setGroupName(p.getGroupName());
+		persistObj.setGroupdesc(p.getGroupDesc());
+		BigDecimal objectID = (BigDecimal) getGenericDao().add(persistObj);
+		persistObj.setGroupId(objectID);
+		//saveObjectHash(ChGroupTO.class, "ChGroup", persistObj.getGroupId(), new BigDecimal(persistObj.hashCode()));
 	}
 
 	@Override
 	@Transactional
-	public void updateGroup(ChGroupTO p) {
+	public void updateGroup(ChGroupTO chGroupTO,IChannelCustomerGrpMapping chnlCustGrpMapService) {
 		ChGroup presistObj = new ChGroup();
-		presistObj.setGroupId(new BigDecimal(p.getGroupId()));
-		presistObj.setGroupName(p.getGroupName());
-		presistObj.setGroupdesc(p.getGroupDesc());
+		presistObj.setGroupId(new BigDecimal(chGroupTO.getGroupId()));
+		presistObj.setGroupName(chGroupTO.getGroupName());
+		presistObj.setGroupdesc(chGroupTO.getGroupDesc());
 		getGenericDao().update(presistObj);
+		chnlCustGrpMapService.addChannelCustomersToGroup(new BigDecimal(chGroupTO.getGroupId().trim()), chGroupTO.getCustomers());
 	}
 
 	@Override
@@ -92,7 +95,7 @@ public class GroupServiceImpl extends ObjectHashImpl implements IGroupService {
 	@Transactional
 	public List<Serializable> getGroupByCriteria(ChGroupTO chGroupTO) {
 		ChGroup group = new ChGroup();
-		group.setGroupName(chGroupTO.getGroupName());
+		group.setGroupName(chGroupTO.getGroupName().trim());
 		return groupDao.getGroupByCriteria(group);
 	}
 

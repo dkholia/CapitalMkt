@@ -3,6 +3,7 @@ package com.dcsoft.capmkt.orm;
 
 import java.math.BigDecimal;
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -28,8 +29,8 @@ public class ChGroup implements java.io.Serializable {
 	private BigDecimal groupId;
 	private String groupName;
 	private String groupdesc;
-	private Set chChannelCustGrpMappings = new HashSet(0);
-	private Set chUserGroupMappings = new HashSet(0);
+	private Set<ChChannelCustGrpMapping> chChannelCustGrpMappings = new HashSet<ChChannelCustGrpMapping>(0);
+	private Set<ChUserGroupMapping> chUserGroupMappings = new HashSet<ChUserGroupMapping>(0);
 
 	public ChGroup() {
 	}
@@ -39,8 +40,8 @@ public class ChGroup implements java.io.Serializable {
 		this.groupName = groupName;
 	}
 
-	public ChGroup(BigDecimal groupId, String groupName, String groupdesc, Set chChannelCustGrpMappings,
-			Set chUserGroupMappings) {
+	public ChGroup(BigDecimal groupId, String groupName, String groupdesc, Set<ChChannelCustGrpMapping> chChannelCustGrpMappings,
+			Set<ChUserGroupMapping> chUserGroupMappings) {
 		this.groupId = groupId;
 		this.groupName = groupName;
 		this.groupdesc = groupdesc;
@@ -78,21 +79,70 @@ public class ChGroup implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY,cascade=CascadeType.REMOVE , mappedBy = "chGroup", targetEntity= com.dcsoft.capmkt.orm.ChChannelCustGrpMapping.class)
-	public Set getChChannelCustGrpMappings() {
+	public Set<ChChannelCustGrpMapping> getChChannelCustGrpMappings() {
 		return this.chChannelCustGrpMappings;
 	}
 
-	public void setChChannelCustGrpMappings(Set chChannelCustGrpMappings) {
+	public void setChChannelCustGrpMappings(Set<ChChannelCustGrpMapping> chChannelCustGrpMappings) {
 		this.chChannelCustGrpMappings = chChannelCustGrpMappings;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY,cascade=CascadeType.REMOVE , mappedBy = "chGroup",targetEntity= com.dcsoft.capmkt.orm.ChUserGroupMapping.class)
-	public Set getChUserGroupMappings() {
+	public Set<ChUserGroupMapping> getChUserGroupMappings() {
 		return this.chUserGroupMappings;
 	}
 
-	public void setChUserGroupMappings(Set chUserGroupMappings) {
+	public void setChUserGroupMappings(Set<ChUserGroupMapping> chUserGroupMappings) {
 		this.chUserGroupMappings = chUserGroupMappings;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		Random generator = new Random();
+		int result = Math.abs(generator.nextInt(Integer.MAX_VALUE));
+		result = prime * result + ((chChannelCustGrpMappings == null) ? 0 : chChannelCustGrpMappings.hashCode());
+		result = prime * result + ((chUserGroupMappings == null) ? 0 : chUserGroupMappings.hashCode());
+		result = prime * result + ((groupId == null) ? 0 : groupId.hashCode());
+		result = prime * result + ((groupName == null) ? 0 : groupName.hashCode());
+		result = prime * result + ((groupdesc == null) ? 0 : groupdesc.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ChGroup other = (ChGroup) obj;
+		if (chChannelCustGrpMappings == null) {
+			if (other.chChannelCustGrpMappings != null)
+				return false;
+		} else if (!chChannelCustGrpMappings.equals(other.chChannelCustGrpMappings))
+			return false;
+		if (chUserGroupMappings == null) {
+			if (other.chUserGroupMappings != null)
+				return false;
+		} else if (!chUserGroupMappings.equals(other.chUserGroupMappings))
+			return false;
+		if (groupId == null) {
+			if (other.groupId != null)
+				return false;
+		} else if (!groupId.equals(other.groupId))
+			return false;
+		if (groupName == null) {
+			if (other.groupName != null)
+				return false;
+		} else if (!groupName.equals(other.groupName))
+			return false;
+		if (groupdesc == null) {
+			if (other.groupdesc != null)
+				return false;
+		} else if (!groupdesc.equals(other.groupdesc))
+			return false;
+		return true;
+	}	
 }

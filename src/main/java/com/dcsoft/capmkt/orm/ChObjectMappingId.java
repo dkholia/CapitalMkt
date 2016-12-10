@@ -1,6 +1,8 @@
 package com.dcsoft.capmkt.orm;
 // Generated Jun 5, 2016 11:25:49 PM by Hibernate Tools 4.0.0
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
@@ -12,13 +14,13 @@ public class ChObjectMappingId implements java.io.Serializable {
 
 	private static final long serialVersionUID = 6564309473120325955L;
 	private String objectName;
-	private String objectId;
+	private BigDecimal objectId;
 	private String objectHash;
 
 	public ChObjectMappingId() {
 	}
 
-	public ChObjectMappingId(String objectName, String objectId, String objectHash) {
+	public ChObjectMappingId(String objectName, BigDecimal objectId, String objectHash) {
 		this.objectName = objectName;
 		this.objectId = objectId;
 		this.objectHash = objectHash;
@@ -34,11 +36,11 @@ public class ChObjectMappingId implements java.io.Serializable {
 	}
 
 	@Column(name = "objectID")
-	public String getObjectId() {
+	public BigDecimal getObjectId() {
 		return this.objectId;
 	}
 
-	public void setObjectId(String objectId) {
+	public void setObjectId(BigDecimal objectId) {
 		this.objectId = objectId;
 	}
 

@@ -92,15 +92,15 @@ public class GroupController {
 
 			this.groupService.addGroup(chGroupTO);
 		}else{
-			this.groupService.updateGroup(chGroupTO);
+			this.groupService.updateGroup(chGroupTO,chnlCustGrpMapService);
 		}
-		return "redirect:/group";
+		return "redirect:/home/group";
 	}
 	@RequestMapping("/home/group/remove/{id}"  )
-	public String removeGroup(@PathVariable("id") BigDecimal id, Model model){
+	public String removeGroup(@PathVariable("id") BigDecimal id,ChGroupTO chGroupTO, Model model){
 		model.addAttribute("listGroups", model.addAttribute("listGroups", this.groupService.listGroups()));
 		this.groupService.removeGroup(id);
-		return "redirect:/group";
+		return "redirect:/home/group";
 	}
 
 	@RequestMapping("/home/group/createeditgroup/{id}")
@@ -116,14 +116,22 @@ public class GroupController {
 	@RequestMapping(value="/home/group/createeditgroup/{id}" , method=RequestMethod.POST)
 	public String editGroup(@PathVariable("id") BigDecimal id,@Valid ChGroupTO chGroupTO, BindingResult result, Model model){
 		model.addAttribute("group", chGroupTO);
+		ChGroup group = groupService.getGroupDetails(id);
+		List<ChannelCustomerTO> list = new GroupManager().getAllChannelCustomers(chnlCustomerService.list(), group.getChChannelCustGrpMappings());
+		model.addAttribute("allCustomers", list);
 		if (result.hasErrors()) {
 			CustomErrorHandler handler = new CustomErrorHandler(result.getAllErrors());
 			model.addAttribute("errors", handler.getCustomErrors());
+			
+			model.addAttribute("allCustomers", list);
 			return "createeditgroup";
 		}
+		groupService.updateGroup(chGroupTO,chnlCustGrpMapService);
+		model.addAttribute("group", new GroupManager().convertToChGroupTOFromChgroup(groupService.getGroupById(id)));
+		list = new GroupManager().getAllChannelCustomers(chnlCustomerService.list(), group.getChChannelCustGrpMappings());
+		model.addAttribute("allCustomers", list);
 		model.addAttribute("mode", "edit");
-		groupService.updateGroup(chGroupTO);
-		model.addAttribute("success", "Group : "+ chGroupTO.getGroupName() + " Edited successfully");
+		model.addAttribute("success", "Group : "+ chGroupTO.getGroupName() + " updated successfully");
 		return "createeditgroup";
 	}
 	
@@ -178,7 +186,7 @@ public class GroupController {
 			//chnlCustGrpMapService.saveObjectHash(ChGroup.class.getSimpleName(), groupId.toPlainString(), chGroupTO.hashCode()+"");
 			
 		}else{
-			this.groupService.updateGroup(chGroupTO);
+			this.groupService.updateGroup(chGroupTO,chnlCustGrpMapService);
 		}
 		
 		return "createeditgroup";

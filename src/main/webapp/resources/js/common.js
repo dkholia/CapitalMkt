@@ -113,7 +113,7 @@ $(function() {
 
 $('form,input,select,textarea').attr("autocomplete", "off");
 
-$( ".reset" ).click(function() {
+$( "input:reset" ).click(function() {
     $(':input').not(':button, :submit, :reset, :hidden, :checkbox, :radio').val('');
     $(':checkbox, :radio').prop('checked', false);
 });
@@ -122,24 +122,46 @@ function logout() {
 	document.getElementById("logoutForm").submit();
 }
 
-function deleteUser(userid) {
-	//$( "#mainform").trigger( "submit");
-	var jqxhr = $.post( "http://localhost:18080/CapitalMkt/home/channeluser/"+userid+"/deleteUser", function() {
-		})
-		  .done(function() {
-		  })
-		  .fail(function() {
-		  })
-		  .always(function() {
-			  $( "#message-div" ).css("color","green").text( "User deleted successfully" ).show().fadeOut( 2000 );
-		  });
-	/*$.ajax({
-		  type: "POST",
-		  url: "./home/channeluser/"+userid+"/deleteUser"
-	});*/
-	//$( "#mainform").trigger( "submit");
+function deleteUser(userid,uname) {
+	if(!confirm("Are you sure you want to delete user : "+ uname+" ? "))
+		return;
+	showWaitScreen("mainform");
+	$.ajax({
+		type : "GET",
+		contentType : "application/json",
+		url : "/CapitalMkt/home/channeluser/"+userid+"/deleteUser",
+		dataType : 'json',
+		timeout : 100000,
+		async : false,
+		success : function(data) {
+			
+		},
+		error : function(e) {
+		}
+	});
+	$( "#mainform").trigger( "submit");
+	 $( "#message-div" ).css("color","green").text( "User : " + uname +  " deleted successfully" ).show().fadeOut( 2000 );
 }
 
+function deleteGroup(groupId,groupName) {
+	if(!confirm("Are you sure you want to delete group : "+ groupName+" ? "))
+		return;
+	showWaitScreen("mainform");
+	$.ajax({
+		type : "GET",
+		contentType : "application/json",
+		url : "/CapitalMkt/home/group/remove/"+groupId,
+		dataType : 'json',
+		timeout : 100000,
+		async : false,
+		success : function(data) {
+		},
+		error : function(e) {
+		}
+	});
+	$( "#mainform").trigger( "submit");
+	 $( "#message-div" ).css("color","green").text( "Group : " + groupName +  " deleted successfully" ).show();
+}
 function showWaitScreen(formname){
 	var msg="Please wait ...";
 	$(document).ready(function() {

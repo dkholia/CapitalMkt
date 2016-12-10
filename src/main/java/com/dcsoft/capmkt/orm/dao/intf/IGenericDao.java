@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface IGenericDao {
-	 public void add(Serializable obj);
+	 public Serializable add(Serializable obj);
 	 public void update(Serializable obj);
 	 public List<Serializable> list(String name);
 	 public Serializable getById(Class clazz , int id);

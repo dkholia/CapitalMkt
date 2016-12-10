@@ -134,7 +134,7 @@ public class ChannelUserController {
 		return "editUser";
 	}
 	
-	@RequestMapping(value="/home/channeluser/{id}/deleteUser" /*, method=RequestMethod.DELETE*/)
+	@RequestMapping(value="/home/channeluser/{id}/deleteUser")
 	public String deleteuser(@PathVariable ("id") BigDecimal id, Model model){
 		channelUserService.removeUser(id);
 		return "redirect:/home/channeluser";

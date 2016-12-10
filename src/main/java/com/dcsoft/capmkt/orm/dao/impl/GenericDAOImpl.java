@@ -14,6 +14,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
+import com.dcsoft.capmkt.orm.ChObjectMapping;
+import com.dcsoft.capmkt.orm.ChObjectMappingId;
 import com.dcsoft.capmkt.orm.dao.intf.IGenericDao;
 
 public class GenericDAOImpl extends HibernateDaoSupport  implements IGenericDao {
@@ -24,15 +26,15 @@ public class GenericDAOImpl extends HibernateDaoSupport  implements IGenericDao 
 	private SessionFactory sessionFactory;
     
 	@Override
-	public void add(Serializable entity) {
-		 getHibernateTemplate().persist(entity);
-	     logger.info("Object saved successfully, Object Details="+entity.toString());
+	public Serializable add(Serializable entity) {
+		logger.info("Saving Object, Object Details="+entity.toString());
+		return getHibernateTemplate().save(entity);
 	}
 
 	@Override
 	public void update(Serializable entity) {
 		// Session session = getSession();
-		 getHibernateTemplate().update(entity);
+		 getHibernateTemplate().saveOrUpdate(entity);
 	     logger.info("Object saved successfully, Object Details="+entity.toString());
 	}
 
@@ -98,7 +100,9 @@ public class GenericDAOImpl extends HibernateDaoSupport  implements IGenericDao 
 
 	@Override
 	public void saveObjectHash(Serializable clazz, String idColumnName, BigDecimal objectID, BigDecimal objectHash) {
-		Object objInstance = new Object();
-		
+		ChObjectMapping mapping = new ChObjectMapping();
+		ChObjectMappingId id = new ChObjectMappingId(idColumnName,objectID,objectHash.toString());
+		mapping.setId(id);
+		add(mapping);
 	}
 }

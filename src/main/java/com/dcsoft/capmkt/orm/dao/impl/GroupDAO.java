@@ -4,17 +4,13 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
-import org.hibernate.SessionFactory;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import com.dcsoft.capmkt.orm.ChGroup;
 
 public class GroupDAO extends GenericDAOImpl {
 	
-	@Autowired
-	private SessionFactory sessionFactory;
 	
 	public GroupDAO() {
 		super();

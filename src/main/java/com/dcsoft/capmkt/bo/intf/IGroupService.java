@@ -9,7 +9,7 @@ import com.dcsoft.capmkt.orm.ChGroup;
 
 public interface IGroupService extends IObjectHash {
 	public void addGroup(ChGroupTO p);
-	public void updateGroup(ChGroupTO p);
+	public void updateGroup(ChGroupTO p, IChannelCustomerGrpMapping chnlCustGrpMapService);
 	public List<Serializable> listGroups();
 	public ChGroup getGroupById(BigDecimal id);
 	public void removeGroup(BigDecimal id);
